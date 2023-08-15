@@ -1,9 +1,10 @@
 import React from "react";
 import { preventAutoHideAsync, hideAsync } from "expo-splash-screen";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, ThemeProvider } from "@react-navigation/native";
 import Root from "./src/navigation/Root";
 import { useFonts } from "expo-font";
 import { AntDesign } from "@expo/vector-icons";
+import { defaultTheme } from "./styles/theme";
 
 preventAutoHideAsync();
 export default function App() {
@@ -11,9 +12,11 @@ export default function App() {
   if (fontsLoaded) {
     hideAsync();
     return (
-      <NavigationContainer>
-        <Root />
-      </NavigationContainer>
+      <ThemeProvider theme={defaultTheme}>
+        <NavigationContainer>
+          <Root />
+        </NavigationContainer>
+      </ThemeProvider>
     );
   }
 }
