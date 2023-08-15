@@ -1,10 +1,13 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { preventAutoHideAsync, hideAsync } from "expo-splash-screen";
+import { NavigationContainer } from "@react-navigation/native";
+import Root from "./src/navigation/Root";
 
+preventAutoHideAsync();
 export default function App() {
   return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <NavigationContainer>
+      <Root />
+    </NavigationContainer>
   );
 }
