@@ -1,13 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { preventAutoHideAsync, hideAsync } from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import Root from "./src/navigation/Root";
+import { useFonts } from "expo-font";
+import { AntDesign } from "@expo/vector-icons";
 
 preventAutoHideAsync();
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Root />
-    </NavigationContainer>
-  );
+  const [fontsLoaded] = useFonts(AntDesign.font);
+  if (fontsLoaded) {
+    hideAsync();
+    return (
+      <NavigationContainer>
+        <Root />
+      </NavigationContainer>
+    );
+  }
 }
