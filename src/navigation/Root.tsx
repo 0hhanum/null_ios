@@ -7,7 +7,12 @@ const NativeStack = createNativeStackNavigator();
 
 const Root = () => {
   return (
-    <NativeStack.Navigator>
+    <NativeStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        presentation: "modal",
+      }}
+    >
       <NativeStack.Screen name="RootTab" component={RootTab} />
       <NativeStack.Screen name="RootStack" component={RootStack} />
     </NativeStack.Navigator>
