@@ -1,11 +1,13 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import BaseText from "../../atoms/Texts/BaseText";
+import BaseView from "../../atoms/View/BaseView";
 
-const MyPage = () => {
+const MyPage: React.FC<NativeStackScreenProps<any, "MyPage">> = ({}) => {
   return (
-    <View>
-      <Text>MyPage</Text>
-    </View>
+    <BaseView>
+      <BaseText size={"large"}>my page</BaseText>
+    </BaseView>
   );
 };
 

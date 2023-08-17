@@ -10,7 +10,7 @@ const Root = () => {
     <NativeStack.Navigator
       screenOptions={{
         headerShown: false,
-        presentation: "modal",
+        presentation: "fullScreenModal",
       }}
     >
       <NativeStack.Screen name="RootTab" component={RootTab} />

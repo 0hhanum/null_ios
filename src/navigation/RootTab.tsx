@@ -27,7 +27,7 @@ const RootTab: React.FC<BottomTabBarProps> = ({ navigation }) => {
           height: 120,
         },
         headerTitleStyle: {
-          fontSize: 28,
+          fontSize: theme.variables.fontSize.large,
         },
         headerRight() {
           return (
@@ -36,7 +36,7 @@ const RootTab: React.FC<BottomTabBarProps> = ({ navigation }) => {
                 navigation.navigate("RootStack", { screen: "MyPage" })
               }
             >
-              <AntDesign name="user" size={24} color={theme.textColor} />
+              <AntDesign name="user" size={28} color={theme.textColor} />
             </IconBtn>
           );
         },
