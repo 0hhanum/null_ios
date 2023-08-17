@@ -4,11 +4,11 @@ import styled from "styled-components/native";
 interface IBaseView {
   children?: any;
 }
-const Container = styled.View`
+export const BaseViewContainer = styled.View`
   background-color: ${(props) => props.theme.bgColor};
 `;
 const BaseView: React.FC<IBaseView> = ({ children }) => {
-  return <Container>{children}</Container>;
+  return <BaseViewContainer>{children}</BaseViewContainer>;
 };
 
 export default BaseView;
