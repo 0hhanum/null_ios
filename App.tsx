@@ -6,6 +6,7 @@ import { useFonts } from "expo-font";
 import { AntDesign } from "@expo/vector-icons";
 import { defaultTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components/native";
+import { RecoilRoot } from "recoil";
 
 preventAutoHideAsync();
 export default function App() {
@@ -13,11 +14,13 @@ export default function App() {
   if (fontsLoaded) {
     hideAsync();
     return (
-      <ThemeProvider theme={defaultTheme}>
-        <NavigationContainer>
-          <Root />
-        </NavigationContainer>
-      </ThemeProvider>
+      <RecoilRoot>
+        <ThemeProvider theme={defaultTheme}>
+          <NavigationContainer>
+            <Root />
+          </NavigationContainer>
+        </ThemeProvider>
+      </RecoilRoot>
     );
   }
 }
