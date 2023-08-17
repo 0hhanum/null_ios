@@ -16,7 +16,7 @@ const Text = styled.Text<{ size: IText["size"] }>`
 `;
 
 const BaseText: React.FC<IText> = ({ size, children }) => {
-  return <Text size={size && "medium"}>{children}</Text>;
+  return <Text size={size || "medium"}>{children}</Text>;
 };
 
 export default BaseText;
