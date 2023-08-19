@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React from "react";
 import { preventAutoHideAsync, hideAsync } from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import Root from "./src/navigation/Root";
@@ -8,7 +8,6 @@ import { defaultTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components/native";
 import { RecoilRoot } from "recoil";
 import { RealmProvider } from "@realm/react";
-import { Auth } from "./src/db/auth/auth";
 import schemas from "./src/db";
 
 preventAutoHideAsync();
