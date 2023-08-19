@@ -7,19 +7,24 @@ import { AntDesign } from "@expo/vector-icons";
 import { defaultTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components/native";
 import { RecoilRoot } from "recoil";
+import { createRealmContext } from "@realm/react";
+import relamConfig from "./src/db";
 
 preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded] = useFonts(AntDesign.font);
+  const { RealmProvider } = createRealmContext(relamConfig);
   if (fontsLoaded) {
     hideAsync();
     return (
       <RecoilRoot>
-        <ThemeProvider theme={defaultTheme}>
-          <NavigationContainer>
-            <Root />
-          </NavigationContainer>
-        </ThemeProvider>
+        <RealmProvider>
+          <ThemeProvider theme={defaultTheme}>
+            <NavigationContainer>
+              <Root />
+            </NavigationContainer>
+          </ThemeProvider>
+        </RealmProvider>
       </RecoilRoot>
     );
   }
