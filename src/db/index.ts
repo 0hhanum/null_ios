@@ -1,7 +1,5 @@
-import Realm from "realm";
+import { Auth } from "./auth/auth";
 
-const relamConfig: Realm.Configuration = {
-  schema: [],
-};
+const schemas = [Auth];
 
-export default relamConfig;
+export default schemas;
