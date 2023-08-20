@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { useTheme } from "styled-components";
+import styled, { useTheme } from "styled-components/native";
 import { CenterViewContainer } from "../../atoms/View/CenterView";
 import TrafficLight from "../TrafficLights/TrafficLight";
 import { getCardDimensions } from "../utils";
@@ -24,6 +24,11 @@ const CardContainer = styled(CenterViewContainer)<{
   width: ${(props) => props.dimensions.width};
   height: ${(props) => props.dimensions.height};
 `;
+const TrafficLightContainer = styled.View`
+  position: absolute;
+  top: 22px;
+  left: 22px;
+`;
 
 const BaseCard = ({ bgColor, cardType, trafficLight, children }: IBaseCard) => {
   const theme = useTheme();
@@ -32,7 +37,12 @@ const BaseCard = ({ bgColor, cardType, trafficLight, children }: IBaseCard) => {
       bgColor={bgColor || theme.headerColor}
       dimensions={getCardDimensions(cardType)}
     >
-      {trafficLight && <TrafficLight />}
+      {trafficLight && (
+        <TrafficLightContainer>
+          <TrafficLight />
+        </TrafficLightContainer>
+      )}
+
       {children}
     </CardContainer>
   );

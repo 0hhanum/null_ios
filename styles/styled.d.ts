@@ -12,6 +12,9 @@ declare module "styled-components/native" {
     bgColor: string;
     textColor: string;
     headerColor: string;
+    red: string;
+    yellow: string;
+    green: string;
     variables: IVariable;
   }
 }
