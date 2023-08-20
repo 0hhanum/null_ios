@@ -10,7 +10,7 @@ import IconBtn from "../components/atoms/Buttons/IconBtn";
 import { AntDesign } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
-const RootStack: React.FC<NativeStackScreenProps<any, "RootStack">> = ({
+const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
   navigation,
 }) => {
   const theme = useTheme();
@@ -57,4 +57,4 @@ const RootStack: React.FC<NativeStackScreenProps<any, "RootStack">> = ({
   );
 };
 
-export default RootStack;
+export default RootStackNav;

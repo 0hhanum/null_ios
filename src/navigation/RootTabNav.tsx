@@ -12,12 +12,12 @@ import { AntDesign } from "@expo/vector-icons";
 import IconBtn from "../components/atoms/Buttons/IconBtn";
 
 const Tab = createBottomTabNavigator();
-const RootTab: React.FC<BottomTabBarProps> = ({ navigation }) => {
+const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
   const theme = useTheme();
 
   return (
     <Tab.Navigator
-      id="rootTab"
+      id="RootTabNav"
       sceneContainerStyle={{
         backgroundColor: theme.bgColor,
       }}
@@ -97,4 +97,4 @@ const RootTab: React.FC<BottomTabBarProps> = ({ navigation }) => {
     </Tab.Navigator>
   );
 };
-export default RootTab;
+export default RootTabNav;

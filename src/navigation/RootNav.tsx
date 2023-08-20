@@ -1,11 +1,11 @@
 import React from "react";
-import RootTab from "./RootTab";
-import RootStack from "./RootStack";
+import RootTabNav from "./RootTabNav";
+import RootStackNav from "./RootStackNav";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const NativeStack = createNativeStackNavigator();
 
-const Root = () => {
+const RootNav = () => {
   return (
     <NativeStack.Navigator
       screenOptions={{
@@ -13,10 +13,10 @@ const Root = () => {
         presentation: "fullScreenModal",
       }}
     >
-      <NativeStack.Screen name="RootTab" component={RootTab} />
-      <NativeStack.Screen name="RootStack" component={RootStack} />
+      <NativeStack.Screen name="RootTabNav" component={RootTabNav} />
+      <NativeStack.Screen name="RootStackNav" component={RootStackNav} />
     </NativeStack.Navigator>
   );
 };
 
-export default Root;
+export default RootNav;
