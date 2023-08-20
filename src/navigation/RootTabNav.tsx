@@ -33,7 +33,7 @@ const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
           return (
             <IconBtn
               onPress={() =>
-                navigation.navigate("RootStack", { screen: "MyPage" })
+                navigation.navigate("RootStackNav", { screen: "MyPage" })
               }
             >
               <AntDesign name="user" size={28} color={theme.textColor} />

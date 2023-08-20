@@ -1,11 +1,12 @@
 import React from "react";
-import { Text, View } from "react-native";
+import PageLayout from "../../atoms/View/PageLayout";
+import BaseText from "../../atoms/Texts/BaseText";
 
 const Settings = () => {
   return (
-    <View>
-      <Text>Settings</Text>
-    </View>
+    <PageLayout>
+      <BaseText>Settings</BaseText>
+    </PageLayout>
   );
 };
 

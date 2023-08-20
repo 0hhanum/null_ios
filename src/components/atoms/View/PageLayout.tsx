@@ -7,6 +7,7 @@ interface IPageLayout {
 }
 const Container = styled(BaseViewContainer)`
   padding: 20px;
+  flex: 1;
 `;
 const PageLayout: React.FC<IPageLayout> = ({ children }) => {
   return <Container>{children}</Container>;

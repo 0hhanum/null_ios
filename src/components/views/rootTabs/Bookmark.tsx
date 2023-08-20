@@ -1,11 +1,12 @@
 import React from "react";
-import { Text, View } from "react-native";
+import BaseText from "../../atoms/Texts/BaseText";
+import PageLayout from "../../atoms/View/PageLayout";
 
 const Bookmark = () => {
   return (
-    <View>
-      <Text>Bookmark</Text>
-    </View>
+    <PageLayout>
+      <BaseText>Bookmark</BaseText>
+    </PageLayout>
   );
 };
 
