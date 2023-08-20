@@ -1,8 +1,8 @@
-import { Dimensions } from "react-native";
 import { cardType } from "./Cards/BaseCard";
+import { getWindowSize } from "../utils";
 
 export const getCardDimensions = (cardType: cardType) => {
-  const { width, height } = Dimensions.get("window");
+  const { width, height } = getWindowSize();
   switch (cardType) {
     case "banner":
       return { width: "100%", height: `${Math.floor(height * 0.3)}px` };
