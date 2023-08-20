@@ -5,12 +5,13 @@ import { BaseViewContainer } from "./BaseView";
 interface IHCenterView {
   children?: any;
 }
-const Container = styled(BaseViewContainer)`
+export const HCenterViewContainer = styled(BaseViewContainer)`
   flex-direction: row;
   justify-content: center;
 `;
+
 const HCenterView: React.FC<IHCenterView> = ({ children }) => {
-  return <Container>{children}</Container>;
+  return <HCenterViewContainer>{children}</HCenterViewContainer>;
 };
 
 export default HCenterView;

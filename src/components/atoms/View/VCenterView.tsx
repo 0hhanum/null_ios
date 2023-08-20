@@ -5,11 +5,11 @@ import { BaseViewContainer } from "./BaseView";
 interface IVCenter {
   children?: any;
 }
-const Container = styled(BaseViewContainer)`
+export const VCenterViewContainer = styled(BaseViewContainer)`
   justify-content: center;
 `;
 const VCenterView: React.FC<IVCenter> = ({ children }) => {
-  return <Container>{children}</Container>;
+  return <VCenterViewContainer>{children}</VCenterViewContainer>;
 };
 
 export default VCenterView;

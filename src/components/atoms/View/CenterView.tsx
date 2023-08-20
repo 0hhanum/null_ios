@@ -5,12 +5,12 @@ import { BaseViewContainer } from "./BaseView";
 interface ICenterView {
   children?: any;
 }
-const Container = styled(BaseViewContainer)`
+export const CenterViewContainer = styled(BaseViewContainer)`
   justify-content: center;
   align-items: center;
 `;
 const CenterView: React.FC<ICenterView> = ({ children }) => {
-  return <Container>{children}</Container>;
+  return <CenterViewContainer>{children}</CenterViewContainer>;
 };
 
 export default CenterView;
