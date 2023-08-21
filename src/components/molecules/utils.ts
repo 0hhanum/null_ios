@@ -4,9 +4,9 @@ import { getWindowSize } from "../utils";
 export const getCardDimensions = (cardType: cardType) => {
   const { width, height } = getWindowSize();
   switch (cardType) {
-    case "banner":
+    case "bigBanner":
       return { width: "100%", height: `${Math.floor(height * 0.3)}px` };
-    case "halfBanner":
+    case "banner":
       return { width: "100%", height: `${Math.floor(height * 0.15)}px` };
     case "largeSqaure":
       return {
