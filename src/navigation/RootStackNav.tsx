@@ -6,7 +6,7 @@ import {
 import MyPage from "../components/pages/rootStacks/MyPage";
 import Settings from "../components/pages/rootStacks/Settings";
 import { useTheme } from "styled-components/native";
-import IconBtn from "../components/atoms/Buttons/IconBtn";
+import BaseButton from "../components/atoms/Buttons/BaseButton";
 import { AntDesign } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
@@ -34,16 +34,16 @@ const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
           headerTitle: "내 정보",
           headerRight() {
             return (
-              <IconBtn onPress={() => navigation.navigate("Settings")}>
+              <BaseButton onPress={() => navigation.navigate("Settings")}>
                 <AntDesign name="setting" size={22} color={theme.textColor} />
-              </IconBtn>
+              </BaseButton>
             );
           },
           headerLeft() {
             return (
-              <IconBtn onPress={() => navigation.goBack()}>
+              <BaseButton onPress={() => navigation.goBack()}>
                 <AntDesign name="close" size={18} color={theme.textColor} />
-              </IconBtn>
+              </BaseButton>
             );
           },
         }}

@@ -9,7 +9,7 @@ import TodayQuiz from "../components/pages/rootTabs/TodayQuiz";
 import Bookmark from "../components/pages/rootTabs/Bookmark";
 import { useTheme } from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
-import IconBtn from "../components/atoms/Buttons/IconBtn";
+import BaseButton from "../components/atoms/Buttons/BaseButton";
 
 const Tab = createBottomTabNavigator();
 const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
@@ -31,13 +31,13 @@ const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
         },
         headerRight() {
           return (
-            <IconBtn
+            <BaseButton
               onPress={() =>
                 navigation.navigate("RootStackNav", { screen: "MyPage" })
               }
             >
               <AntDesign name="user" size={28} color={theme.textColor} />
-            </IconBtn>
+            </BaseButton>
           );
         },
         headerRightContainerStyle: {
