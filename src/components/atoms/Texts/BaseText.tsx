@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 type size = "large" | "medium" | "small";
 interface IText {
   size?: number | size;
-  children: string;
+  children: string | string[];
 }
 
 const Text = styled.Text<{ size: IText["size"] }>`
