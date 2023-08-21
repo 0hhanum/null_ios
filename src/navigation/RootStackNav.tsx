@@ -3,8 +3,8 @@ import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
-import MyPage from "../components/views/rootStacks/MyPage";
-import Settings from "../components/views/rootStacks/Settings";
+import MyPage from "../components/pages/rootStacks/MyPage";
+import Settings from "../components/pages/rootStacks/Settings";
 import { useTheme } from "styled-components/native";
 import IconBtn from "../components/atoms/Buttons/IconBtn";
 import { AntDesign } from "@expo/vector-icons";

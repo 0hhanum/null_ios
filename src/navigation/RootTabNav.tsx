@@ -3,10 +3,10 @@ import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
-import Home from "../components/views/rootTabs/Home";
-import Analysis from "../components/views/rootTabs/Analysis";
-import TodayQuiz from "../components/views/rootTabs/TodayQuiz";
-import Bookmark from "../components/views/rootTabs/Bookmark";
+import Home from "../components/pages/rootTabs/Home";
+import Analysis from "../components/pages/rootTabs/Analysis";
+import TodayQuiz from "../components/pages/rootTabs/TodayQuiz";
+import Bookmark from "../components/pages/rootTabs/Bookmark";
 import { useTheme } from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
 import IconBtn from "../components/atoms/Buttons/IconBtn";

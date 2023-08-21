@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Landing from "../components/views/auths/Landing";
+import Landing from "../components/pages/auths/Landing";
 
 const NativeStack = createNativeStackNavigator();
 
