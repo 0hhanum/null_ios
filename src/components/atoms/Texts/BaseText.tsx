@@ -5,6 +5,7 @@ type size = "large" | "medium" | "small";
 interface IText {
   size?: number | size;
   children: string | string[];
+  style?: React.CSSProperties;
 }
 
 const Text = styled.Text<{ size: IText["size"] }>`
@@ -15,8 +16,12 @@ const Text = styled.Text<{ size: IText["size"] }>`
       : `${props.theme.variables.fontSize[props.size]}px`};
 `;
 
-const BaseText: React.FC<IText> = ({ size, children }) => {
-  return <Text size={size || "medium"}>{children}</Text>;
+const BaseText: React.FC<IText> = ({ size, children, style }) => {
+  return (
+    <Text style={style} size={size || "medium"}>
+      {children}
+    </Text>
+  );
 };
 
 export default BaseText;
