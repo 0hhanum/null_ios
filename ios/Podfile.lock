@@ -11,6 +11,12 @@ PODS:
     - ExpoModulesCore
   - Expo (49.0.7):
     - ExpoModulesCore
+  - ExpoImage (1.3.2):
+    - ExpoModulesCore
+    - SDWebImage (~> 5.15.8)
+    - SDWebImageAVIFCoder (~> 0.10.0)
+    - SDWebImageSVGCoder (~> 1.7.0)
+    - SDWebImageWebPCoder (~> 0.11.0)
   - ExpoKeepAwake (12.3.0):
     - ExpoModulesCore
   - ExpoModulesCore (1.5.9):
@@ -70,7 +76,28 @@ PODS:
   - hermes-engine (0.72.3):
     - hermes-engine/Pre-built (= 0.72.3)
   - hermes-engine/Pre-built (0.72.3)
+  - libaom (3.0.0):
+    - libvmaf (>= 2.2.0)
+  - libavif (0.11.1):
+    - libavif/libaom (= 0.11.1)
+  - libavif/core (0.11.1)
+  - libavif/libaom (0.11.1):
+    - libaom (>= 2.0.0)
+    - libavif/core
   - libevent (2.1.12)
+  - libvmaf (2.3.1)
+  - libwebp (1.3.1):
+    - libwebp/demux (= 1.3.1)
+    - libwebp/mux (= 1.3.1)
+    - libwebp/sharpyuv (= 1.3.1)
+    - libwebp/webp (= 1.3.1)
+  - libwebp/demux (1.3.1):
+    - libwebp/webp
+  - libwebp/mux (1.3.1):
+    - libwebp/demux
+  - libwebp/sharpyuv (1.3.1)
+  - libwebp/webp (1.3.1):
+    - libwebp/sharpyuv
   - PromisesObjC (2.3.1)
   - RCT-Folly (2021.07.22.00):
     - boost
@@ -498,8 +525,19 @@ PODS:
   - RNScreens (3.24.0):
     - React-Core
     - React-RCTImage
-  - RNSVG (13.11.0):
+  - RNSVG (13.12.0):
     - React-Core
+  - SDWebImage (5.15.8):
+    - SDWebImage/Core (= 5.15.8)
+  - SDWebImage/Core (5.15.8)
+  - SDWebImageAVIFCoder (0.10.1):
+    - libavif (>= 0.11.0)
+    - SDWebImage (~> 5.10)
+  - SDWebImageSVGCoder (1.7.0):
+    - SDWebImage/Core (~> 5.6)
+  - SDWebImageWebPCoder (0.11.0):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.15)
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
@@ -511,6 +549,7 @@ DEPENDENCIES:
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - Expo (from `../node_modules/expo`)
+  - ExpoImage (from `../node_modules/expo-image/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
@@ -571,8 +610,16 @@ SPEC REPOS:
     - fmt
     - GoogleUtilities
     - GTMSessionFetcher
+    - libaom
+    - libavif
     - libevent
+    - libvmaf
+    - libwebp
     - PromisesObjC
+    - SDWebImage
+    - SDWebImageAVIFCoder
+    - SDWebImageSVGCoder
+    - SDWebImageWebPCoder
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -590,6 +637,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-font/ios"
   Expo:
     :path: "../node_modules/expo"
+  ExpoImage:
+    :path: "../node_modules/expo-image/ios"
   ExpoKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
   ExpoModulesCore:
@@ -694,6 +743,7 @@ SPEC CHECKSUMS:
   EXFileSystem: 941b273758aee14be2ecc671dacb4f10dd28c833
   EXFont: 738c44c390953ebcbab075a4848bfbef025fd9ee
   Expo: d310f3b84bd30843324d41f23ea7cc5e4273abf1
+  ExpoImage: e3170a9043c6a80080efbf2268b3df2334021949
   ExpoKeepAwake: be4cbd52d9b177cde0fd66daa1913afa3161fc1d
   ExpoModulesCore: 0a114333f029eaa2edc701334515b4e05343fac3
   EXSplashScreen: 2c80621e4bc952f5bea328304c2436f5fe21c2a0
@@ -709,7 +759,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
   hermes-engine: 10fbd3f62405c41ea07e71973ea61e1878d07322
+  libaom: 144606b1da4b5915a1054383c3a4459ccdb3c661
+  libavif: 84bbb62fb232c3018d6f1bab79beea87e35de7b7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  libvmaf: 27f523f1e63c694d14d534cd0fddd2fab0ae8711
+  libwebp: 33dc822fbbf4503668d09f7885bbfedc76c45e96
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: a2faf4bad4e438ca37b2040cb8f7799baa065c18
@@ -749,7 +803,11 @@ SPEC CHECKSUMS:
   RNFBApp: 147c3274daa84d7410d457510548d5fb3b317e37
   RNFBAuth: 7f10a8eb8b55ec604946d071bdd9a228d80c4486
   RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
-  RNSVG: 03e4d258ca355d7836a0a5dd4d4dc63c1eb49cbb
+  RNSVG: 6d07f8f8f246c85e3e16e0bcfc0d047db0c48496
+  SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
+  SDWebImageAVIFCoder: 8348fef6d0ec69e129c66c9fe4d74fbfbf366112
+  SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
+  SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 8796b55dba14d7004f980b54bcc9833ee45b28ce
 
