@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { loginMethod } from "../../../db/auth/auth";
 import BaseText from "../../atoms/Texts/BaseText";
 import { capitalizeFirstLetter } from "../../utils";
 import styled from "styled-components/native";
-import Authenticator from "../../../containers/Authenticator";
+import Authenticator from "../../../containers/Auth/Authenticator";
 import { AntDesign } from "@expo/vector-icons";
 import { Image } from "expo-image";
+import { IconType } from "types/common/antDesignTypes";
+import { useNavigation } from "@react-navigation/native";
 
 interface IAuthButton {
   loginMethod: loginMethod;
@@ -20,7 +22,7 @@ const ButtonContainer = styled.Pressable<{
   textColor: string;
 }>`
   width: 100%;
-  padding: 4.5%;
+  height: 55px;
   margin: 6px 0;
   border-radius: 15px;
   background-color: ${(props) => props.bgColor};
@@ -37,17 +39,26 @@ const AuthButton = ({
   iconSource,
   logoName,
 }: IAuthButton) => {
+  const [isLoginButtonClicked, setLoginButtonClicked] = useState(false);
+  const navigation = useNavigation<any>();
+  const onPress = () => {
+    if (loginMethod === "email") {
+      navigation.navigate("EmailLogin");
+      return;
+    }
+    setLoginButtonClicked(true);
+  };
   return (
-    <ButtonContainer bgColor={bgColor}>
+    <ButtonContainer bgColor={bgColor} onPress={onPress}>
       {logoName !== undefined ? (
-        <AntDesign name={logoName} size={20} color={textColor} />
+        <AntDesign name={logoName as IconType} size={20} color={textColor} />
       ) : (
         <Image style={{ width: 30, height: 30 }} source={iconSource}></Image>
       )}
-      <BaseText size={18} style={{ color: textColor, marginLeft: 14 }}>
+      <BaseText size={16} style={{ color: textColor, marginLeft: 16 }}>
         {capitalizeFirstLetter(loginMethod)}로 계속하기
       </BaseText>
-      <Authenticator />
+      {isLoginButtonClicked && <Authenticator loginMethod={loginMethod} />}
     </ButtonContainer>
   );
 };
