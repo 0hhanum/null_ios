@@ -13,5 +13,6 @@ export const defaultTheme: DefaultTheme = {
       medium: 24,
       large: 36,
     },
+    layoutPadding: 20,
   },
 };

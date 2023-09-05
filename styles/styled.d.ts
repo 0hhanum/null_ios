@@ -7,6 +7,7 @@ declare module "styled-components/native" {
       medium: number;
       large: number;
     };
+    layoutPadding: number;
   }
   export interface DefaultTheme {
     bgColor: string;
