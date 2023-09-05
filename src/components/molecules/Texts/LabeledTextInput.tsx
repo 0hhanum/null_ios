@@ -15,6 +15,7 @@ interface ILabeledTextInput extends TextInputProps {
 const Container = styled(BaseViewContainer)`
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 const Separator = styled.View`
   width: 10px;
