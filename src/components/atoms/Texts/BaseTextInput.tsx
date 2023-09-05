@@ -27,20 +27,19 @@ const StyledTextInput = styled.TextInput<{
 
 const BaseTextInput = ({ size, ...props }: IBaseTextInput) => {
   const [isFocused, setIsFocused] = useState(false);
-  const onBlur =
-    props.onBlur !== undefined
-      ? (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-          props.onBlur(e);
-          setIsFocused(false);
-        }
-      : () => setIsFocused(false);
+  const handleBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    setIsFocused(false);
+    if (props.onBlur !== undefined) {
+      props.onBlur(e);
+    }
+  };
   return (
     <StyledTextInput
       {...props}
       size={size || "medium"}
       isFocused={isFocused}
       onFocus={() => setIsFocused(true)}
-      onBlur={onBlur}
+      onBlur={handleBlur}
     />
   );
 };
