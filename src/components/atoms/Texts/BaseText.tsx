@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components/native";
+import { size } from "./types";
+import { getSize } from "./utils";
 
-type size = "large" | "medium" | "small";
 interface IText {
   size?: number | size;
   children: string | string[];
@@ -10,10 +11,7 @@ interface IText {
 
 const Text = styled.Text<{ size: IText["size"] }>`
   color: ${(props) => props.theme.textColor};
-  font-size: ${(props) =>
-    typeof props.size === "number"
-      ? `${props.size}px`
-      : `${props.theme.variables.fontSize[props.size]}px`};
+  font-size: ${({ size }) => getSize(size)};
 `;
 
 const BaseText: React.FC<IText> = ({ size, children, style }) => {
