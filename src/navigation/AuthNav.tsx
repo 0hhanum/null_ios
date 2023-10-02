@@ -14,7 +14,11 @@ const AuthNav = () => {
       }}
     >
       <NativeStack.Screen name="Landing" component={Landing} />
-      <NativeStack.Screen name="EmailLogin" component={EmailLogin} />
+      <NativeStack.Screen
+        name="EmailLogin"
+        component={EmailLogin}
+        options={{ presentation: "formSheet" }}
+      />
     </NativeStack.Navigator>
   );
 };

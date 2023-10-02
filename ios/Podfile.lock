@@ -513,7 +513,7 @@ PODS:
     - React-jsi (= 0.72.3)
     - React-logger (= 0.72.3)
     - React-perflogger (= 0.72.3)
-  - RealmJS (11.10.2):
+  - RealmJS (12.2.0):
     - React
   - RNFBApp (18.3.0):
     - Firebase/CoreOnly (= 10.12.0)
@@ -799,7 +799,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 6ba726e53d4a46b885e06ab6b72da6e180ab14ef
   React-utils: fa748cd08929a83d9de299356f87bb2291f84057
   ReactCommon: 4e56456300df1e1f679ff2b7ad6b7c3c6630c7ee
-  RealmJS: 73a36da3cbbe85e1bdcbf55683172b51f35070d3
+  RealmJS: a480cb21d4b0ba82c843c77c3a211770411eec75
   RNFBApp: 147c3274daa84d7410d457510548d5fb3b317e37
   RNFBAuth: 7f10a8eb8b55ec604946d071bdd9a228d80c4486
   RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7

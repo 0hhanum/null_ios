@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   NativeSyntheticEvent,
+  TextInput,
   TextInputFocusEventData,
   TextInputProps,
 } from "react-native";
@@ -8,8 +9,9 @@ import styled from "styled-components/native";
 import { size } from "./types";
 import { getSize } from "./utils";
 
-interface IBaseTextInput extends TextInputProps {
+export interface IBaseTextInput extends TextInputProps {
   size?: number | size;
+  textInputRef?: React.MutableRefObject<TextInput>;
 }
 const StyledTextInput = styled.TextInput<{
   size: IBaseTextInput["size"];
@@ -25,7 +27,7 @@ const StyledTextInput = styled.TextInput<{
   width: auto;
 `;
 
-const BaseTextInput = ({ size, ...props }: IBaseTextInput) => {
+const BaseTextInput = ({ size, textInputRef, ...props }: IBaseTextInput) => {
   const [isFocused, setIsFocused] = useState(false);
   const handleBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
     setIsFocused(false);
@@ -40,6 +42,7 @@ const BaseTextInput = ({ size, ...props }: IBaseTextInput) => {
       isFocused={isFocused}
       onFocus={() => setIsFocused(true)}
       onBlur={handleBlur}
+      ref={textInputRef}
     />
   );
 };

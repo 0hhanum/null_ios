@@ -1,14 +1,13 @@
 import React from "react";
 import { BaseViewContainer } from "components/atoms/View/BaseView";
 import styled from "styled-components/native";
-import { TextInputProps } from "react-native";
 import BaseText from "components/atoms/Texts/BaseText";
-import BaseTextInput from "components/atoms/Texts/BaseTextInput";
-import { size } from "components/atoms/Texts/types";
+import BaseTextInput, {
+  IBaseTextInput,
+} from "components/atoms/Texts/BaseTextInput";
 
-interface ILabeledTextInput extends TextInputProps {
+interface ILabeledTextInput extends IBaseTextInput {
   label: string;
-  size?: size;
   containerStyle?: React.CSSProperties;
   labelStyle?: React.CSSProperties;
 }
@@ -25,6 +24,7 @@ const LabeledTextInput = ({
   containerStyle,
   labelStyle,
   size,
+  textInputRef,
   ...props
 }: ILabeledTextInput) => {
   return (
@@ -33,7 +33,7 @@ const LabeledTextInput = ({
         {label}
       </BaseText>
       <Separator />
-      <BaseTextInput {...props} size={size} />
+      <BaseTextInput {...props} size={size} textInputRef={textInputRef} />
     </Container>
   );
 };
