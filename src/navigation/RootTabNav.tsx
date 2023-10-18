@@ -5,7 +5,6 @@ import {
 } from "@react-navigation/bottom-tabs";
 import Home from "../components/pages/rootTabs/Home";
 import Analysis from "../components/pages/rootTabs/Analysis";
-import TodayQuiz from "../components/pages/rootTabs/TodayQuiz";
 import Bookmark from "../components/pages/rootTabs/Bookmark";
 import { useTheme } from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
@@ -69,17 +68,6 @@ const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
           headerTitle: "분석",
           tabBarIcon: ({ color }) => (
             <AntDesign name="barschart" size={18} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="TodayQuiz"
-        component={TodayQuiz}
-        options={{
-          tabBarLabel: "오늘의 퀴즈",
-          headerTitle: "오늘의 퀴즈",
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="calendar" size={18} color={color} />
           ),
         }}
       />
