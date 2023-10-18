@@ -6,25 +6,33 @@ import { Controller, useForm } from "react-hook-form";
 import { TextInput } from "react-native";
 import { useTheme } from "styled-components";
 
+interface IEmailLoginForm {
+  email: string;
+  password1: string;
+  password2: string;
+}
 const EmailLoginForm = () => {
   const theme = useTheme();
   const emailInputRef = useRef<TextInput>(null);
-  const passwordInputRef = useRef<TextInput>(null);
+  const password1InputRef = useRef<TextInput>(null);
+  const password2InputRef = useRef<TextInput>(null);
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IEmailLoginForm>({
     defaultValues: {
       email: "",
-      password: "",
+      password1: "",
+      password2: "",
     },
   });
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: IEmailLoginForm) => {
+    console.log("Exec");
+  };
   useEffect(() => {
     emailInputRef.current?.focus();
   }, []);
-  const focusToPassword = () => passwordInputRef.current?.focus();
   return (
     <BaseView style={{ backgroundColor: theme.headerColor }}>
       <Controller
@@ -52,12 +60,12 @@ const EmailLoginForm = () => {
             returnKeyType="next"
             value={value}
             onChangeText={onChange}
-            onSubmitEditing={focusToPassword}
+            onSubmitEditing={() => password1InputRef.current?.focus()}
           />
         )}
         name="email"
       />
-      {errors.email && <BaseText>Required</BaseText>}
+      {errors.email && <BaseText>{errors.email.message}</BaseText>}
       <Controller
         control={control}
         rules={{
@@ -65,15 +73,46 @@ const EmailLoginForm = () => {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <LabeledTextInput
-            textInputRef={passwordInputRef}
+            textInputRef={password1InputRef}
             label="PW"
             placeholder="비밀번호를 입력하세요."
             style={{
               borderColor: theme.headerColor,
               width: 240,
             }}
+            containerStyle={{
+              backgroundColor: theme.headerColor,
+              width: 300,
+              marginBottom: 5,
+            }}
+            size="small"
+            secureTextEntry={true}
+            textContentType="oneTimeCode" // prevent IOS default strong password
+            onChangeText={onChange}
+            onBlur={onBlur}
+            value={value}
+            onSubmitEditing={() => password2InputRef.current?.focus()}
+          />
+        )}
+        name="password1"
+      />
+      <Controller
+        control={control}
+        rules={{
+          required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <LabeledTextInput
+            textInputRef={password2InputRef}
+            label=""
+            placeholder="비밀번호 확인"
+            style={{
+              borderColor: theme.headerColor,
+              width: 240,
+            }}
             containerStyle={{ backgroundColor: theme.headerColor, width: 300 }}
             size="small"
+            textContentType="oneTimeCode"
             secureTextEntry={true}
             onChangeText={onChange}
             onBlur={onBlur}
@@ -81,7 +120,7 @@ const EmailLoginForm = () => {
             onSubmitEditing={handleSubmit(onSubmit)}
           />
         )}
-        name="password"
+        name="password2"
       />
     </BaseView>
   );

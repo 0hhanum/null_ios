@@ -33,7 +33,12 @@ const LabeledTextInput = ({
         {label}
       </BaseText>
       <Separator />
-      <BaseTextInput {...props} size={size} textInputRef={textInputRef} />
+      <BaseTextInput
+        {...props}
+        size={size}
+        textInputRef={textInputRef}
+        placeholderTextColor="gray"
+      />
     </Container>
   );
 };
