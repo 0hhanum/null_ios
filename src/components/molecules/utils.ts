@@ -16,8 +16,8 @@ export const getCardDimensions = (cardType: cardType) => {
     case "square":
     default:
       return {
-        width: `${Math.floor(width * 0.45)}px`,
-        height: `${Math.floor(width * 0.45)}px`,
+        width: `${Math.floor(width * 0.43)}px`,
+        height: `${Math.floor(width * 0.43)}px`,
       };
   }
 };
