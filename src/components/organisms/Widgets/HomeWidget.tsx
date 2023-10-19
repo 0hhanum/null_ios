@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import Widget, { IWidget } from "components/molecules/Widgets/Widget";
 import React from "react";
 import styled from "styled-components/native";
@@ -35,7 +36,12 @@ const WidgetContainer = styled.Pressable`
   margin-bottom: 15px;
 `;
 const HomeWidget = ({ id }: IHomeWidget) => {
-  const onPress = () => {};
+  const navigation = useNavigation<any>();
+  const onPress = () => {
+    navigation.navigate("RootStackNav", {
+      screen: "Quiz",
+    });
+  };
   return (
     <WidgetContainer onPress={onPress}>
       <Widget {...widgets[id]} />
