@@ -1,33 +1,46 @@
 import React from "react";
-import BaseCard from "../Cards/BaseCard";
+import BaseCard, { cardType } from "../Cards/BaseCard";
 import BaseText from "components/atoms/Texts/BaseText";
+import BaseView from "components/atoms/View/BaseView";
+import { Image } from "expo-image";
+import { View } from "react-native";
+import styled from "styled-components/native";
 
 interface IWidget {
   name?: string;
   bgColor: string;
   textColor?: string;
-  icon?: React.JSX.Element;
+  iconPath?: string;
+  cardType?: cardType;
 }
-const Widget = ({ name, bgColor, textColor, icon }: IWidget) => {
+
+const WidgetContainer = styled(BaseView)`
+  margin-bottom: 15px;
+`;
+const Widget = ({ name, bgColor, textColor, iconPath, cardType }: IWidget) => {
   return (
-    <BaseCard bgColor={bgColor}>
-      {name ? (
-        <BaseText
-          style={{
-            color: textColor,
-            fontSize: 72,
-            fontWeight: 700,
-            position: "absolute",
-            bottom: 10,
-            right: 20,
-          }}
-        >
-          {name}
-        </BaseText>
-      ) : (
-        icon
-      )}
-    </BaseCard>
+    <WidgetContainer>
+      <BaseCard bgColor={bgColor} cardType={cardType}>
+        <View style={{ position: "absolute", bottom: 5, right: 20 }}>
+          {name ? (
+            <BaseText
+              style={{
+                color: textColor,
+                fontSize: 80,
+                fontWeight: 600,
+              }}
+            >
+              {name}
+            </BaseText>
+          ) : (
+            <Image
+              style={{ width: 80, height: 80, bottom: 10 }}
+              source={iconPath}
+            ></Image>
+          )}
+        </View>
+      </BaseCard>
+    </WidgetContainer>
   );
 };
 

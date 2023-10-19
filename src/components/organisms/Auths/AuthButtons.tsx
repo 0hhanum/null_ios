@@ -6,7 +6,7 @@ const methodStyles = {
   kakao: {
     bgColor: "#FEE500",
     textColor: "#191919",
-    iconSource: require("@assets/images/logos/kakao.svg"),
+    iconSource: require("@assets/images/logos/svgs/kakao.svg"),
   },
   email: {
     bgColor: "#222222",
@@ -16,7 +16,7 @@ const methodStyles = {
   naver: {
     bgColor: "#03C75A",
     textColor: "#ffffff",
-    iconSource: require("@assets/images/logos/naver.svg"),
+    iconSource: require("@assets/images/logos/svgs/naver.svg"),
   },
   apple: {
     bgColor: "#ffffff",
