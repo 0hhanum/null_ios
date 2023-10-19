@@ -7,6 +7,11 @@ export const defaultTheme: DefaultTheme = {
   red: "#ff605c",
   yellow: "#ffbd44",
   green: "#00ca4e",
+  colors: {
+    JS: "#f7df1e",
+    TS: "#007acc",
+    React: "#61DBFB",
+  },
   variables: {
     fontSize: {
       small: 16,
