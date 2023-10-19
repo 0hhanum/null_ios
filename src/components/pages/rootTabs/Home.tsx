@@ -1,28 +1,21 @@
 import React from "react";
 import PageLayout from "../../atoms/View/PageLayout";
-import { useTheme } from "styled-components";
-import Widget from "components/molecules/Widgets/Widget";
 import { ScrollView } from "react-native";
-import BaseView from "components/atoms/View/BaseView";
 import HCenterView from "components/atoms/View/HCenterView";
+import HomeWidget from "components/organisms/Widgets/HomeWidget";
 
 const Home = () => {
-  const theme = useTheme();
   return (
     <PageLayout>
-      <Widget bgColor="white" cardType="banner" name="FE" />
       <ScrollView>
+        <HomeWidget id="fe" />
         <HCenterView style={{ justifyContent: "space-between" }}>
-          <Widget name="JS" bgColor={theme.colors.JS} />
-          <Widget name="TS" bgColor={theme.colors.TS} textColor="white" />
+          <HomeWidget id="js" />
+          <HomeWidget id="ts" />
         </HCenterView>
-        <Widget
-          iconPath={require("@assets/images/logos/svgs/react.svg")}
-          bgColor={theme.colors.React}
-          cardType="banner"
-        />
+        <HomeWidget id="react" />
 
-        <Widget bgColor="blue" cardType="banner" name="CS" />
+        <HomeWidget id="cs" />
       </ScrollView>
     </PageLayout>
   );

@@ -9,11 +9,6 @@ declare module "styled-components/native" {
     };
     layoutPadding: number;
   }
-  interface IColors {
-    JS: string;
-    TS: string;
-    React: string;
-  }
   export interface DefaultTheme {
     bgColor: string;
     textColor: string;
@@ -21,7 +16,6 @@ declare module "styled-components/native" {
     red: string;
     yellow: string;
     green: string;
-    colors: IColors;
     variables: IVariable;
   }
 }
