@@ -3,7 +3,7 @@ import { loginMethod } from "../../../db/auth/auth";
 import BaseText from "../../atoms/Texts/BaseText";
 import { capitalizeFirstLetter } from "../../utils";
 import styled from "styled-components/native";
-import Authenticator from "../../../containers/Auth/Authenticator";
+import Authenticator from "../../../containers/auths/Authenticator";
 import { AntDesign } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { IconType } from "types/common/antDesignTypes";
