@@ -1,7 +1,7 @@
 import React from "react";
 import { loginMethod } from "db/auth/auth";
-import AppleLoginContainer from "./AppleLoginContainer";
 import { useNavigation } from "@react-navigation/native";
+import AppleLoginContainer from "./AppleLoginContainer";
 
 interface IAuthenticator {
   loginMethod: loginMethod;
