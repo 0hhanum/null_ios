@@ -7,6 +7,7 @@ export const defaultTheme: DefaultTheme = {
   red: "#ff605c",
   yellow: "#ffbd44",
   green: "#00ca4e",
+  warning: "#DC3535",
   variables: {
     fontSize: {
       small: 16,
