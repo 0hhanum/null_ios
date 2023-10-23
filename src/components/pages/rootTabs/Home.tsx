@@ -8,14 +8,14 @@ const Home = () => {
   return (
     <PageLayout>
       <ScrollView>
-        <HomeWidget id="fe" />
+        <HomeWidget category="fe" />
         <HCenterView style={{ justifyContent: "space-between" }}>
-          <HomeWidget id="js" />
-          <HomeWidget id="ts" />
+          <HomeWidget category="js" />
+          <HomeWidget category="ts" />
         </HCenterView>
-        <HomeWidget id="react" />
+        <HomeWidget category="react" />
 
-        <HomeWidget id="cs" />
+        <HomeWidget category="cs" />
       </ScrollView>
     </PageLayout>
   );

@@ -2,14 +2,14 @@ import { useNavigation } from "@react-navigation/native";
 import Widget, { IWidget } from "components/molecules/Widgets/Widget";
 import React from "react";
 import styled from "styled-components/native";
+import { category } from "types/quizzes/quizTypes";
 
 interface IHomeWidget {
-  id: string;
+  category: category;
 }
-interface IWidgets {
-  [id: string]: IWidget;
-}
-const widgets: IWidgets = {
+type widgets = Record<category, IWidget>;
+
+const widgets: widgets = {
   fe: {
     bgColor: "white",
     cardType: "banner",
@@ -35,16 +35,19 @@ const widgets: IWidgets = {
 const WidgetContainer = styled.Pressable`
   margin-bottom: 15px;
 `;
-const HomeWidget = ({ id }: IHomeWidget) => {
+const HomeWidget = ({ category }: IHomeWidget) => {
   const navigation = useNavigation<any>();
   const onPress = () => {
     navigation.navigate("RootStackNav", {
       screen: "Quiz",
+      params: {
+        category,
+      },
     });
   };
   return (
     <WidgetContainer onPress={onPress}>
-      <Widget {...widgets[id]} />
+      <Widget {...widgets[category]} />
     </WidgetContainer>
   );
 };
