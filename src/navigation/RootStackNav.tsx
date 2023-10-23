@@ -8,7 +8,8 @@ import Settings from "../components/pages/rootStacks/Settings";
 import { useTheme } from "styled-components/native";
 import BaseButton from "../components/atoms/Buttons/BaseButton";
 import { AntDesign } from "@expo/vector-icons";
-import Quiz from "components/pages/rootStacks/Quiz";
+import Quiz from "components/pages/rootStacks/quizzes/Quiz";
+import QuizList from "components/pages/rootStacks/quizzes/QuizList";
 
 const Stack = createNativeStackNavigator();
 const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
@@ -55,16 +56,17 @@ const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
         options={{ headerTitle: "설정" }}
       />
       <Stack.Screen
+        name="QuizList"
+        component={QuizList}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Quiz"
         component={Quiz}
         options={{
-          headerLeft() {
-            return (
-              <BaseButton onPress={() => navigation.goBack()}>
-                <AntDesign name="close" size={18} color={theme.textColor} />
-              </BaseButton>
-            );
-          },
+          presentation: "fullScreenModal",
         }}
       />
     </Stack.Navigator>

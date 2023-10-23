@@ -1,5 +1,5 @@
 import React from "react";
-import PageLayout from "../../atoms/View/PageLayout";
+import PageLayout from "../../../atoms/View/PageLayout";
 import { useRecoilValueLoadable } from "recoil";
 import { quizSelector } from "recoil/quizzes/selector";
 
