@@ -1,13 +1,16 @@
 import React from "react";
 import PageLayout from "../../atoms/View/PageLayout";
-import BaseText from "../../atoms/Texts/BaseText";
+import { useRecoilValueLoadable } from "recoil";
+import { quizSelector } from "recoil/quizzes/selector";
 
-const Quiz = () => {
-  return (
-    <PageLayout>
-      <BaseText>Quiz</BaseText>
-    </PageLayout>
-  );
+const Quiz = ({
+  route: {
+    params: { category },
+  },
+}) => {
+  const quizzes = useRecoilValueLoadable(quizSelector(category));
+  console.log(quizzes.state);
+  return <PageLayout></PageLayout>;
 };
 
 export default Quiz;

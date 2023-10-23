@@ -54,7 +54,19 @@ const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
         component={Settings}
         options={{ headerTitle: "설정" }}
       />
-      <Stack.Screen name="Quiz" component={Quiz} />
+      <Stack.Screen
+        name="Quiz"
+        component={Quiz}
+        options={{
+          headerLeft() {
+            return (
+              <BaseButton onPress={() => navigation.goBack()}>
+                <AntDesign name="close" size={18} color={theme.textColor} />
+              </BaseButton>
+            );
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 };
