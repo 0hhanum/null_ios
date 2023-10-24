@@ -2,6 +2,7 @@ export type category = "js" | "ts" | "fe" | "cs" | "react";
 type questionType = "객관식" | "주관식" | "OX" | "빈칸";
 
 export interface IQuiz {
+  id: string;
   title: string;
   tags: string[];
   questionType: questionType;
