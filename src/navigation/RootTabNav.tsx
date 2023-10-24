@@ -8,7 +8,7 @@ import Analysis from "../components/pages/rootTabs/Analysis";
 import Bookmark from "../components/pages/rootTabs/Bookmark";
 import { useTheme } from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
-import BaseButton from "../components/atoms/Buttons/BaseButton";
+import { Pressable } from "react-native";
 
 const Tab = createBottomTabNavigator();
 const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
@@ -30,13 +30,13 @@ const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
         },
         headerRight() {
           return (
-            <BaseButton
+            <Pressable
               onPress={() =>
                 navigation.navigate("RootStackNav", { screen: "MyPage" })
               }
             >
               <AntDesign name="user" size={28} color={theme.textColor} />
-            </BaseButton>
+            </Pressable>
           );
         },
         headerRightContainerStyle: {

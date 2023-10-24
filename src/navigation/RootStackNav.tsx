@@ -6,10 +6,10 @@ import {
 import MyPage from "../components/pages/rootStacks/MyPage";
 import Settings from "../components/pages/rootStacks/Settings";
 import { useTheme } from "styled-components/native";
-import BaseButton from "../components/atoms/Buttons/BaseButton";
 import { AntDesign } from "@expo/vector-icons";
 import Quiz from "components/pages/rootStacks/quizzes/Quiz";
 import QuizList from "components/pages/rootStacks/quizzes/QuizList";
+import { Pressable } from "react-native";
 
 const Stack = createNativeStackNavigator();
 const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
@@ -36,16 +36,16 @@ const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
           headerTitle: "내 정보",
           headerRight() {
             return (
-              <BaseButton onPress={() => navigation.navigate("Settings")}>
+              <Pressable onPress={() => navigation.navigate("Settings")}>
                 <AntDesign name="setting" size={22} color={theme.textColor} />
-              </BaseButton>
+              </Pressable>
             );
           },
           headerLeft() {
             return (
-              <BaseButton onPress={() => navigation.goBack()}>
+              <Pressable onPress={() => navigation.goBack()}>
                 <AntDesign name="close" size={18} color={theme.textColor} />
-              </BaseButton>
+              </Pressable>
             );
           },
         }}

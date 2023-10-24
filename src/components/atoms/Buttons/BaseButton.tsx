@@ -2,12 +2,31 @@ import React from "react";
 import { PressableProps } from "react-native";
 import styled from "styled-components/native";
 
-interface IBaseButton extends PressableProps {
-  children: React.JSX.Element;
+export interface IBaseButton extends PressableProps {
+  children?: React.JSX.Element;
+  width?: string;
+  height?: string;
 }
-const Button = styled.Pressable``;
 
-const BaseButton: React.FC<IBaseButton> = ({ children, ...props }) => {
-  return <Button {...props}>{children}</Button>;
+const Button = styled.Pressable`
+  width: ${(props) => (props.width ? props.width : "100%")};
+  height: ${(props) => (props.height ? props.height : "60px")};
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const BaseButton: React.FC<IBaseButton> = ({
+  width,
+  height,
+  children,
+  ...props
+}) => {
+  return (
+    <Button {...props} width={width} height={height}>
+      {children}
+    </Button>
+  );
 };
 export default BaseButton;

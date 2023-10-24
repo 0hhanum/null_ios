@@ -7,7 +7,7 @@ import { getWindowSize } from "../../utils";
 import BaseView from "../../atoms/View/BaseView";
 import AuthButtons from "../../organisms/Auths/AuthButtons";
 import BaseText from "components/atoms/Texts/BaseText";
-import BaseButton from "components/atoms/Buttons/BaseButton";
+import { Pressable } from "react-native";
 
 const Landing = () => {
   const { height } = getWindowSize();
@@ -28,11 +28,11 @@ const Landing = () => {
           marginTop: 10,
         }}
       >
-        <BaseButton onPress={() => {}}>
+        <Pressable onPress={() => {}}>
           <BaseText size={18} style={{ textDecorationLine: "underline" }}>
             다음에 할게요
           </BaseText>
-        </BaseButton>
+        </Pressable>
       </BaseView>
     </PageLayout>
   );

@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components/native";
 import { size } from "./types";
 import { getSize } from "./utils";
+import { TextProps } from "react-native";
 
-interface IText {
+interface IText extends TextProps {
   size?: number | size;
   children: string | string[];
-  style?: React.CSSProperties;
 }
 
 const Text = styled.Text<{ size: IText["size"] }>`
@@ -14,9 +14,9 @@ const Text = styled.Text<{ size: IText["size"] }>`
   font-size: ${({ size }) => getSize(size)};
 `;
 
-const BaseText: React.FC<IText> = ({ size, children, style }) => {
+const BaseText: React.FC<IText> = ({ size, children, ...props }) => {
   return (
-    <Text style={style} size={size || "medium"}>
+    <Text {...props} size={size || "medium"}>
       {children}
     </Text>
   );
