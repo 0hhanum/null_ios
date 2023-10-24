@@ -4,6 +4,7 @@ export const defaultTheme: DefaultTheme = {
   bgColor: "black",
   textColor: "white",
   headerColor: "#121212",
+  borderColor: "#727781",
   red: "#ff605c",
   yellow: "#ffbd44",
   green: "#00ca4e",

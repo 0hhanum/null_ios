@@ -13,6 +13,7 @@ declare module "styled-components/native" {
     bgColor: string;
     textColor: string;
     headerColor: string;
+    borderColor: string;
     red: string;
     yellow: string;
     green: string;
