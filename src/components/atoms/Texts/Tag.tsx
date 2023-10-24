@@ -1,15 +1,15 @@
 import React from "react";
-import BaseView from "../View/BaseView";
 import BaseText from "./BaseText";
 import styled from "styled-components/native";
+import CenterView from "../View/CenterView";
 
 interface ITag {
   tagName: string;
 }
 
-const Container = styled(BaseView)`
+const Container = styled(CenterView)`
   margin-right: 5px;
-  border-color: gray;
+  border-color: ${(props) => props.theme.borderColor};
   border-radius: 20px;
   border-style: solid;
   border-width: 1px;
