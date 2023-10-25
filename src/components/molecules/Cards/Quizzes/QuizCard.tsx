@@ -35,16 +35,17 @@ const TagContainer = styled.View`
   flex-direction: row;
   margin-top: 7px;
 `;
-const TITLE_FONT_SIZE = 18;
+const QuizTitle = styled(BaseText)`
+  font-size: 18px;
+  font-weight: 600;
+`;
 
 const QuizCard = ({ quiz }: IQuizCard) => {
   return (
     <Container>
       <Card>
         <CardLeftSection>
-          <BaseText size={TITLE_FONT_SIZE} numberOfLines={1}>
-            {quiz.title}
-          </BaseText>
+          <QuizTitle numberOfLines={1}>{quiz.title}</QuizTitle>
           <TagContainer>
             {quiz.tags.map((tag) => (
               <Tag tagName={tag} key={tag} />

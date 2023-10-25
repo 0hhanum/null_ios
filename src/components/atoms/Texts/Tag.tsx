@@ -13,7 +13,7 @@ const Container = styled(CenterView)`
   border-radius: 20px;
   border-style: solid;
   border-width: 1px;
-  padding-vertical: 4px;
+  padding-vertical: 3px;
   padding-horizontal: 8px;
 `;
 const TagText = styled(BaseText)`
