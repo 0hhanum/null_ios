@@ -5,9 +5,10 @@ import BaseButton, { IBaseButton } from "./BaseButton";
 import styled from "styled-components/native";
 
 interface ICancelButton extends IBaseButton {
-  size?: string;
+  size?: number;
   message?: string;
 }
+const CLOSE_ICON_SIZE = 40;
 const Btn = styled(BaseButton)`
   background-color: ${(props) => props.theme.warning};
 `;
@@ -17,7 +18,7 @@ const CancelButton = ({ message, size, ...props }: ICancelButton) => {
       {message ? (
         <BaseText>{message}</BaseText>
       ) : (
-        <AntDesign name="close" size={40} color="white" />
+        <AntDesign name="close" size={CLOSE_ICON_SIZE} color="white" />
       )}
     </Btn>
   );

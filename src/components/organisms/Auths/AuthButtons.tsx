@@ -1,6 +1,6 @@
 import React from "react";
 import HCenterView from "../../atoms/View/HCenterView";
-import AuthButton from "../../molecules/Buttons/AuthButton";
+import AuthButton from "../../molecules/Buttons/Auths/AuthButton";
 
 const methodStyles = {
   kakao: {
