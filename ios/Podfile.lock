@@ -21,6 +21,8 @@ PODS:
     - SDWebImageWebPCoder (~> 0.11.0)
   - ExpoKeepAwake (12.3.0):
     - ExpoModulesCore
+  - ExpoLinearGradient (12.5.0):
+    - ExpoModulesCore
   - ExpoModulesCore (1.5.9):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
@@ -563,6 +565,7 @@ DEPENDENCIES:
   - Expo (from `../node_modules/expo`)
   - ExpoImage (from `../node_modules/expo-image/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
+  - ExpoLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -657,6 +660,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-image/ios"
   ExpoKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
+  ExpoLinearGradient:
+    :path: "../node_modules/expo-linear-gradient/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core"
   EXSplashScreen:
@@ -762,6 +767,7 @@ SPEC CHECKSUMS:
   Expo: d310f3b84bd30843324d41f23ea7cc5e4273abf1
   ExpoImage: e3170a9043c6a80080efbf2268b3df2334021949
   ExpoKeepAwake: be4cbd52d9b177cde0fd66daa1913afa3161fc1d
+  ExpoLinearGradient: 5d18293f89c063036121281175c4653d6a7c34a2
   ExpoModulesCore: 0a114333f029eaa2edc701334515b4e05343fac3
   EXSplashScreen: 2c80621e4bc952f5bea328304c2436f5fe21c2a0
   FBLazyVector: 4cce221dd782d3ff7c4172167bba09d58af67ccb
