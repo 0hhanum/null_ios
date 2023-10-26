@@ -7,6 +7,7 @@ import { defaultTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components/native";
 import { RecoilRoot } from "recoil";
 import Router from "./src/router/Router";
+import FirebaseAppContainer from "containers/firebases/FirebaseAppContainer";
 
 preventAutoHideAsync();
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
           <NavigationContainer>
             <Router />
           </NavigationContainer>
+          <FirebaseAppContainer />
         </ThemeProvider>
       </RecoilRoot>
     );
