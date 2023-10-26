@@ -11,7 +11,7 @@ PODS:
     - ExpoModulesCore
   - EXFont (11.4.0):
     - ExpoModulesCore
-  - Expo (49.0.7):
+  - Expo (49.0.16):
     - ExpoModulesCore
   - ExpoImage (1.3.2):
     - ExpoModulesCore
@@ -23,7 +23,7 @@ PODS:
     - ExpoModulesCore
   - ExpoLinearGradient (12.5.0):
     - ExpoModulesCore
-  - ExpoModulesCore (1.5.9):
+  - ExpoModulesCore (1.5.11):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
     - React-NativeModulesApple
@@ -485,6 +485,8 @@ PODS:
     - React-jsi (= 0.72.3)
     - React-logger (= 0.72.3)
     - React-perflogger (= 0.72.3)
+  - RNCAsyncStorage (1.19.3):
+    - React-Core
   - RNScreens (3.24.0):
     - React-Core
     - React-RCTImage
@@ -560,6 +562,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -685,6 +688,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
@@ -700,11 +705,11 @@ SPEC CHECKSUMS:
   EXConstants: ce5bbea779da8031ac818c36bea41b10e14d04e1
   EXFileSystem: 941b273758aee14be2ecc671dacb4f10dd28c833
   EXFont: 738c44c390953ebcbab075a4848bfbef025fd9ee
-  Expo: d310f3b84bd30843324d41f23ea7cc5e4273abf1
+  Expo: fcfd60c1ed6806dee5103b210335ae0c72f675ed
   ExpoImage: e3170a9043c6a80080efbf2268b3df2334021949
   ExpoKeepAwake: be4cbd52d9b177cde0fd66daa1913afa3161fc1d
   ExpoLinearGradient: 5d18293f89c063036121281175c4653d6a7c34a2
-  ExpoModulesCore: 0a114333f029eaa2edc701334515b4e05343fac3
+  ExpoModulesCore: 81037d28453615c4206a6a2ca7556a0f364a0a0a
   EXSplashScreen: 2c80621e4bc952f5bea328304c2436f5fe21c2a0
   FBLazyVector: 4cce221dd782d3ff7c4172167bba09d58af67ccb
   FBReactNativeSpec: c6bd9e179757b3c0ecf815864fae8032377903ef
@@ -751,6 +756,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 6ba726e53d4a46b885e06ab6b72da6e180ab14ef
   React-utils: fa748cd08929a83d9de299356f87bb2291f84057
   ReactCommon: 4e56456300df1e1f679ff2b7ad6b7c3c6630c7ee
+  RNCAsyncStorage: c913ede1fa163a71cea118ed4670bbaaa4b511bb
   RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
   RNSVG: 6d07f8f8f246c85e3e16e0bcfc0d047db0c48496
   SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
