@@ -8,22 +8,25 @@ import { ThemeProvider } from "styled-components/native";
 import { RecoilRoot } from "recoil";
 import Router from "./src/router/Router";
 import initializeFirebase from "firebases/initializeFirebase";
+import UserUidContainer from "containers/auths/UserUidContainer";
+import { UserCredential } from "firebase/auth";
 
 preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded] = useFonts(AntDesign.font);
-  const [isFirebaseAppLoaded, setIsFirebaseAppLoaded] = useState(false);
+  const [user, setUser] = useState<UserCredential>(null);
   useEffect(() => {
     const initializeFirebaseApp = async () => {
-      await initializeFirebase();
-      setIsFirebaseAppLoaded(true);
+      const user = await initializeFirebase();
+      setUser(user);
     };
     initializeFirebaseApp();
   }, []);
-  if (fontsLoaded && isFirebaseAppLoaded) {
+  if (fontsLoaded && user) {
     hideAsync();
     return (
       <RecoilRoot>
+        <UserUidContainer uid={user?.user.uid} />
         <ThemeProvider theme={defaultTheme}>
           <NavigationContainer>
             <Router />

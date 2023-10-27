@@ -3,10 +3,11 @@ import {
   signInAnonymously,
   initializeAuth,
   getReactNativePersistence,
+  UserCredential,
 } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
-const initializeFirebase = async () => {
+const initializeFirebase = async (): Promise<UserCredential> => {
   const apps = getApps();
   if (apps.length !== 0) return;
   const app = initializeApp({
