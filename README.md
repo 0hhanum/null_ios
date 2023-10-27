@@ -15,7 +15,6 @@ IOS Dev Quiz 어플리케이션입니다.
 - React Native
 - TypeScript
 - Expo
-- Realm
 - Jest
 - styled components
 - React Hook Form
@@ -36,7 +35,7 @@ IOS Dev Quiz 어플리케이션입니다.
 - 🟩 Firebase Realtime Database를 통한 퀴즈 정보 DB 관리
   - ✅ DB단 스키마 설계
   - ⬜️ 디바이스 내부 DB와의 싱크로나이즈 로직 개발
-    - 비용 절감을 위해 DB로의 요청 최소화하도록 설계
+    - 캐싱을 통한 데이터 요청 최소화
 - Github Pages를 통한 퀴즈 답안 상세설명 허브 개발
   - ✅ Gatsby 기반 모바일 친화 퀴즈 답안 상세설명 페이지 개발
     - 레포지토리: https://github.com/0hhanum/null_quiz_answers
@@ -53,7 +52,6 @@ IOS Dev Quiz 어플리케이션입니다.
 - ✅ Atomic 디자인 패턴 적용
   - 컴포넌트의 재활용성을 극대화
   - 상태를 분산해 렌더링 효율 최적화
-- 🟩 Realm을 통한 모바일 디바이스 내부 데이터베이스 관리
 - ⬜️ 퀴즈 메타정보 기반 동적 문제 출제 구현
 
 ## 제작
