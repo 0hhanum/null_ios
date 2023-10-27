@@ -12,4 +12,5 @@ export interface IQuiz {
   choices?: string[] | string[][]; // 객관식 | 빈칸
   level?: number;
   state: quizState;
+  isBookmarked: boolean;
 }
