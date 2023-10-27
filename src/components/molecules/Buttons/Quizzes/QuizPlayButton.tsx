@@ -2,7 +2,6 @@ import BaseButton, { IBaseButton } from "components/atoms/Buttons/BaseButton";
 import GradientCard from "components/atoms/Quizzes/GradientCard";
 import React from "react";
 import styled from "styled-components/native";
-import Shimmer from "react-native-shimmer";
 
 const GRADIENT_COLORS = [
   "#ACD15E",
@@ -36,9 +35,7 @@ const QuizPlayButton = ({ onPress }: IBaseButton) => {
       <>
         <GradientCard colors={GRADIENT_COLORS} />
         <TextContainer>
-          <Shimmer>
-            <PlayText>play();</PlayText>
-          </Shimmer>
+          <PlayText>play();</PlayText>
         </TextContainer>
       </>
     </Btn>
