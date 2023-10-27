@@ -1,4 +1,10 @@
-import { get, child, DatabaseReference, DataSnapshot } from "firebase/database";
+import {
+  get,
+  set,
+  child,
+  DatabaseReference,
+  DataSnapshot,
+} from "firebase/database";
 
 const getFirebaseData = (
   dbRef: DatabaseReference,
@@ -10,10 +16,33 @@ const getFirebaseData = (
       const snapshot = await get(dbChild);
       resolve(snapshot);
     } catch (error) {
-      console.error("Something wrong with get firebase realtime db", error);
-      throw error;
+      console.error(
+        `Something wrong with get firebase realtime db -- ${path}`,
+        error
+      );
+      reject(error);
     }
   });
 };
 
-export { getFirebaseData };
+const setFirebaseData = (
+  dbRef: DatabaseReference,
+  path: string,
+  data: any
+): Promise<void> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const dbChild = child(dbRef, path);
+      await set(dbChild, data);
+      resolve();
+    } catch (error) {
+      console.error(
+        `Something wrong with set firebase realtime db -- ${path}`,
+        error
+      );
+      reject(error);
+    }
+  });
+};
+
+export { getFirebaseData, setFirebaseData };

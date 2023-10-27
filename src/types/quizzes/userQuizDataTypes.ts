@@ -1,7 +1,9 @@
 import { quizState } from "./quizTypes";
 
 export default interface IUserQuizData {
-  bookmarks: string[];
+  bookmarks: {
+    [key: string]: boolean;
+  };
   quizzes: {
     [key: string]: quizState;
   };
