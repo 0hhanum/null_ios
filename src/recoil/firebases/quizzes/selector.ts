@@ -15,10 +15,8 @@ export const getQuizSelector = selectorFamily<IQuiz[], category>({
         const dbRef = ref(getDatabase());
         const quizzes = await getQuizzes(dbRef, category);
         quizzes.forEach((quiz) => {
-          quiz.isBookmarked = userQuizData?.bookmarks[quiz.id] ? true : false;
-          quiz.state = userQuizData?.quizzes
-            ? userQuizData?.quizzes[quiz.id]
-            : "pending";
+          quiz.isBookmarked = userQuizData?.bookmarks?.[quiz.id] || false;
+          quiz.state = userQuizData?.quizzes?.[quiz.id] || "pending";
         });
         return quizzes;
       } catch (e) {
