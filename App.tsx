@@ -10,17 +10,19 @@ import Router from "./src/router/Router";
 import initializeFirebase from "firebases/initializeFirebase";
 import UserUidContainer from "containers/auths/UserUidContainer";
 import { UserCredential } from "firebase/auth";
+import { OrientationLock, lockAsync } from "expo-screen-orientation";
 
 preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded] = useFonts(AntDesign.font);
   const [user, setUser] = useState<UserCredential>(null);
   useEffect(() => {
-    const initializeFirebaseApp = async () => {
-      const user = await initializeFirebase();
+    const initialize = async () => {
+      const user = await initializeFirebase(); // initialize firebase
       setUser(user);
+      await lockAsync(OrientationLock.PORTRAIT_UP); // lock device orientation
     };
-    initializeFirebaseApp();
+    initialize();
   }, []);
   if (fontsLoaded && user) {
     hideAsync();
