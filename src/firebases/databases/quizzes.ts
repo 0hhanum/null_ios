@@ -1,5 +1,5 @@
 import { DatabaseReference, DataSnapshot } from "firebase/database";
-import { getFirebaseData } from "./utils";
+import { getFirebaseData, removeFirebaseData, setFirebaseData } from "./utils";
 import { category, IQuiz } from "types/quizzes/quizTypes";
 import IUserQuizData from "types/quizzes/userQuizDataTypes";
 
@@ -22,6 +22,7 @@ const getQuizzes = (
     }
   });
 };
+
 const getUserQuizData = (
   dbRef: DatabaseReference,
   uid: string
@@ -35,7 +36,7 @@ const getUserQuizData = (
       } else {
         resolve({
           quizzes: {},
-          bookmarks: [],
+          bookmarks: {},
         });
       }
     } catch (e) {
@@ -45,4 +46,25 @@ const getUserQuizData = (
   });
 };
 
-export { getQuizzes, getUserQuizData };
+const bookmarkQuiz = (
+  dbRef: DatabaseReference,
+  quizId: string,
+  uuid: string,
+  isBookmarked: boolean
+): Promise<void> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const path = `users/${uuid}/bookmarks/${quizId}`;
+      if (isBookmarked) {
+        await removeFirebaseData(dbRef, path);
+      } else {
+        await setFirebaseData(dbRef, path, true);
+      }
+      resolve();
+    } catch (e) {
+      console.error("Something wrong with bookmark quiz", e);
+      reject(e);
+    }
+  });
+};
+export { getQuizzes, getUserQuizData, bookmarkQuiz };

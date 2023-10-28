@@ -1,14 +1,10 @@
-import Bookmark from "components/atoms/Icons/Bookmark";
 import QuizStateBadge from "components/atoms/Quizzes/QuizStateBadge";
 import BaseText from "components/atoms/Texts/BaseText";
 import Tag from "components/atoms/Texts/Tag";
 import React from "react";
 import styled from "styled-components/native";
 import { IQuiz } from "types/quizzes/quizTypes";
-
-interface IQuizCard {
-  quiz: IQuiz;
-}
+import BookmarkBtn from "./BookmarkBtn";
 
 const Container = styled.TouchableHighlight`
   height: 80px;
@@ -40,25 +36,26 @@ const QuizTitle = styled(BaseText)`
   font-weight: 600;
 `;
 
-const QuizCard = ({ quiz }: IQuizCard) => {
+const QuizCard = ({ id, title, tags, isBookmarked, state }: Partial<IQuiz>) => {
   return (
     <Container>
       <Card>
         <CardLeftSection>
-          <QuizTitle numberOfLines={1}>{quiz.title}</QuizTitle>
+          <QuizTitle numberOfLines={1}>{title}</QuizTitle>
           <TagContainer>
-            {quiz.tags.map((tag) => (
+            {tags.map((tag) => (
               <Tag tagName={tag} key={tag} />
             ))}
           </TagContainer>
         </CardLeftSection>
         <CardRightSection style={{ flex: 1 }}>
-          <Bookmark
-            isBookmarked={false}
+          <BookmarkBtn
+            isBookmarked={isBookmarked}
+            quizId={id}
             style={{ position: "absolute", top: -19, right: 0 }}
           />
           <QuizStateBadge
-            state="pending"
+            state={state}
             style={{ position: "absolute", bottom: 2, right: 0 }}
           />
         </CardRightSection>

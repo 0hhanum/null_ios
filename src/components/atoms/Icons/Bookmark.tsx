@@ -1,7 +1,7 @@
 import { Image } from "expo-image";
 import React from "react";
 
-interface IBookmark {
+export interface IBookmark {
   isBookmarked: boolean;
   style?: React.CSSProperties;
 }
