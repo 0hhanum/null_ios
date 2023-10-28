@@ -4,6 +4,7 @@ import {
   child,
   DatabaseReference,
   DataSnapshot,
+  remove,
 } from "firebase/database";
 
 const getFirebaseData = (
@@ -45,4 +46,23 @@ const setFirebaseData = (
   });
 };
 
-export { getFirebaseData, setFirebaseData };
+const removeFirebaseData = (
+  dbRef: DatabaseReference,
+  path: string
+): Promise<void> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const dbChild = child(dbRef, path);
+      await remove(dbChild);
+      resolve();
+    } catch (error) {
+      console.error(
+        `Something went wrong with removing data from Firebase realtime db -- ${path}`,
+        error
+      );
+      reject(error);
+    }
+  });
+};
+
+export { getFirebaseData, setFirebaseData, removeFirebaseData };
