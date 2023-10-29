@@ -67,6 +67,7 @@ const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
         component={Quiz}
         options={{
           presentation: "fullScreenModal",
+          animation: "fade",
         }}
       />
     </Stack.Navigator>
