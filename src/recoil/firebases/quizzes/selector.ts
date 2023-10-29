@@ -4,21 +4,22 @@ import { selector, selectorFamily } from "recoil";
 import { userUidAtom } from "recoil/auths/atom";
 import { IQuiz, category } from "types/quizzes/quizTypes";
 import IFirebaseUserQuizData from "types/quizzes/firebaseUserQuizDataTypes";
+import { localQuizDataAtom } from "recoil/quizzes/atom";
 
-export const getQuizSelector = selectorFamily<IQuiz[], category>({
-  key: "quizzes",
+export const firebaseQuizzesSelector = selectorFamily<IQuiz[], category>({
+  key: "firebaseQuizzes",
   get:
     (category) =>
     async ({ get }) => {
-      const userQuizData = await get(userQuizDataSelector);
+      const firebaseUserQuizData = await get(firebaseUserQuizDataSelector);
       try {
         const dbRef = ref(getDatabase());
         const quizzes = await getQuizzes(dbRef, category);
         quizzes.forEach((quiz) => {
           quiz.isBookmarked =
-            userQuizData?.bookmarks?.[category]?.[quiz.id] || false;
+            firebaseUserQuizData?.bookmarks?.[category]?.[quiz.id] || false;
           quiz.state =
-            userQuizData?.quizzes?.[category]?.[quiz.id] || "pending";
+            firebaseUserQuizData?.quizzes?.[category]?.[quiz.id] || "pending";
         });
         return quizzes;
       } catch (e) {
@@ -28,8 +29,8 @@ export const getQuizSelector = selectorFamily<IQuiz[], category>({
     },
 });
 
-export const userQuizDataSelector = selector<IFirebaseUserQuizData>({
-  key: "userQuizData",
+export const firebaseUserQuizDataSelector = selector<IFirebaseUserQuizData>({
+  key: "firebaseUserQuizData",
   get: async ({ get }) => {
     try {
       const uuid = get(userUidAtom);
@@ -40,4 +41,31 @@ export const userQuizDataSelector = selector<IFirebaseUserQuizData>({
       return null;
     }
   },
+});
+
+export const quizzesSelector = selectorFamily<IQuiz[], category>({
+  key: "quizzes",
+  get:
+    (category) =>
+    async ({ get }) => {
+      try {
+        const firebaseQuizData = await get(firebaseQuizzesSelector(category));
+        const localQuizData = get(localQuizDataAtom);
+        const quizData = firebaseQuizData.map((quiz) => {
+          return {
+            ...quiz,
+            state: localQuizData.quizzes.hasOwnProperty(quiz.id)
+              ? localQuizData.quizzes[quiz.id].state
+              : quiz.state,
+            isBookmarked: localQuizData.bookmarks.hasOwnProperty(quiz.id)
+              ? localQuizData.bookmarks[quiz.id].isBookmarked
+              : quiz.isBookmarked,
+          };
+        });
+        return quizData;
+      } catch (e) {
+        console.error("Something wrong with getting quizData", e);
+        return [];
+      }
+    },
 });

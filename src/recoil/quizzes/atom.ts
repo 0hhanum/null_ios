@@ -17,7 +17,12 @@ interface ILocalQuizzes {
   bookmarks: ILocalBookmarkType;
   quizzes: ILocalQuizDataType;
 }
-export const currentQuizAtom = atom<string>({
+interface ICurrentQuiz {
+  quizId: string;
+  index?: number;
+}
+
+export const currentQuizAtom = atom<ICurrentQuiz>({
   key: "currentQuiz",
   default: null,
 });
