@@ -6,37 +6,44 @@ import { Pressable } from "react-native";
 import { bookmarkQuiz } from "firebases/databases/quizzes";
 import { useSetRecoilState } from "recoil";
 import { localQuizDataAtom } from "recoil/quizzes/atom";
+import { category } from "types/quizzes/quizTypes";
 
 interface IBookmarkBtn extends IBookmark {
   quizId: string;
+  category: category;
 }
-const BookmarkBtn = ({ isBookmarked, quizId, ...props }: IBookmarkBtn) => {
+const BookmarkBtn = ({
+  isBookmarked,
+  quizId,
+  category,
+  ...props
+}: IBookmarkBtn) => {
   const setLocalQuizDataAtom = useSetRecoilState(localQuizDataAtom);
-  const setLocalBookmark = (quizId: string) => {
+  const setLocalBookmark = () => {
     setLocalQuizDataAtom((current) => {
       const newBookmarks = { ...current.bookmarks };
-      if (isBookmarked) {
-        newBookmarks[quizId] = false;
-      } else {
-        newBookmarks[quizId] = true;
-      }
+      const bookmarkObj = {
+        isBookmarked: !isBookmarked,
+        category,
+      };
+      newBookmarks[quizId] = bookmarkObj;
       return {
         ...current,
         bookmarks: newBookmarks,
       };
     });
   };
-  const saveBookmarkOnDB = (quizId: string) => {
+  const saveBookmarkOnDB = () => {
     const dbRef = ref(getDatabase());
     const uid = getAuth().currentUser.uid;
-    bookmarkQuiz(dbRef, quizId, uid, isBookmarked);
+    bookmarkQuiz(dbRef, quizId, uid, category, isBookmarked);
   };
-  const bookmark = (quizId: string) => {
-    saveBookmarkOnDB(quizId);
-    setLocalBookmark(quizId);
+  const bookmark = () => {
+    saveBookmarkOnDB();
+    setLocalBookmark();
   };
   return (
-    <Pressable onPress={() => bookmark(quizId)}>
+    <Pressable onPress={() => bookmark()}>
       <Bookmark isBookmarked={isBookmarked} {...props}></Bookmark>
     </Pressable>
   );

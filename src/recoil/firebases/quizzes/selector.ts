@@ -3,7 +3,7 @@ import { getQuizzes, getUserQuizData } from "firebases/databases/quizzes";
 import { selector, selectorFamily } from "recoil";
 import { userUidAtom } from "recoil/auths/atom";
 import { IQuiz, category } from "types/quizzes/quizTypes";
-import IUserQuizData from "types/quizzes/userQuizDataTypes";
+import IFirebaseUserQuizData from "types/quizzes/firebaseUserQuizDataTypes";
 
 export const getQuizSelector = selectorFamily<IQuiz[], category>({
   key: "quizzes",
@@ -15,8 +15,10 @@ export const getQuizSelector = selectorFamily<IQuiz[], category>({
         const dbRef = ref(getDatabase());
         const quizzes = await getQuizzes(dbRef, category);
         quizzes.forEach((quiz) => {
-          quiz.isBookmarked = userQuizData?.bookmarks?.[quiz.id] || false;
-          quiz.state = userQuizData?.quizzes?.[quiz.id] || "pending";
+          quiz.isBookmarked =
+            userQuizData?.bookmarks?.[category]?.[quiz.id] || false;
+          quiz.state =
+            userQuizData?.quizzes?.[category]?.[quiz.id] || "pending";
         });
         return quizzes;
       } catch (e) {
@@ -26,7 +28,7 @@ export const getQuizSelector = selectorFamily<IQuiz[], category>({
     },
 });
 
-export const userQuizDataSelector = selector<IUserQuizData>({
+export const userQuizDataSelector = selector<IFirebaseUserQuizData>({
   key: "userQuizData",
   get: async ({ get }) => {
     try {

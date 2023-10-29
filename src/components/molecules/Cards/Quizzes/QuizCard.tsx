@@ -3,9 +3,12 @@ import BaseText from "components/atoms/Texts/BaseText";
 import Tag from "components/atoms/Texts/Tag";
 import React from "react";
 import styled from "styled-components/native";
-import { IQuiz } from "types/quizzes/quizTypes";
+import { IQuiz, category } from "types/quizzes/quizTypes";
 import BookmarkBtn from "./BookmarkBtn";
 
+interface QuizCard extends Partial<IQuiz> {
+  category: category;
+}
 const Container = styled.TouchableHighlight`
   height: 80px;
   margin-bottom: 15px;
@@ -36,7 +39,14 @@ const QuizTitle = styled(BaseText)`
   font-weight: 600;
 `;
 
-const QuizCard = ({ id, title, tags, isBookmarked, state }: Partial<IQuiz>) => {
+const QuizCard = ({
+  id,
+  title,
+  tags,
+  isBookmarked,
+  state,
+  category,
+}: QuizCard) => {
   return (
     <Container>
       <Card>
@@ -53,6 +63,7 @@ const QuizCard = ({ id, title, tags, isBookmarked, state }: Partial<IQuiz>) => {
             isBookmarked={isBookmarked}
             quizId={id}
             style={{ position: "absolute", top: -19, right: 0 }}
+            category={category}
           />
           <QuizStateBadge
             state={state}

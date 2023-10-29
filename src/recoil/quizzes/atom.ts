@@ -1,13 +1,21 @@
 import { atom } from "recoil";
-import { quizState } from "types/quizzes/quizTypes";
+import { category, quizState } from "types/quizzes/quizTypes";
 
+export interface ILocalBookmarkType {
+  [id: string]: {
+    isBookmarked: boolean;
+    category: category;
+  };
+}
+export interface ILocalQuizDataType {
+  [id: string]: {
+    state: quizState;
+    category: category;
+  };
+}
 interface ILocalQuizzes {
-  bookmarks: {
-    [id: string]: boolean;
-  };
-  quizzes: {
-    [id: string]: quizState;
-  };
+  bookmarks: ILocalBookmarkType;
+  quizzes: ILocalQuizDataType;
 }
 export const currentQuizAtom = atom<string>({
   key: "currentQuiz",

@@ -1,7 +1,7 @@
 import { DatabaseReference, DataSnapshot } from "firebase/database";
 import { getFirebaseData, removeFirebaseData, setFirebaseData } from "./utils";
 import { category, IQuiz } from "types/quizzes/quizTypes";
-import IUserQuizData from "types/quizzes/userQuizDataTypes";
+import IFirebaseUserQuizData from "types/quizzes/firebaseUserQuizDataTypes";
 
 const getQuizzes = (
   dbRef: DatabaseReference,
@@ -26,7 +26,7 @@ const getQuizzes = (
 const getUserQuizData = (
   dbRef: DatabaseReference,
   uid: string
-): Promise<IUserQuizData> => {
+): Promise<IFirebaseUserQuizData> => {
   return new Promise(async (resolve, reject) => {
     try {
       const path = `users/${uid}`;
@@ -50,11 +50,12 @@ const bookmarkQuiz = (
   dbRef: DatabaseReference,
   quizId: string,
   uuid: string,
+  category: category,
   isBookmarked: boolean
 ): Promise<void> => {
   return new Promise(async (resolve, reject) => {
     try {
-      const path = `users/${uuid}/bookmarks/${quizId}`;
+      const path = `users/${uuid}/bookmarks/${category}/${quizId}`;
       if (isBookmarked) {
         await removeFirebaseData(dbRef, path);
       } else {
