@@ -48,8 +48,8 @@ export const quizzesSelector = selectorFamily<IQuiz[], category>({
   get:
     (category) =>
     async ({ get }) => {
+      const firebaseQuizData = await get(firebaseQuizzesSelector(category));
       try {
-        const firebaseQuizData = await get(firebaseQuizzesSelector(category));
         const localQuizData = get(localQuizDataAtom);
         const quizData = firebaseQuizData.map((quiz) => {
           return {
