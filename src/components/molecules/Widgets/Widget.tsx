@@ -52,7 +52,7 @@ const Widget = ({ category, cardType }: IWidgetComponent) => {
             style={{
               color: textColor,
               fontSize: 80,
-              fontWeight: 600,
+              fontWeight: "600",
             }}
           >
             {name}
