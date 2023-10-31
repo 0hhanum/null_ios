@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import CancelButton from "components/atoms/Buttons/CancelButton";
 import QuizPlayButton from "components/molecules/Buttons/Quizzes/QuizPlayButton";
 import React from "react";
+import { quizzesSelectorByCategory } from "recoil/firebases/quizzes/selector";
 import styled from "styled-components/native";
 import { category } from "types/quizzes/quizTypes";
 
@@ -15,7 +16,9 @@ const QuizListBottomBar = ({ category }: IQuizListBottomBar) => {
   const navigation = useNavigation<any>();
   const goBack = () => navigation.goBack();
   const playQuiz = () => {
-    navigation.navigate("Quiz", { category });
+    navigation.navigate("Quiz", {
+      selector: quizzesSelectorByCategory(category),
+    });
   };
   return (
     <Container>
