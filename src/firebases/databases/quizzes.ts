@@ -3,16 +3,32 @@ import { getFirebaseData, removeFirebaseData, setFirebaseData } from "./utils";
 import { category, IQuiz } from "types/quizzes/quizTypes";
 import IFirebaseUserQuizData from "types/quizzes/firebaseUserQuizDataTypes";
 
-const getQuizzes = (
-  dbRef: DatabaseReference,
-  category: category
-): Promise<IQuiz[]> => {
+const getQuiz = (dbRef: DatabaseReference, id: string): Promise<IQuiz> => {
   return new Promise(async (resolve, reject) => {
     try {
-      const path = `quiz/${category}`;
+      const path = `quiz/${id}`;
       const snapshot = await getFirebaseData(dbRef, path);
       if (snapshot.exists()) {
-        resolve(Object.values(snapshot.val()));
+        resolve(snapshot.val());
+      } else {
+        resolve(null);
+      }
+    } catch (e) {
+      console.error("Something wrong with get quiz data", e);
+      reject(e);
+    }
+  });
+};
+const getQuizIdList = (
+  dbRef: DatabaseReference,
+  category: category
+): Promise<string[]> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const path = `quizCategory/${category}`;
+      const snapshot = await getFirebaseData(dbRef, path);
+      if (snapshot.exists()) {
+        resolve(Object.keys(snapshot.val()));
       } else {
         resolve([]);
       }
@@ -50,12 +66,11 @@ const bookmarkQuiz = (
   dbRef: DatabaseReference,
   quizId: string,
   uuid: string,
-  category: category,
   isBookmarked: boolean
 ): Promise<void> => {
   return new Promise(async (resolve, reject) => {
     try {
-      const path = `users/${uuid}/bookmarks/${category}/${quizId}`;
+      const path = `users/${uuid}/bookmarks/${quizId}`;
       if (isBookmarked) {
         await removeFirebaseData(dbRef, path);
       } else {
@@ -68,4 +83,4 @@ const bookmarkQuiz = (
     }
   });
 };
-export { getQuizzes, getUserQuizData, bookmarkQuiz };
+export { getQuiz, getUserQuizData, bookmarkQuiz, getQuizIdList };

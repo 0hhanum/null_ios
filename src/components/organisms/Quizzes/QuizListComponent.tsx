@@ -3,7 +3,7 @@ import BaseView from "components/atoms/View/BaseView";
 import QuizCard from "components/molecules/Cards/Quizzes/QuizCard";
 import React from "react";
 import { useRecoilValueLoadable } from "recoil";
-import { quizzesSelector } from "recoil/firebases/quizzes/selector";
+import { quizzesSelectorByCategory } from "recoil/firebases/quizzes/selector";
 import styled from "styled-components/native";
 import { category } from "types/quizzes/quizTypes";
 
@@ -15,7 +15,7 @@ const QuizList = styled.FlatList`
   margin-vertical: 15px;
 `;
 const QuizListComponent = ({ category }: IQuizListComponent) => {
-  const quizzes = useRecoilValueLoadable(quizzesSelector(category));
+  const quizzes = useRecoilValueLoadable(quizzesSelectorByCategory(category));
   if (quizzes.state === "hasValue") {
     return (
       <QuizList

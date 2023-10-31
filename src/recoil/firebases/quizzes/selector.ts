@@ -1,12 +1,19 @@
 import { getDatabase, ref } from "firebase/database";
-import { getQuizzes, getUserQuizData } from "firebases/databases/quizzes";
+import {
+  getQuiz,
+  getQuizIdList,
+  getUserQuizData,
+} from "firebases/databases/quizzes";
 import { selector, selectorFamily } from "recoil";
 import { userUidAtom } from "recoil/auths/atom";
 import { IQuiz, category } from "types/quizzes/quizTypes";
 import IFirebaseUserQuizData from "types/quizzes/firebaseUserQuizDataTypes";
 import { localQuizDataAtom } from "recoil/quizzes/atom";
 
-export const firebaseQuizzesSelector = selectorFamily<IQuiz[], category>({
+export const firebaseQuizzesSelectorByCategory = selectorFamily<
+  IQuiz[],
+  category
+>({
   key: "firebaseQuizzes",
   get:
     (category) =>
@@ -14,13 +21,16 @@ export const firebaseQuizzesSelector = selectorFamily<IQuiz[], category>({
       const firebaseUserQuizData = await get(firebaseUserQuizDataSelector);
       try {
         const dbRef = ref(getDatabase());
-        const quizzes = await getQuizzes(dbRef, category);
-        quizzes.forEach((quiz) => {
-          quiz.isBookmarked =
-            firebaseUserQuizData?.bookmarks?.[category]?.[quiz.id] || false;
-          quiz.state =
-            firebaseUserQuizData?.quizzes?.[category]?.[quiz.id] || "pending";
-        });
+        const quizIdList = await getQuizIdList(dbRef, category);
+        const quizzes = Promise.all(
+          quizIdList.map(async (quizId) => {
+            const quiz = await getQuiz(dbRef, quizId);
+            quiz.isBookmarked =
+              firebaseUserQuizData?.bookmarks?.[quiz.id] || false;
+            quiz.state = firebaseUserQuizData?.quizzes?.[quiz.id] || "pending";
+            return quiz;
+          })
+        );
         return quizzes;
       } catch (e) {
         console.error("Something wrong with bring quizzes", e);
@@ -43,12 +53,14 @@ export const firebaseUserQuizDataSelector = selector<IFirebaseUserQuizData>({
   },
 });
 
-export const quizzesSelector = selectorFamily<IQuiz[], category>({
+export const quizzesSelectorByCategory = selectorFamily<IQuiz[], category>({
   key: "quizzes",
   get:
     (category) =>
     async ({ get }) => {
-      const firebaseQuizData = await get(firebaseQuizzesSelector(category));
+      const firebaseQuizData = await get(
+        firebaseQuizzesSelectorByCategory(category)
+      );
       try {
         const localQuizData = get(localQuizDataAtom);
         const quizData = firebaseQuizData.map((quiz) => {

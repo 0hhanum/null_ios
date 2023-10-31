@@ -36,7 +36,7 @@ const BookmarkBtn = ({
   const saveBookmarkOnDB = () => {
     const dbRef = ref(getDatabase());
     const uid = getAuth().currentUser.uid;
-    bookmarkQuiz(dbRef, quizId, uid, category, isBookmarked);
+    bookmarkQuiz(dbRef, quizId, uid, isBookmarked);
   };
   const bookmark = () => {
     saveBookmarkOnDB();

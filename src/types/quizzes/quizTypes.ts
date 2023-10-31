@@ -4,6 +4,7 @@ export type 문제유형 = "객관식" | "주관식" | "OX" | "빈칸";
 
 export interface IQuiz {
   id: string;
+  category: category;
   title: string;
   tags: string[];
   문제유형: 문제유형;
