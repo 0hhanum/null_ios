@@ -67,10 +67,10 @@ export const quizzesSelectorByCategory = selectorFamily<IQuiz[], category>({
           return {
             ...quiz,
             state: localQuizData.quizzes.hasOwnProperty(quiz.id)
-              ? localQuizData.quizzes[quiz.id].state
+              ? localQuizData.quizzes[quiz.id]
               : quiz.state,
             isBookmarked: localQuizData.bookmarks.hasOwnProperty(quiz.id)
-              ? localQuizData.bookmarks[quiz.id].isBookmarked
+              ? localQuizData.bookmarks[quiz.id]
               : quiz.isBookmarked,
           };
         });

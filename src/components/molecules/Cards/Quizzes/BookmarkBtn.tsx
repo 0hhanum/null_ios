@@ -6,27 +6,16 @@ import { Pressable } from "react-native";
 import { bookmarkQuiz } from "firebases/databases/quizzes";
 import { useSetRecoilState } from "recoil";
 import { localQuizDataAtom } from "recoil/quizzes/atom";
-import { category } from "types/quizzes/quizTypes";
 
 interface IBookmarkBtn extends IBookmark {
   quizId: string;
-  category: category;
 }
-const BookmarkBtn = ({
-  isBookmarked,
-  quizId,
-  category,
-  ...props
-}: IBookmarkBtn) => {
+const BookmarkBtn = ({ isBookmarked, quizId, ...props }: IBookmarkBtn) => {
   const setLocalQuizDataAtom = useSetRecoilState(localQuizDataAtom);
   const setLocalBookmark = () => {
     setLocalQuizDataAtom((current) => {
       const newBookmarks = { ...current.bookmarks };
-      const bookmarkObj = {
-        isBookmarked: !isBookmarked,
-        category,
-      };
-      newBookmarks[quizId] = bookmarkObj;
+      newBookmarks[quizId] = !isBookmarked;
       return {
         ...current,
         bookmarks: newBookmarks,

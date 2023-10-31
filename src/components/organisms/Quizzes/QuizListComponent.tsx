@@ -26,7 +26,6 @@ const QuizListComponent = ({ category }: IQuizListComponent) => {
             tags={quiz.tags}
             key={quiz.id}
             id={quiz.id}
-            category={category}
             isBookmarked={quiz.isBookmarked}
             state={quiz.state}
           />
