@@ -11,6 +11,7 @@ const RootNav = () => {
       screenOptions={{
         headerShown: false,
         presentation: "fullScreenModal",
+        orientation: "portrait_up",
       }}
     >
       <NativeStack.Screen name="RootTabNav" component={RootTabNav} />
