@@ -1,13 +1,13 @@
 import { atom } from "recoil";
-import { category, quizState } from "types/quizzes/quizTypes";
+import { quizState } from "types/quizzes/quizTypes";
 
-export interface ILocalBookmarkType {
+interface ILocalBookmarkType {
   [id: string]: boolean;
 }
-export interface ILocalQuizDataType {
+interface ILocalQuizDataType {
   [id: string]: quizState;
 }
-interface ILocalQuizzes {
+export interface ILocalQuizzes {
   bookmarks: ILocalBookmarkType;
   quizzes: ILocalQuizDataType;
 }

@@ -5,23 +5,13 @@ import { getAuth } from "firebase/auth";
 import { Pressable } from "react-native";
 import { bookmarkQuiz } from "firebases/databases/quizzes";
 import { useSetRecoilState } from "recoil";
-import { localQuizDataAtom } from "recoil/quizzes/atom";
+import { setLocalBookmarkSelector } from "recoil/quizzes/selector";
 
 interface IBookmarkBtn extends IBookmark {
   quizId: string;
 }
 const BookmarkBtn = ({ isBookmarked, quizId, ...props }: IBookmarkBtn) => {
-  const setLocalQuizDataAtom = useSetRecoilState(localQuizDataAtom);
-  const setLocalBookmark = () => {
-    setLocalQuizDataAtom((current) => {
-      const newBookmarks = { ...current.bookmarks };
-      newBookmarks[quizId] = !isBookmarked;
-      return {
-        ...current,
-        bookmarks: newBookmarks,
-      };
-    });
-  };
+  const setLocalBookmark = useSetRecoilState(setLocalBookmarkSelector);
   const saveBookmarkOnDB = () => {
     const dbRef = ref(getDatabase());
     const uid = getAuth().currentUser.uid;
@@ -29,7 +19,7 @@ const BookmarkBtn = ({ isBookmarked, quizId, ...props }: IBookmarkBtn) => {
   };
   const bookmark = () => {
     saveBookmarkOnDB();
-    setLocalBookmark();
+    setLocalBookmark({ quizId, isBookmarked });
   };
   return (
     <Pressable onPress={() => bookmark()}>
