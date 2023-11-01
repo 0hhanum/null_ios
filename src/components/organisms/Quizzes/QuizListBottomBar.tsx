@@ -2,9 +2,10 @@ import { useNavigation } from "@react-navigation/native";
 import CancelButton from "components/atoms/Buttons/CancelButton";
 import QuizPlayButton from "components/molecules/Buttons/Quizzes/QuizPlayButton";
 import React from "react";
+import { useRecoilValueLoadable } from "recoil";
 import { quizzesSelectorByCategory } from "recoil/firebases/quizzes/selector";
 import styled from "styled-components/native";
-import { category } from "types/quizzes/quizTypes";
+import { IQuiz, category } from "types/quizzes/quizTypes";
 
 interface IQuizListBottomBar {
   category: category;
@@ -13,11 +14,18 @@ const Container = styled.View`
   flex-direction: row;
 `;
 const QuizListBottomBar = ({ category }: IQuizListBottomBar) => {
+  const quizzes = useRecoilValueLoadable<IQuiz[]>(
+    quizzesSelectorByCategory(category)
+  );
   const navigation = useNavigation<any>();
   const goBack = () => navigation.goBack();
   const playQuiz = () => {
+    if (quizzes.state !== "hasValue") return;
+    const pendingQuizzes = quizzes.contents.filter(
+      (quiz) => quiz.state !== "solved"
+    );
     navigation.navigate("Quiz", {
-      selector: quizzesSelectorByCategory(category),
+      quizzes: pendingQuizzes.length !== 0 ? pendingQuizzes : quizzes.contents,
     });
   };
   return (
