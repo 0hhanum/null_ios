@@ -68,6 +68,7 @@ const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
         options={{
           presentation: "fullScreenModal",
           animation: "fade",
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
