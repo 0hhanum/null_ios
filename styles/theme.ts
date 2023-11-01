@@ -3,6 +3,7 @@ import { DefaultTheme } from "styled-components/native";
 export const defaultTheme: DefaultTheme = {
   bgColor: "black",
   textColor: "white",
+  questionTextColor: "#30f230",
   headerColor: "#121212",
   borderColor: "#727781",
   red: "#ff605c",

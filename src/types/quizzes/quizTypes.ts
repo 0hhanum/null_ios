@@ -7,7 +7,7 @@ export interface IQuiz {
   category: category;
   title: string;
   tags: string[];
-  문제유형: 문제유형;
+  questionType: 문제유형;
   question: string[];
   answer: string[];
   choices?: string[] | string[][]; // 객관식 | 빈칸

@@ -4,12 +4,7 @@ import { CenterViewContainer } from "../../atoms/View/CenterView";
 import TrafficLight from "../TrafficLights/TrafficLight";
 import { getCardDimensions } from "../utils";
 
-export type cardType =
-  | "bigBanner"
-  | "square"
-  | "banner"
-  | "largeSquare"
-  | "board";
+export type cardType = "bigBanner" | "square" | "banner" | "largeSquare";
 interface IBaseCard {
   bgColor?: string;
   cardType?: cardType;
