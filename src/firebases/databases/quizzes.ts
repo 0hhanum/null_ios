@@ -83,7 +83,7 @@ const bookmarkQuiz = (
     }
   });
 };
-const changeQuizState = (
+const changeQuizStateUserData = (
   dbRef: DatabaseReference,
   quizId: string,
   uuid: string,
@@ -105,5 +105,5 @@ export {
   getUserQuizData,
   bookmarkQuiz,
   getQuizIdList,
-  changeQuizState,
+  changeQuizStateUserData,
 };
