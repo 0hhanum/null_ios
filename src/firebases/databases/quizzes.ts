@@ -1,6 +1,6 @@
-import { DatabaseReference, DataSnapshot } from "firebase/database";
+import { DatabaseReference } from "firebase/database";
 import { getFirebaseData, removeFirebaseData, setFirebaseData } from "./utils";
-import { category, IQuiz } from "types/quizzes/quizTypes";
+import { category, IQuiz, quizState } from "types/quizzes/quizTypes";
 import IFirebaseUserQuizData from "types/quizzes/firebaseUserQuizDataTypes";
 
 const getQuiz = (dbRef: DatabaseReference, id: string): Promise<IQuiz> => {
@@ -83,4 +83,27 @@ const bookmarkQuiz = (
     }
   });
 };
-export { getQuiz, getUserQuizData, bookmarkQuiz, getQuizIdList };
+const changeQuizState = (
+  dbRef: DatabaseReference,
+  quizId: string,
+  uuid: string,
+  state: quizState
+): Promise<void> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const path = `users/${uuid}/quizzes/${quizId}`;
+      await setFirebaseData(dbRef, path, state);
+      resolve();
+    } catch (e) {
+      console.error("Something wrong with bookmark quiz", e);
+      reject(e);
+    }
+  });
+};
+export {
+  getQuiz,
+  getUserQuizData,
+  bookmarkQuiz,
+  getQuizIdList,
+  changeQuizState,
+};
