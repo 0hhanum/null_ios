@@ -17,7 +17,7 @@ const EmailLogin = () => {
         <BaseText size="large">Email로 계속하기</BaseText>
       </HeaderContainer>
       <BaseView>
-        <BaseCard cardType="largeSqaure" trafficLight={true}>
+        <BaseCard cardType="largeSquare" trafficLight={true}>
           <BaseView>
             <EmailLoginForm />
           </BaseView>

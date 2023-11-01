@@ -14,7 +14,7 @@ const Landing = () => {
   return (
     <PageLayout>
       <HCenterView style={{ marginTop: height * 0.1 }}>
-        <BaseCard cardType="largeSqaure" trafficLight={true}>
+        <BaseCard cardType="largeSquare" trafficLight={true}>
           <MainLogo />
         </BaseCard>
       </HCenterView>
