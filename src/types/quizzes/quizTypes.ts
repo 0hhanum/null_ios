@@ -14,4 +14,5 @@ export interface IQuiz {
   level?: number;
   state: quizState;
   isBookmarked: boolean;
+  description: string[];
 }
