@@ -4,6 +4,7 @@ import VCenterView from "components/atoms/View/VCenterView";
 import TrafficLight from "components/molecules/TrafficLights/TrafficLight";
 import { getWindowSize } from "components/utils";
 import QuestionText from "components/molecules/Texts/quizzes/QuestionText";
+import { useNavigation } from "@react-navigation/native";
 
 interface IQuizQuestionCard {
   question: string[];
@@ -24,13 +25,13 @@ const TrafficLightContainer = styled.Pressable`
   left: 22px;
 `;
 const TextContainer = styled.View`
-  margin-bottom: 15px;
   border-radius: 10px;
   overflow: hidden;
 `;
 
 const QuizQuestionCard = ({ question }: IQuizQuestionCard) => {
   const { width } = getWindowSize();
+  const navigation = useNavigation();
   return (
     <Container width={width}>
       <ScrollContainer>
@@ -40,7 +41,7 @@ const QuizQuestionCard = ({ question }: IQuizQuestionCard) => {
           </TextContainer>
         ))}
       </ScrollContainer>
-      <TrafficLightContainer onPress={() => {}}>
+      <TrafficLightContainer onPress={() => navigation.goBack()}>
         <TrafficLight />
       </TrafficLightContainer>
     </Container>
