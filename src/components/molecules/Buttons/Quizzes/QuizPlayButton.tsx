@@ -1,5 +1,6 @@
 import BaseButton, { IBaseButton } from "components/atoms/Buttons/BaseButton";
 import GradientCard from "components/atoms/Quizzes/GradientCard";
+import BaseText from "components/atoms/Texts/BaseText";
 import React from "react";
 import styled from "styled-components/native";
 
@@ -25,9 +26,9 @@ const TextContainer = styled.View`
   align-items: center;
   position: absolute;
 `;
-const PlayText = styled.Text`
-  font-size: 36px;
+const PlayText = styled(BaseText)`
   font-weight: 700;
+  color: ${(props) => props.theme.bgColor};
 `;
 const QuizPlayButton = ({ onPress }: IBaseButton) => {
   return (
@@ -35,7 +36,7 @@ const QuizPlayButton = ({ onPress }: IBaseButton) => {
       <>
         <GradientCard colors={GRADIENT_COLORS} />
         <TextContainer>
-          <PlayText>play();</PlayText>
+          <PlayText size={36}>play();</PlayText>
         </TextContainer>
       </>
     </Btn>

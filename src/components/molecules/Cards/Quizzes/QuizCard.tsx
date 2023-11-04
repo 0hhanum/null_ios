@@ -32,7 +32,6 @@ const TagContainer = styled.View`
   margin-top: 7px;
 `;
 const QuizTitle = styled(BaseText)`
-  font-size: 18px;
   font-weight: 600;
 `;
 
@@ -41,7 +40,9 @@ const QuizCard = ({ id, title, tags, isBookmarked, state }: Partial<IQuiz>) => {
     <Container>
       <Card>
         <CardLeftSection>
-          <QuizTitle numberOfLines={1}>{title}</QuizTitle>
+          <QuizTitle numberOfLines={1} size={18}>
+            {title}
+          </QuizTitle>
           <TagContainer>
             {tags.map((tag) => (
               <Tag tagName={tag} key={tag} />

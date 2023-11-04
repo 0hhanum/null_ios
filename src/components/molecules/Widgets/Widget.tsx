@@ -49,9 +49,9 @@ const Widget = ({ category, cardType }: IWidgetComponent) => {
           />
         ) : (
           <BaseText
+            size={80}
             style={{
               color: textColor,
-              fontSize: 80,
               fontWeight: "600",
             }}
           >
