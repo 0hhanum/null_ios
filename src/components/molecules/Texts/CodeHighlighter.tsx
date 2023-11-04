@@ -8,7 +8,11 @@ interface ICodeHighlighter {
 }
 const CodeHighlighter = ({ code, language }: ICodeHighlighter) => {
   return (
-    <SyntaxHighlighter style={atomOneDark} language={language}>
+    <SyntaxHighlighter
+      style={atomOneDark}
+      language={language}
+      customStyle={{ borderRadius: 10 }}
+    >
       {code}
     </SyntaxHighlighter>
   );

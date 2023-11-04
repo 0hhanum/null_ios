@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import QuestionCodeBlock from "./QuestionCodeBlock";
 import styled from "styled-components/native";
 import BaseText from "components/atoms/Texts/BaseText";
@@ -8,7 +8,10 @@ interface IQuestionText {
 }
 const Text = styled(BaseText)`
   color: ${(props) => props.theme.questionTextColor};
+  line-height: 30px;
+  margin-bottom: 6px;
 `;
+
 const QuestionText = ({ text }: IQuestionText) => {
   if (text.startsWith("<code")) {
     return <QuestionCodeBlock codeBlock={text} />;
