@@ -3,13 +3,13 @@ import styled, { useTheme } from "styled-components/native";
 import { CenterViewContainer } from "../../atoms/View/CenterView";
 import TrafficLight from "../TrafficLights/TrafficLight";
 import { getCardDimensions } from "../utils";
+import { ViewProps } from "react-native";
 
 export type cardType = "bigBanner" | "square" | "banner" | "largeSquare";
-interface IBaseCard {
+interface IBaseCard extends ViewProps {
   bgColor?: string;
   cardType?: cardType;
   trafficLight?: boolean;
-  children: React.JSX.Element;
 }
 
 const CardContainer = styled(CenterViewContainer)<{
@@ -30,12 +30,19 @@ const TrafficLightContainer = styled.View`
   left: 22px;
 `;
 
-const BaseCard = ({ bgColor, cardType, trafficLight, children }: IBaseCard) => {
+const BaseCard = ({
+  bgColor,
+  cardType,
+  trafficLight,
+  children,
+  ...props
+}: IBaseCard) => {
   const theme = useTheme();
   return (
     <CardContainer
       bgColor={bgColor || theme.headerColor}
       dimensions={getCardDimensions(cardType)}
+      {...props}
     >
       {trafficLight && (
         <TrafficLightContainer>
