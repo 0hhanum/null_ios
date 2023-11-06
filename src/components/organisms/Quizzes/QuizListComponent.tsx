@@ -20,7 +20,7 @@ const QuizListComponent = ({ category }: IQuizListComponent) => {
     return (
       <QuizList
         data={quizzes.contents}
-        renderItem={({ item: quiz, index }) => (
+        renderItem={({ item: quiz }) => (
           <QuizCard
             title={quiz.title}
             tags={quiz.tags}

@@ -5,7 +5,7 @@ import React from "react";
 import { useRecoilValueLoadable } from "recoil";
 import { quizzesSelectorByCategory } from "recoil/firebases/quizzes/selector";
 import styled from "styled-components/native";
-import { IQuiz, category } from "types/quizzes/quizTypes";
+import { IQuiz, category, quizState } from "types/quizzes/quizTypes";
 
 interface IQuizListBottomBar {
   category: category;
@@ -22,7 +22,7 @@ const QuizListBottomBar = ({ category }: IQuizListBottomBar) => {
   const playQuiz = () => {
     if (quizzes.state !== "hasValue") return;
     const pendingQuizzes = quizzes.contents.filter(
-      (quiz) => quiz.state !== "solved"
+      (quiz) => quiz.state !== quizState.solved
     );
     navigation.navigate("Quiz", {
       quizzes: pendingQuizzes.length !== 0 ? pendingQuizzes : quizzes.contents,

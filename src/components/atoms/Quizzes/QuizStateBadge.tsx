@@ -17,7 +17,7 @@ const Container = styled(BaseView)<IQuizState>`
   background-color: ${(props) =>
     props.state === "pending"
       ? "#102C57"
-      : props.state === "solved"
+      : props.state === quizState.solved
       ? "green"
       : props.theme.warning};
   border-radius: 15px;

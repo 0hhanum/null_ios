@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import QuizChoiceButton, {
-  quizBtnState,
-} from "components/atoms/Buttons/QuizChoiceButton";
+import QuizChoiceButton from "components/atoms/Buttons/QuizChoiceButton";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import { quizState } from "types/quizzes/quizTypes";
 
@@ -29,7 +27,8 @@ const QuizChoices = ({ choices, solvedCallback, answer }: IQuizChoices) => {
 
   const onChoice = (index) => {
     if (selectedIndex !== null) return; // prevent change after select choice
-    const state: quizState = ANSWERS[index] === answer ? "solved" : "wrong";
+    const state: quizState =
+      ANSWERS[index] === answer ? quizState.solved : quizState.wrong;
     setSelectedIndex(index);
     setTimeout(() => {
       solvedCallback(state);
