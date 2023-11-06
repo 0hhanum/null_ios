@@ -6,10 +6,13 @@ import BaseText from "../Texts/BaseText";
 export enum quizBtnState {
   "correct",
   "wrong",
+  "default",
 }
 interface IQuizChoiceButton extends IBaseButton {
-  state: quizBtnState;
-  choice: string;
+  answer: number;
+  index: number;
+  selectedIndex: number;
+  choiceText: string;
 }
 const Btn = styled(BaseButton)<{ state: quizBtnState }>`
   border: 0.5px;
@@ -24,14 +27,22 @@ const Btn = styled(BaseButton)<{ state: quizBtnState }>`
   margin-bottom: 10px;
 `;
 const QuizChoiceButton = ({
+  index,
+  selectedIndex,
+  choiceText,
+  answer,
   children,
-  state,
-  choice,
   ...props
 }: IQuizChoiceButton) => {
+  const state =
+    index !== selectedIndex
+      ? quizBtnState.default
+      : answer === index
+      ? quizBtnState.correct
+      : quizBtnState.wrong;
   return (
     <Btn state={state} {...props} style={{ padding: 20 }}>
-      <BaseText size="small">{choice}</BaseText>
+      <BaseText size="small">{choiceText}</BaseText>
     </Btn>
   );
 };

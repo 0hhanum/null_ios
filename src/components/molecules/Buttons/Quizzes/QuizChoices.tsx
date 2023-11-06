@@ -10,31 +10,27 @@ interface IQuizChoices {
   solvedCallback: IQuizGame["solvedCallback"];
   answer: string;
 }
-const ANSWERS = ["A", "B", "C", "D"];
+enum ANSWERS {
+  "A",
+  "B",
+  "C",
+  "D",
+}
 const BUTTON_SIZE_TWO_ELEMENTS = 120;
 const BUTTON_SIZE_FOUR_ELEMENTS = 60;
 const SOLVED_CALLBACK_DELAY = 250;
 
 const QuizChoices = ({ choices, solvedCallback, answer }: IQuizChoices) => {
-  const [answerState, setAnswerState] = useState<[number, quizBtnState]>([
-    -1,
-    null,
-  ]);
+  const [selectedIndex, setSelectedIndex] = useState<number>(null);
   useEffect(() => {
-    // reset state
-    setAnswerState([-1, null]);
+    // reset state when quiz Changed
+    setSelectedIndex(null);
   }, [choices]);
 
   const onChoice = (index) => {
-    if (answerState[0] !== -1) return; // prevent change after select choice
-    let state: quizState;
-    if (ANSWERS[index] === answer) {
-      setAnswerState([index, quizBtnState.correct]);
-      state = "solved";
-    } else {
-      setAnswerState([index, quizBtnState.wrong]);
-      state = "wrong";
-    }
+    if (selectedIndex !== null) return; // prevent change after select choice
+    const state: quizState = ANSWERS[index] === answer ? "solved" : "wrong";
+    setSelectedIndex(index);
     setTimeout(() => {
       solvedCallback(state);
     }, SOLVED_CALLBACK_DELAY);
@@ -46,13 +42,15 @@ const QuizChoices = ({ choices, solvedCallback, answer }: IQuizChoices) => {
         <QuizChoiceButton
           key={index}
           onPress={() => onChoice(index)}
-          state={answerState[0] === index ? answerState[1] : null}
           height={
             choices.length === 2
               ? BUTTON_SIZE_TWO_ELEMENTS
               : BUTTON_SIZE_FOUR_ELEMENTS
           }
-          choice={choice}
+          choiceText={choice}
+          index={index}
+          selectedIndex={selectedIndex}
+          answer={ANSWERS[answer]}
         ></QuizChoiceButton>
       ))}
     </>
