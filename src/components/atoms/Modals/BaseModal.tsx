@@ -17,7 +17,7 @@ const BaseModal = ({ visible, setVisible, children, ...props }: IBaseModal) => {
   return (
     <Modal
       visible={visible}
-      animationType="slide"
+      animationType="fade"
       onRequestClose={() => {
         setVisible(false);
       }}

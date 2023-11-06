@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import { quizState } from "types/quizzes/quizTypes";
-import BaseView, { IBaseView } from "../View/BaseView";
+import BaseView from "../View/BaseView";
 import BaseText from "../Texts/BaseText";
 import { capitalizeFirstLetter } from "components/utils";
 
