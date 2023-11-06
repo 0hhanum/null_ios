@@ -1,24 +1,29 @@
 import React from "react";
 import BaseModal, { IBaseModal } from "components/atoms/Modals/BaseModal";
 import BaseCard from "../Cards/BaseCard";
-import { View } from "react-native";
+import { DimensionValue } from "react-native";
 
-const BaseCardModal = ({ children, ...props }: IBaseModal) => {
+interface IBaseCardModal extends IBaseModal {
+  height?: DimensionValue;
+}
+
+const BaseCardModal = ({ children, height, ...props }: IBaseCardModal) => {
   return (
     <BaseModal {...props}>
-      <View
+      <BaseCard
+        cardType="largeSquare"
+        trafficLight={true}
         style={{
-          shadowColor: "#000",
+          shadowColor: "#000000",
           shadowOffset: { width: 2, height: 5 },
-          shadowOpacity: 0.5,
+          shadowOpacity: 0.7,
           shadowRadius: 2,
           elevation: 2,
+          height,
         }}
       >
-        <BaseCard cardType="largeSquare" trafficLight={true}>
-          {children}
-        </BaseCard>
-      </View>
+        {children}
+      </BaseCard>
     </BaseModal>
   );
 };
