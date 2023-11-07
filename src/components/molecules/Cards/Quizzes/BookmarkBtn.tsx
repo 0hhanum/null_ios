@@ -1,5 +1,5 @@
 import Bookmark, { IBookmark } from "components/atoms/Icons/Bookmark";
-import React from "react";
+import React, { useState } from "react";
 import { getDatabase, ref } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { Pressable } from "react-native";
@@ -10,8 +10,13 @@ import { setLocalBookmarkSelector } from "recoil/quizzes/selector";
 interface IBookmarkBtn extends IBookmark {
   quizId: string;
 }
-const BookmarkBtn = ({ isBookmarked, quizId, ...props }: IBookmarkBtn) => {
+const BookmarkBtn = ({
+  isBookmarked: initialBookmarked,
+  quizId,
+  ...props
+}: IBookmarkBtn) => {
   const setLocalBookmark = useSetRecoilState(setLocalBookmarkSelector);
+  const [isBookmarked, setIsBookmarked] = useState(initialBookmarked); // btn own state
   const saveBookmarkOnDB = () => {
     const dbRef = ref(getDatabase());
     const uid = getAuth().currentUser.uid;
@@ -20,9 +25,10 @@ const BookmarkBtn = ({ isBookmarked, quizId, ...props }: IBookmarkBtn) => {
   const bookmark = () => {
     saveBookmarkOnDB();
     setLocalBookmark({ quizId, isBookmarked });
+    setIsBookmarked((curr) => !curr);
   };
   return (
-    <Pressable onPress={() => bookmark()}>
+    <Pressable onPress={bookmark}>
       <Bookmark isBookmarked={isBookmarked} {...props}></Bookmark>
     </Pressable>
   );
