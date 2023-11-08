@@ -5,9 +5,15 @@ import { DimensionValue } from "react-native";
 
 interface IBaseCardModal extends IBaseModal {
   height?: DimensionValue;
+  width?: DimensionValue;
 }
 
-const BaseCardModal = ({ children, height, ...props }: IBaseCardModal) => {
+const BaseCardModal = ({
+  children,
+  width,
+  height,
+  ...props
+}: IBaseCardModal) => {
   return (
     <BaseModal {...props}>
       <BaseCard
@@ -20,6 +26,7 @@ const BaseCardModal = ({ children, height, ...props }: IBaseCardModal) => {
           shadowRadius: 2,
           elevation: 2,
           height,
+          ...(width !== undefined && { width }), // Include width if it is defined
         }}
       >
         {children}

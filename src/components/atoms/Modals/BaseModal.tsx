@@ -11,13 +11,13 @@ const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 const BaseModal = ({ visible, setVisible, children, ...props }: IBaseModal) => {
   return (
     <Modal
       visible={visible}
-      animationType="fade"
+      animationType="slide"
       onRequestClose={() => {
         setVisible(false);
       }}

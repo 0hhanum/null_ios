@@ -16,7 +16,7 @@ enum ANSWERS {
 }
 const BUTTON_SIZE_TWO_ELEMENTS = 120;
 const BUTTON_SIZE_FOUR_ELEMENTS = 60;
-const SOLVED_CALLBACK_DELAY = 250;
+const SOLVED_CALLBACK_DELAY = 0;
 
 const QuizChoices = ({ choices, solvedCallback, answer }: IQuizChoices) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(null);
