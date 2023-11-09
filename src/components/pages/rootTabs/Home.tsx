@@ -14,7 +14,7 @@ const Home = () => {
           <HomeWidget category="ts" />
         </HCenterView>
         <HomeWidget category="react" />
-        <HomeWidget category="cs" />
+        <HomeWidget category="dev" />
       </ScrollView>
     </PageLayout>
   );

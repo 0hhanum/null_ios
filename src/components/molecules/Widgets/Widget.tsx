@@ -35,7 +35,7 @@ const widgets: widgets = {
     iconPath: require("@assets/images/logos/svgs/react.svg"),
     bgColor: "#61DBFB",
   },
-  cs: { bgColor: "blue", name: "CS" },
+  dev: { bgColor: "blue", name: "Dev" },
 };
 const Widget = ({ category, cardType }: IWidgetComponent) => {
   const { name, bgColor, textColor, iconPath } = widgets[category];

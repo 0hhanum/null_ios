@@ -1,4 +1,4 @@
-export type category = "js" | "ts" | "fe" | "cs" | "react";
+export type category = "js" | "ts" | "fe" | "dev" | "react";
 export enum quizState {
   "pending" = "pending",
   "solved" = "solved",
