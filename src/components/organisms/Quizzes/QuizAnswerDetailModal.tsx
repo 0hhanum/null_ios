@@ -10,6 +10,7 @@ import { IQuiz } from "types/quizzes/quizTypes";
 
 interface IQuizAnswerDetailModal extends IBaseModal {
   quizId: IQuiz["id"];
+  callback: () => void;
 }
 const BTN_TEXT_SIZE = 20;
 const MODAL_HEIGHT = "90%";
@@ -29,8 +30,12 @@ const QuizAnswerDetailModal = ({
   quizId,
   visible,
   setVisible,
+  callback,
 }: IQuizAnswerDetailModal) => {
-  const goBack = () => setVisible((curr) => !curr);
+  const goBack = () => {
+    setVisible((curr) => !curr);
+    callback();
+  };
   return (
     <BaseCardModal
       visible={visible}

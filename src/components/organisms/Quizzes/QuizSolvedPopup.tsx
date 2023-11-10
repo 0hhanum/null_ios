@@ -62,6 +62,7 @@ const QuizSolvedPopup = ({
         quizId={quizId}
         visible={!popupToggle}
         setVisible={(visible) => setPopupToggle(visible)}
+        callback={solvedPopupConfirmCallback}
       />
     </>
   );
