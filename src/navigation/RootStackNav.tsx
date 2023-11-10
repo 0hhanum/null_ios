@@ -19,6 +19,7 @@ const RootStackNav: React.FC<NativeStackScreenProps<any, "RootStackNav">> = ({
   return (
     <Stack.Navigator
       screenOptions={{
+        orientation: "portrait_up",
         presentation: "card",
         headerShown: true,
         headerStyle: { backgroundColor: theme.bgColor },
