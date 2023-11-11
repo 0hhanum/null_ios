@@ -6,6 +6,10 @@ import styled from "styled-components/native";
 import { IQuiz } from "types/quizzes/quizTypes";
 import BookmarkBtn from "./BookmarkBtn";
 
+interface IQuizCard
+  extends Pick<IQuiz, "id" | "title" | "tags" | "isBookmarked" | "state"> {
+  onPress: () => void;
+}
 const Container = styled.TouchableHighlight`
   height: 80px;
   margin-bottom: 15px;
@@ -35,9 +39,16 @@ const QuizTitle = styled(BaseText)`
   font-weight: 600;
 `;
 
-const QuizCard = ({ id, title, tags, isBookmarked, state }: Partial<IQuiz>) => {
+const QuizCard = ({
+  id,
+  title,
+  tags,
+  isBookmarked,
+  state,
+  onPress,
+}: IQuizCard) => {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Card>
         <CardLeftSection>
           <QuizTitle numberOfLines={1} size={18}>

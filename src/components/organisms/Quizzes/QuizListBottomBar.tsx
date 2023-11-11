@@ -22,7 +22,7 @@ const QuizListBottomBar = ({ category }: IQuizListBottomBar) => {
   const playQuiz = () => {
     if (quizzes.state !== "hasValue") return;
     const pendingQuizzes = quizzes.contents.filter(
-      (quiz) => quiz.state !== quizState.solved
+      (quiz: IQuiz) => quiz.state !== quizState.solved
     );
     navigation.navigate("Quiz", {
       quizzes: pendingQuizzes.length !== 0 ? pendingQuizzes : quizzes.contents,
