@@ -47,6 +47,7 @@ const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
         tabBarStyle: {
           backgroundColor: theme.bgColor,
         },
+        unmountOnBlur: true,
       }}
     >
       <Tab.Screen
