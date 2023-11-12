@@ -39,7 +39,7 @@ const QuizChoices = ({ choices, solvedCallback, answer }: IQuizChoices) => {
     <>
       {choices.map((choice, index) => (
         <QuizChoiceButton
-          key={index}
+          key={choice}
           onPress={() => onChoice(index)}
           height={
             choices.length === 2

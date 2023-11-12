@@ -2,6 +2,9 @@ import React from "react";
 import BaseButton, { IBaseButton } from "./BaseButton";
 import styled from "styled-components";
 import BaseText from "../Texts/BaseText";
+import RevolvingText from "components/molecules/Texts/RevolvingText";
+import { getWindowSize } from "components/utils";
+import BaseView from "../View/BaseView";
 
 export enum quizBtnState {
   "correct",
@@ -30,12 +33,14 @@ const Btn = styled(BaseButton)<{ state: quizBtnState }>`
       : props.theme.bgColor};
   border-radius: 50px;
   margin-bottom: 15px;
+  padding: 20px;
+  overflow: hidden;
 `;
-const BtnText = styled(BaseText)<{ state: quizBtnState }>`
-  color: ${(props) =>
-    props.state === quizBtnState.correct || props.state === quizBtnState.wrong
-      ? "black"
-      : "white"};
+const TextContainer = styled(BaseView)`
+  overflow: hidden;
+  width: 100%;
+  align-items: start;
+  background-color: transparent;
 `;
 const QuizChoiceButton = ({
   index,
@@ -51,11 +56,23 @@ const QuizChoiceButton = ({
       : answer === index
       ? quizBtnState.correct
       : quizBtnState.wrong;
+  const { width } = getWindowSize();
+
   return (
-    <Btn state={state} {...props} style={{ padding: 20 }}>
-      <BtnText state={state} size="small">
-        {choiceText}
-      </BtnText>
+    <Btn state={state} {...props}>
+      <TextContainer>
+        <RevolvingText
+          text={choiceText}
+          fontSize="small"
+          fontStyle={{
+            color:
+              state === quizBtnState.correct || state === quizBtnState.wrong
+                ? "black"
+                : "green",
+          }}
+          containerWidth={Math.ceil(width * 0.9) - 40}
+        />
+      </TextContainer>
     </Btn>
   );
 };
