@@ -8,8 +8,7 @@ interface IQuestionCodeBlock {
   codeBlock: string;
 }
 const CodeContainer = styled(BaseView)`
-  padding: 10px;
-  background-color: ${(props) => props.theme.headerColor};
+  margin-vertical: 10px;
 `;
 const QuestionCodeBlock = ({ codeBlock }: IQuestionCodeBlock) => {
   const { content, language } = extractDataFromCodeTagString(codeBlock);
