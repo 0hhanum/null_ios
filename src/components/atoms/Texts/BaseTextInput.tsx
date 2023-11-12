@@ -6,11 +6,11 @@ import {
   TextInputProps,
 } from "react-native";
 import styled from "styled-components/native";
-import { size } from "./types";
+import { fontSize } from "./types";
 import { getFontSize } from "./utils";
 
 export interface IBaseTextInput extends TextInputProps {
-  size?: number | size;
+  size?: fontSize;
   textInputRef?: React.MutableRefObject<TextInput>;
 }
 const StyledTextInput = styled.TextInput<{

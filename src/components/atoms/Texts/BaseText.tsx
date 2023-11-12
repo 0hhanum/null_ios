@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
-import { size } from "./types";
+import { fontSize } from "./types";
 import { getFontSize } from "./utils";
 import { TextProps } from "react-native";
 
 interface IText extends TextProps {
-  size?: number | size;
+  size?: fontSize;
   children: string | string[];
 }
 

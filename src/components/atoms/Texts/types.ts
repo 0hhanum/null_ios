@@ -1,1 +1,2 @@
-export type size = "large" | "medium" | "small";
+type fontSizeType = "large" | "medium" | "small";
+export type fontSize = fontSizeType | number;
