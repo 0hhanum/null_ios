@@ -9959,6 +9959,11 @@ react-native-syntax-highlighter@^2.1.0:
   dependencies:
     react-syntax-highlighter "^6.0.4"
 
+react-native-text-dimensions@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-text-dimensions/-/react-native-text-dimensions-2.0.2.tgz#fd68adcdb2c3b32b202b2bbc8317a52e8db324be"
+  integrity sha512-Z1diJ+OFL6Mg4poB2bRuXiJqCZI7kVuZyoRaFBPecRwv14aud/iXvunjHPA5Xjc4ezXydwCjxhm/Oh3SWDX05Q==
+
 react-native-web@~0.19.6:
   version "0.19.7"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.19.7.tgz#feac895c1390c91072cbfb53272f3bb92227ca3c"
