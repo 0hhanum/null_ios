@@ -21,7 +21,7 @@ const StyledTextInput = styled.TextInput<{
   border-bottom-color: ${(props) =>
     props.isFocused ? props.theme.green : props.theme.textColor};
   border-radius: 5px;
-  font-size: ${({ size }) => getSize(size)};
+  font-size: ${({ size }) => `${getSize(size)}px`};
   padding: 8px;
   color: ${(props) => props.theme.textColor};
   width: auto;

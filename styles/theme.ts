@@ -21,9 +21,9 @@ export const defaultTheme: DefaultTheme = {
   warning: "#DC3535",
   variables: {
     fontSize: {
-      small: +(FONT_SIZE_SMALL * (width / BASIC_DIMENSION.width)).toFixed(1),
-      medium: +(FONT_SIZE_MEDIUM * (width / BASIC_DIMENSION.width)).toFixed(1),
-      large: +(FONT_SIZE_LARGE * (width / BASIC_DIMENSION.width)).toFixed(1),
+      small: Math.ceil(FONT_SIZE_SMALL * (width / BASIC_DIMENSION.width)),
+      medium: Math.ceil(FONT_SIZE_MEDIUM * (width / BASIC_DIMENSION.width)),
+      large: Math.ceil(FONT_SIZE_LARGE * (width / BASIC_DIMENSION.width)),
     },
     layoutPadding: 20,
   },

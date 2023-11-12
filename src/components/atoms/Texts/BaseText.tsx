@@ -11,7 +11,7 @@ interface IText extends TextProps {
 
 const Text = styled.Text<{ size: IText["size"] }>`
   color: ${(props) => props.theme.textColor};
-  font-size: ${({ size }) => getSize(size)};
+  font-size: ${({ size }) => `${getSize(size)}px`};
 `;
 
 const BaseText: React.FC<IText> = ({ size, children, ...props }) => {
