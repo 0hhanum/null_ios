@@ -1,6 +1,5 @@
 import BaseView from "components/atoms/View/BaseView";
 import React from "react";
-import { View } from "react-native";
 import SyntaxHighlighter from "react-native-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/styles/hljs";
 import styled from "styled-components/native";

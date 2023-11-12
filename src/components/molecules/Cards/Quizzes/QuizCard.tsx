@@ -34,6 +34,7 @@ const CardRightSection = styled.View`
 const TagContainer = styled.View`
   flex-direction: row;
   margin-top: 7px;
+  overflow: hidden;
 `;
 const QuizTitle = styled(BaseText)`
   font-weight: 600;
