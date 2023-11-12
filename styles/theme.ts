@@ -1,5 +1,14 @@
+import { getWindowSize } from "components/utils";
 import { DefaultTheme } from "styled-components/native";
 
+const { width, height } = getWindowSize();
+export const BASIC_DIMENSION = {
+  width: 414,
+  height: 896,
+};
+const FONT_SIZE_SMALL = 16;
+const FONT_SIZE_MEDIUM = 24;
+const FONT_SIZE_LARGE = 36;
 export const defaultTheme: DefaultTheme = {
   bgColor: "black",
   textColor: "white",
@@ -12,10 +21,12 @@ export const defaultTheme: DefaultTheme = {
   warning: "#DC3535",
   variables: {
     fontSize: {
-      small: 16,
-      medium: 24,
-      large: 36,
+      small: +(FONT_SIZE_SMALL * (width / BASIC_DIMENSION.width)).toFixed(1),
+      medium: +(FONT_SIZE_MEDIUM * (width / BASIC_DIMENSION.width)).toFixed(1),
+      large: +(FONT_SIZE_LARGE * (width / BASIC_DIMENSION.width)).toFixed(1),
     },
     layoutPadding: 20,
   },
+  width,
+  height,
 };

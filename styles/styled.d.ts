@@ -20,5 +20,7 @@ declare module "styled-components/native" {
     green: string;
     warning: string;
     variables: IVariable;
+    width: number;
+    height: number;
   }
 }

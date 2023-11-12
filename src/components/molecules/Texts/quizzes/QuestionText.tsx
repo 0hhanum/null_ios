@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import QuestionCodeBlock from "./QuestionCodeBlock";
 import styled from "styled-components/native";
 import BaseText from "components/atoms/Texts/BaseText";
