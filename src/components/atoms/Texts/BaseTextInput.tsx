@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 import { size } from "./types";
-import { getSize } from "./utils";
+import { getFontSize } from "./utils";
 
 export interface IBaseTextInput extends TextInputProps {
   size?: number | size;
@@ -21,7 +21,7 @@ const StyledTextInput = styled.TextInput<{
   border-bottom-color: ${(props) =>
     props.isFocused ? props.theme.green : props.theme.textColor};
   border-radius: 5px;
-  font-size: ${({ size }) => `${getSize(size)}px`};
+  font-size: ${({ size }) => `${getFontSize(size)}px`};
   padding: 8px;
   color: ${(props) => props.theme.textColor};
   width: auto;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import { size } from "./types";
-import { getSize } from "./utils";
+import { getFontSize } from "./utils";
 import { TextProps } from "react-native";
 
 interface IText extends TextProps {
@@ -11,7 +11,7 @@ interface IText extends TextProps {
 
 const Text = styled.Text<{ size: IText["size"] }>`
   color: ${(props) => props.theme.textColor};
-  font-size: ${({ size }) => `${getSize(size)}px`};
+  font-size: ${({ size }) => `${getFontSize(size)}px`};
 `;
 
 const BaseText: React.FC<IText> = ({ size, children, ...props }) => {
