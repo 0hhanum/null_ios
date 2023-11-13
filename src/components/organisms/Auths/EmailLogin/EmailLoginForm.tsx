@@ -1,6 +1,6 @@
 import BaseText from "components/atoms/Texts/BaseText";
 import BaseView from "components/atoms/View/BaseView";
-import LabeledTextInput from "components/molecules/Texts/LabeledTextInput";
+import LabeledBorderEffectTextInput from "components/molecules/Texts/LabeledBorderEffectTextInput";
 import React, { useEffect, useRef } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { TextInput } from "react-native";
@@ -37,7 +37,7 @@ const EmailLoginForm = () => {
           required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-          <LabeledTextInput
+          <LabeledBorderEffectTextInput
             textInputRef={emailInputRef}
             label="메일"
             placeholder="이메일을 입력하세요."
@@ -72,7 +72,7 @@ const EmailLoginForm = () => {
           required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-          <LabeledTextInput
+          <LabeledBorderEffectTextInput
             textInputRef={passwordInputRef}
             label="PW"
             placeholder="비밀번호를 입력하세요."

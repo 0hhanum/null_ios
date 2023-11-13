@@ -2,14 +2,15 @@ import React from "react";
 import { BaseViewContainer } from "components/atoms/View/BaseView";
 import styled from "styled-components/native";
 import BaseText from "components/atoms/Texts/BaseText";
-import BaseTextInput, {
-  IBaseTextInput,
-} from "components/atoms/Texts/BaseTextInput";
+import BorderEffectTextInput, {
+  IBorderEffectTextInput,
+} from "components/atoms/Texts/BorderEffectTextInput";
+import { TextStyle } from "react-native";
 
-interface ILabeledTextInput extends IBaseTextInput {
+interface ILabeledBorderEffectTextInput extends IBorderEffectTextInput {
   label: string;
   containerStyle?: React.CSSProperties;
-  labelStyle?: React.CSSProperties;
+  labelStyle?: TextStyle;
 }
 const Container = styled(BaseViewContainer)`
   flex-direction: row;
@@ -19,21 +20,21 @@ const Container = styled(BaseViewContainer)`
 const Separator = styled.View`
   width: 10px;
 `;
-const LabeledTextInput = ({
+const LabeledBorderEffectTextInput = ({
   label,
   containerStyle,
   labelStyle,
   size,
   textInputRef,
   ...props
-}: ILabeledTextInput) => {
+}: ILabeledBorderEffectTextInput) => {
   return (
     <Container style={containerStyle}>
       <BaseText style={labelStyle} size={size}>
         {label}
       </BaseText>
       <Separator />
-      <BaseTextInput
+      <BorderEffectTextInput
         {...props}
         size={size}
         textInputRef={textInputRef}
@@ -43,4 +44,4 @@ const LabeledTextInput = ({
   );
 };
 
-export default LabeledTextInput;
+export default LabeledBorderEffectTextInput;
