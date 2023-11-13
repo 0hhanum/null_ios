@@ -3,7 +3,7 @@ import React from "react";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import styled from "styled-components/native";
 import QuizQuestionCard from "components/molecules/Cards/Quizzes/QuizQuestionCard";
-import QuizChoices from "components/organisms/Quizzes/Games/QuizChoices";
+import QuizChoices from "components/organisms/Quizzes/Games/ObjectiveQuizzes/QuizChoices";
 import QuestionContainer from "components/atoms/Quizzes/S.QuestionContainer";
 
 const ChoicesContainer = styled(BaseView)`
