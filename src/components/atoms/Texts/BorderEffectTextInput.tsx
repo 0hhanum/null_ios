@@ -40,12 +40,18 @@ const BorderEffectTextInput = ({
       props.onBlur(e);
     }
   };
+  const handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    setIsFocused(true);
+    if (props.onFocus !== undefined) {
+      props.onFocus(e);
+    }
+  };
   return (
     <Input
       {...props}
       size={size || "medium"}
       isFocused={isFocused}
-      onFocus={() => setIsFocused(true)}
+      onFocus={handleFocus}
       onBlur={handleBlur}
       ref={textInputRef}
     />
