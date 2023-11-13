@@ -3,14 +3,10 @@ import React from "react";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import styled from "styled-components/native";
 import QuizQuestionCard from "components/molecules/Cards/Quizzes/QuizQuestionCard";
-import QuizChoices from "components/molecules/Buttons/Quizzes/QuizChoices";
+import QuizChoices from "components/organisms/Quizzes/Games/QuizChoices";
+import QuestionContainer from "components/atoms/Quizzes/S.QuestionContainer";
 
-const QuestionContainer = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 30px;
-`;
-const ChoicesContainer = styled.View`
+const ChoicesContainer = styled(BaseView)`
   margin-top: 40px;
 `;
 const ObjectiveQuiz = ({ quiz, solvedCallback }: IQuizGame) => {
