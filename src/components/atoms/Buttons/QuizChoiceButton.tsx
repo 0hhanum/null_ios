@@ -1,7 +1,6 @@
 import React from "react";
 import BaseButton, { IBaseButton } from "./BaseButton";
-import styled from "styled-components";
-import BaseText from "../Texts/BaseText";
+import styled, { useTheme } from "styled-components";
 import RevolvingText from "components/molecules/Texts/RevolvingText";
 import { getWindowSize } from "components/utils";
 import BaseView from "../View/BaseView";
@@ -57,7 +56,7 @@ const QuizChoiceButton = ({
       ? quizBtnState.correct
       : quizBtnState.wrong;
   const { width } = getWindowSize();
-
+  const theme = useTheme();
   return (
     <Btn state={state} {...props}>
       <TextContainer>
@@ -68,7 +67,7 @@ const QuizChoiceButton = ({
             color:
               state === quizBtnState.correct || state === quizBtnState.wrong
                 ? "black"
-                : "green",
+                : theme.questionTextColor,
           }}
           containerWidth={Math.ceil(width * 0.9) - 40}
         />

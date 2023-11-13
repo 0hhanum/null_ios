@@ -18,9 +18,13 @@ const Container = styled(BaseView)`
 const DescriptionText = styled(BaseText)`
   margin-bottom: 10px;
 `;
-const SolvedMessage = styled(BaseText)`
+const SolvedMessage = styled(BaseText)<{ state: quizState }>`
   margin-bottom: 25px;
   text-align: center;
+  color: ${(props) =>
+    props.state === quizState.solved
+      ? props.theme.questionTextColor
+      : "tomato"};
 `;
 
 const QuizSolvedPopupDescription = ({
@@ -32,7 +36,7 @@ const QuizSolvedPopupDescription = ({
   return (
     <Container>
       <ScrollView>
-        <SolvedMessage>{message}</SolvedMessage>
+        <SolvedMessage state={state}>{message}</SolvedMessage>
         {description.map((desc, index) => (
           <DescriptionText size="small" key={index}>
             • {desc}
