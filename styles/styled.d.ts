@@ -22,5 +22,7 @@ declare module "styled-components/native" {
     variables: IVariable;
     width: number;
     height: number;
+    widthRatio: number;
+    heightRatio: number;
   }
 }

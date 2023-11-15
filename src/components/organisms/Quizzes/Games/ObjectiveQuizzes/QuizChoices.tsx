@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import QuizChoiceButton from "components/atoms/Buttons/QuizChoiceButton";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import { quizState } from "types/quizzes/quizTypes";
+import { getWindowRatio } from "components/utils";
 
 interface IQuizChoices {
   choices: string[];
@@ -14,10 +15,10 @@ enum ANSWERS {
   "C",
   "D",
 }
-const BUTTON_SIZE_TWO_ELEMENTS = 120;
-const BUTTON_SIZE_FOUR_ELEMENTS = 60;
+const { heightRatio } = getWindowRatio();
+const BUTTON_HEIGHT_TWO_ELEMENTS = 120 * heightRatio;
+const BUTTON_HEIGHT_FOUR_ELEMENTS = 60 * heightRatio;
 const SOLVED_CALLBACK_DELAY = 0;
-
 const QuizChoices = ({ choices, solvedCallback, answer }: IQuizChoices) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(null);
   useEffect(() => {
@@ -43,8 +44,8 @@ const QuizChoices = ({ choices, solvedCallback, answer }: IQuizChoices) => {
           onPress={() => onChoice(index)}
           height={
             choices.length === 2
-              ? BUTTON_SIZE_TWO_ELEMENTS
-              : BUTTON_SIZE_FOUR_ELEMENTS
+              ? BUTTON_HEIGHT_TWO_ELEMENTS
+              : BUTTON_HEIGHT_FOUR_ELEMENTS
           }
           choiceText={choice}
           index={index}

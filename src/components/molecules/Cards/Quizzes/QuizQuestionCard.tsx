@@ -10,8 +10,8 @@ interface IQuizQuestionCard {
   question: string[];
 }
 const Container = styled(VCenterView)`
-  width: ${(props) => `${Math.floor(props.width)}px`};
-  height: ${(props) => `${Math.floor(props.width * 1.1)}px`};
+  width: ${(props) => `${Math.floor(props.theme.width)}px`};
+  height: ${(props) => `${Math.floor(props.theme.height * 0.5)}px`};
   background-color: ${(props) => props.theme.headerColor};
   border-radius: 40px;
   padding: 20px;
@@ -30,10 +30,9 @@ const TextContainer = styled.View`
 `;
 
 const QuizQuestionCard = ({ question }: IQuizQuestionCard) => {
-  const { width } = getWindowSize();
   const navigation = useNavigation();
   return (
-    <Container width={width}>
+    <Container>
       <ScrollContainer>
         {question.map((text, index) => (
           <TextContainer key={index}>

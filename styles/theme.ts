@@ -1,8 +1,9 @@
-import { getWindowSize } from "components/utils";
+import { getWindowRatio, getWindowSize } from "components/utils";
 import { DefaultTheme } from "styled-components/native";
 
 const { width, height } = getWindowSize();
-export const BASIC_DIMENSION = {
+const { widthRatio, heightRatio } = getWindowRatio();
+export const BASE_DIMENSION = {
   width: 414,
   height: 896,
 };
@@ -21,12 +22,14 @@ export const defaultTheme: DefaultTheme = {
   warning: "#DC3535",
   variables: {
     fontSize: {
-      small: Math.ceil(FONT_SIZE_SMALL * (width / BASIC_DIMENSION.width)),
-      medium: Math.ceil(FONT_SIZE_MEDIUM * (width / BASIC_DIMENSION.width)),
-      large: Math.ceil(FONT_SIZE_LARGE * (width / BASIC_DIMENSION.width)),
+      small: Math.ceil(FONT_SIZE_SMALL * (width / BASE_DIMENSION.width)),
+      medium: Math.ceil(FONT_SIZE_MEDIUM * (width / BASE_DIMENSION.width)),
+      large: Math.ceil(FONT_SIZE_LARGE * (width / BASE_DIMENSION.width)),
     },
     layoutPadding: 20,
   },
   width,
   height,
+  widthRatio,
+  heightRatio,
 };

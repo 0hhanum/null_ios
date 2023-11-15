@@ -14,6 +14,7 @@ const Container = styled.TouchableHighlight`
   height: 80px;
   margin-bottom: 15px;
   border-radius: 5px;
+  width: 100%;
 `;
 const Card = styled.View`
   flex: 1;

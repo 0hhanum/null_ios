@@ -14,7 +14,7 @@ interface IRevolvingText {
 const REVOLVING_PADDING = 15;
 const REVOLVING_DURATION = 2000;
 const RContainer = styled(BaseAnimatedView)<{ width: number }>`
-  width: ${(props) => `${props.width}px`};
+  width: ${(props) => (props.width ? `${props.width}px` : "200%")};
   flex-direction: row;
   justify-content: center;
   background-color: transparent;

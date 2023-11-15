@@ -32,7 +32,8 @@ const Btn = styled(BaseButton)<{ state: quizBtnState }>`
       : props.theme.bgColor};
   border-radius: 50px;
   margin-bottom: 15px;
-  padding: 20px;
+  padding-horizontal: 20px;
+  padding-vertical: ${(props) => `${props.theme.heightRatio * 10}px`};
   overflow: hidden;
 `;
 const TextContainer = styled(BaseView)`
@@ -69,7 +70,7 @@ const QuizChoiceButton = ({
                 ? "black"
                 : theme.questionTextColor,
           }}
-          containerWidth={Math.ceil(width * 0.9) - 40}
+          containerWidth={width * 0.9 - 40}
         />
       </TextContainer>
     </Btn>
