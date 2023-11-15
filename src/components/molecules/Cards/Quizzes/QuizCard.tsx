@@ -20,7 +20,7 @@ const Card = styled.View`
   flex: 1;
   border-radius: 5px;
   border-style: solid;
-  border-width: 0.5px;
+  border-width: 0.8px;
   border-color: ${(props) => props.theme.borderColor};
   padding: 10px;
   flex-direction: row;

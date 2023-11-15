@@ -4,9 +4,9 @@ import { getWindowRatio } from "components/utils";
 
 export const getFontSize = (size: fontSize) => {
   const theme = useTheme();
-  const { widthRatio } = getWindowRatio();
+  const { heightRatio } = getWindowRatio();
   if (typeof size === "number") {
-    return Math.ceil(size * widthRatio);
+    return Math.ceil(size * heightRatio);
   }
   return theme.variables.fontSize[size];
 };

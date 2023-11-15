@@ -4,6 +4,7 @@ import BaseText from "components/atoms/Texts/BaseText";
 import { Image } from "expo-image";
 import { View } from "react-native";
 import { category } from "types/quizzes/quizTypes";
+import { getWindowRatio, getWindowSize } from "components/utils";
 
 interface IWidgetComponent {
   category: category;
@@ -16,6 +17,7 @@ interface IWidget {
   iconPath?: string;
 }
 type widgets = Record<category, IWidget>;
+const LARGE_TEXT_THRESHOLD = 800;
 const widgets: widgets = {
   fe: {
     bgColor: "white",
@@ -39,12 +41,20 @@ const widgets: widgets = {
 };
 const Widget = ({ category, cardType }: IWidgetComponent) => {
   const { name, bgColor, textColor, iconPath } = widgets[category];
+  const { heightRatio } = getWindowRatio();
+  const { height } = getWindowSize();
   return (
     <BaseCard bgColor={bgColor} cardType={cardType}>
-      <View style={{ position: "absolute", bottom: 5, right: 20 }}>
+      <View
+        style={{ position: "absolute", bottom: 5 * heightRatio, right: 20 }}
+      >
         {iconPath ? (
           <Image
-            style={{ width: 80, height: 80, bottom: 10 }}
+            style={{
+              width: 80,
+              height: 80,
+              bottom: height > LARGE_TEXT_THRESHOLD ? 10 * heightRatio : 0,
+            }}
             source={iconPath}
           />
         ) : (

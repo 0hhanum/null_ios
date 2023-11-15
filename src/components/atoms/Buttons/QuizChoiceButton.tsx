@@ -33,7 +33,7 @@ const Btn = styled(BaseButton)<{ state: quizBtnState }>`
   border-radius: 50px;
   margin-bottom: 15px;
   padding-horizontal: 20px;
-  padding-vertical: ${(props) => `${props.theme.heightRatio * 10}px`};
+  padding-vertical: ${(props) => `${props.theme.heightRatio * 12}px`};
   overflow: hidden;
 `;
 const TextContainer = styled(BaseView)`

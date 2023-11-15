@@ -2,19 +2,16 @@ import BaseView from "components/atoms/View/BaseView";
 import React from "react";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import styled from "styled-components/native";
-import QuizQuestionCard from "components/molecules/Cards/Quizzes/QuizQuestionCard";
 import QuizChoices from "components/organisms/Quizzes/Games/ObjectiveQuizzes/QuizChoices";
-import QuestionContainer from "components/atoms/Quizzes/S.QuestionContainer";
+import QuestionContainer from "../QuizQuestionContainer";
 
 const ChoicesContainer = styled(BaseView)`
-  margin-top: 40px;
+  margin-top: ${(props) => `${50 * props.theme.heightRatio}px`};
 `;
 const ObjectiveQuiz = ({ quiz, solvedCallback }: IQuizGame) => {
   return (
-    <BaseView>
-      <QuestionContainer>
-        <QuizQuestionCard question={quiz.question} />
-      </QuestionContainer>
+    <>
+      <QuestionContainer question={quiz.question} />
       <ChoicesContainer>
         <QuizChoices
           solvedCallback={solvedCallback}
@@ -22,7 +19,7 @@ const ObjectiveQuiz = ({ quiz, solvedCallback }: IQuizGame) => {
           answer={quiz.answer[0]}
         />
       </ChoicesContainer>
-    </BaseView>
+    </>
   );
 };
 
