@@ -169,24 +169,28 @@ const LETTER_LIST_EN = [
   "Y",
   "Z",
 ];
+const LETTER_LIST_NUM = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const KEYS_COUNT = 21;
+const NUM_COUNT = 10;
 
 const getRandomIndex = (number) => Math.floor(Math.random() * number);
-const 한글_판별 = (text: string) => {
-  const koreanRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-  return koreanRegex.test(text);
-};
+
+const checkIsKorean = (text: string): boolean =>
+  /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(text);
+const checkIsNumber = (text: string): boolean => /[0-9]/.test(text);
 
 export const getRandomLetters = (answer: string): string[] => {
   const resultSet = new Set(answer.split(""));
-  const isKorean = 한글_판별(answer);
+  const isKorean = checkIsKorean(answer);
+  const isNumber = checkIsNumber(answer);
+  const keyCount = isNumber ? KEYS_COUNT - NUM_COUNT : KEYS_COUNT;
   const letterList = isKorean ? LETTER_LIST_KO : LETTER_LIST_EN;
-  while (resultSet.size < KEYS_COUNT) {
+  while (resultSet.size < keyCount) {
     const randomIndex = getRandomIndex(letterList.length);
     resultSet.add(letterList[randomIndex]);
   }
   const shuffledResult = [...resultSet].sort(() =>
     Math.random() > 0.5 ? 1 : -1
   );
-  return shuffledResult;
+  return isNumber ? [...LETTER_LIST_NUM, ...shuffledResult] : shuffledResult;
 };
