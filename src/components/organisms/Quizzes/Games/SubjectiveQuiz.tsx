@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components/native";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import AnswerSection from "./SubjectiveQuizzes/AnswerSection";
-import QuestionContainer from "../QuizQuestionContainer";
+import QuizQuestionCard from "components/molecules/Cards/Quizzes/QuizQuestionCard";
 
 const AnswerInputContainer = styled(BaseView)`
   margin-top: 15px;
@@ -12,7 +12,7 @@ const AnswerInputContainer = styled(BaseView)`
 const SubjectiveQuiz = ({ quiz, solvedCallback }: IQuizGame) => {
   return (
     <>
-      <QuestionContainer question={quiz.question} />
+      <QuizQuestionCard question={quiz.question} />
       <AnswerInputContainer>
         <AnswerSection
           solvedCallback={solvedCallback}

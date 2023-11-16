@@ -3,7 +3,7 @@ import React from "react";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import styled from "styled-components/native";
 import QuizChoices from "components/organisms/Quizzes/Games/ObjectiveQuizzes/QuizChoices";
-import QuestionContainer from "../QuizQuestionContainer";
+import QuizQuestionCard from "components/molecules/Cards/Quizzes/QuizQuestionCard";
 
 const ChoicesContainer = styled(BaseView)`
   margin-top: ${(props) => `${50 * props.theme.heightRatio}px`};
@@ -11,7 +11,7 @@ const ChoicesContainer = styled(BaseView)`
 const ObjectiveQuiz = ({ quiz, solvedCallback }: IQuizGame) => {
   return (
     <>
-      <QuestionContainer question={quiz.question} />
+      <QuizQuestionCard question={quiz.question} />
       <ChoicesContainer>
         <QuizChoices
           solvedCallback={solvedCallback}
