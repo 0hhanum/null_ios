@@ -26,7 +26,9 @@ const InputTextContainer = styled(BaseView)`
   justify-content: center;
   align-items: center;
 `;
-const InputText = styled(BaseText)``;
+const InputText = styled(BaseText)`
+  position: absolute;
+`;
 
 const AnswerSection = ({
   solvedCallback,
