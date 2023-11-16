@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components/native";
 import VCenterView from "components/atoms/View/VCenterView";
 import TrafficLight from "components/molecules/TrafficLights/TrafficLight";
-import QuestionText from "components/molecules/Texts/quizzes/QuestionText";
 import { useNavigation } from "@react-navigation/native";
 import BaseView from "components/atoms/View/BaseView";
 
 interface IQuizQuestionCard {
-  question: string[];
+  QuestionTextComponent: React.JSX.Element;
 }
 const Container = styled(BaseView)`
   flex-direction: row;
@@ -31,16 +30,12 @@ const TrafficLightContainer = styled.Pressable`
   left: 22px;
 `;
 
-const QuizQuestionCard = ({ question }: IQuizQuestionCard) => {
+const QuizQuestionCard = ({ QuestionTextComponent }: IQuizQuestionCard) => {
   const navigation = useNavigation();
   return (
     <Container>
       <CardContainer>
-        <ScrollContainer>
-          {question.map((text, index) => (
-            <QuestionText text={text} key={index} />
-          ))}
-        </ScrollContainer>
+        <ScrollContainer>{QuestionTextComponent}</ScrollContainer>
         <TrafficLightContainer onPress={() => navigation.goBack()}>
           <TrafficLight />
         </TrafficLightContainer>

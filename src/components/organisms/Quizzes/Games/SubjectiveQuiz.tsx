@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import AnswerSection from "./SubjectiveQuizzes/AnswerSection";
 import QuizQuestionCard from "components/molecules/Cards/Quizzes/QuizQuestionCard";
+import QuestionTexts from "components/molecules/Texts/quizzes/QuestionTexts";
 
 const AnswerInputContainer = styled(BaseView)`
   margin-top: 15px;
@@ -12,7 +13,9 @@ const AnswerInputContainer = styled(BaseView)`
 const SubjectiveQuiz = ({ quiz, solvedCallback }: IQuizGame) => {
   return (
     <>
-      <QuizQuestionCard question={quiz.question} />
+      <QuizQuestionCard
+        QuestionTextComponent={<QuestionTexts question={quiz.question} />}
+      />
       <AnswerInputContainer>
         <AnswerSection
           solvedCallback={solvedCallback}

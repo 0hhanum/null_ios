@@ -4,6 +4,7 @@ import { IQuizGame } from "types/quizzes/quizGameType";
 import styled from "styled-components/native";
 import QuizChoices from "components/organisms/Quizzes/Games/ObjectiveQuizzes/QuizChoices";
 import QuizQuestionCard from "components/molecules/Cards/Quizzes/QuizQuestionCard";
+import QuestionTexts from "components/molecules/Texts/quizzes/QuestionTexts";
 
 const ChoicesContainer = styled(BaseView)`
   margin-top: ${(props) => `${50 * props.theme.heightRatio}px`};
@@ -11,7 +12,9 @@ const ChoicesContainer = styled(BaseView)`
 const ObjectiveQuiz = ({ quiz, solvedCallback }: IQuizGame) => {
   return (
     <>
-      <QuizQuestionCard question={quiz.question} />
+      <QuizQuestionCard
+        QuestionTextComponent={<QuestionTexts question={quiz.question} />}
+      />
       <ChoicesContainer>
         <QuizChoices
           solvedCallback={solvedCallback}
