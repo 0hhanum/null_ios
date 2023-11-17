@@ -4,7 +4,7 @@ import { fontSize } from "./types";
 import { getFontSize } from "./utils";
 import { TextProps } from "react-native";
 
-interface IText extends TextProps {
+export interface IText extends TextProps {
   size?: fontSize;
   children: string | string[];
 }
