@@ -2,7 +2,7 @@ import BaseView from "components/atoms/View/BaseView";
 import React from "react";
 import { IQuizGame } from "types/quizzes/quizGameType";
 import styled from "styled-components/native";
-import QuizChoices from "components/organisms/Quizzes/Games/ObjectiveQuizzes/QuizChoices";
+import ObjectiveQuizChoices from "components/organisms/Quizzes/Games/ObjectiveQuizzes/ObjectiveQuizChoices";
 import QuizQuestionCard from "components/molecules/Cards/Quizzes/QuizQuestionCard";
 import QuestionTexts from "components/molecules/Texts/quizzes/QuestionTexts";
 
@@ -16,7 +16,7 @@ const ObjectiveQuiz = ({ quiz, solvedCallback }: IQuizGame) => {
         QuestionTextComponent={<QuestionTexts question={quiz.question} />}
       />
       <ChoicesContainer>
-        <QuizChoices
+        <ObjectiveQuizChoices
           solvedCallback={solvedCallback}
           choices={quiz.choices as string[]}
           answer={quiz.answer[0]}

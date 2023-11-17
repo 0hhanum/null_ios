@@ -1,33 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import BaseButton, { IBaseButton } from "./BaseButton";
 import styled, { useTheme } from "styled-components";
 import RevolvingText from "components/molecules/Texts/RevolvingText";
 import { getWindowSize } from "components/utils";
 import BaseView from "../View/BaseView";
+import { quizState } from "types/quizzes/quizTypes";
 
-export enum quizBtnState {
-  "correct",
-  "wrong",
-  "default",
-}
 interface IQuizChoiceButton extends IBaseButton {
-  answer: number;
-  index: number;
-  selectedIndex: number;
+  answer: string;
   choiceText: string;
+  onChoice: () => void;
 }
-const Btn = styled(BaseButton)<{ state: quizBtnState }>`
+const Btn = styled(BaseButton)<{ state: quizState }>`
   border: 0.2px;
   border-color: ${(props) =>
-    props.state === quizBtnState.correct
+    props.state === quizState.solved
       ? props.theme.green
-      : props.state === quizBtnState.wrong
+      : props.state === quizState.wrong
       ? props.theme.warning
       : props.theme.textColor};
   background-color: ${(props) =>
-    props.state === quizBtnState.correct
+    props.state === quizState.solved
       ? props.theme.green
-      : props.state === quizBtnState.wrong
+      : props.state === quizState.wrong
       ? props.theme.warning
       : props.theme.bgColor};
   border-radius: 50px;
@@ -43,32 +38,32 @@ const TextContainer = styled(BaseView)`
   background-color: transparent;
 `;
 const QuizChoiceButton = ({
-  index,
-  selectedIndex,
   choiceText,
   answer,
-  children,
+  onChoice,
   ...props
 }: IQuizChoiceButton) => {
-  const state =
-    index !== selectedIndex
-      ? quizBtnState.default
-      : answer === index
-      ? quizBtnState.correct
-      : quizBtnState.wrong;
-  const { width } = getWindowSize();
   const theme = useTheme();
+  const [selected, setSelected] = useState(false);
+  const state: quizState = selected
+    ? choiceText === answer
+      ? quizState.solved
+      : quizState.wrong
+    : null;
+  const fontColor = state === null ? theme.questionTextColor : "black";
+  const { width } = getWindowSize();
+  const onPress = () => {
+    setSelected(true);
+    onChoice();
+  };
   return (
-    <Btn state={state} {...props}>
+    <Btn state={state} onPress={onPress} {...props}>
       <TextContainer>
         <RevolvingText
           text={choiceText}
           fontSize="small"
           fontStyle={{
-            color:
-              state === quizBtnState.correct || state === quizBtnState.wrong
-                ? "black"
-                : theme.questionTextColor,
+            color: fontColor,
           }}
           containerWidth={width * 0.9 - 40}
         />
