@@ -5,6 +5,7 @@ import RevolvingText from "components/molecules/Texts/RevolvingText";
 import { getWindowSize } from "components/utils";
 import BaseView from "../View/BaseView";
 import { quizState } from "types/quizzes/quizTypes";
+import { getQuizChoiceBtnColor } from "./util";
 
 interface IQuizChoiceButton extends IBaseButton {
   answer: string;
@@ -13,18 +14,9 @@ interface IQuizChoiceButton extends IBaseButton {
 }
 const Btn = styled(BaseButton)<{ state: quizState }>`
   border: 0.2px;
-  border-color: ${(props) =>
-    props.state === quizState.solved
-      ? props.theme.green
-      : props.state === quizState.wrong
-      ? props.theme.warning
-      : props.theme.textColor};
+  border-color: ${(props) => getQuizChoiceBtnColor(props.state, "border")};
   background-color: ${(props) =>
-    props.state === quizState.solved
-      ? props.theme.green
-      : props.state === quizState.wrong
-      ? props.theme.warning
-      : props.theme.bgColor};
+    getQuizChoiceBtnColor(props.state, "background")};
   border-radius: 50px;
   margin-bottom: 15px;
   padding-horizontal: 20px;
