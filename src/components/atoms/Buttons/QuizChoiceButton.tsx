@@ -13,7 +13,7 @@ interface IQuizChoiceButton extends IBaseButton {
   onChoice: () => void;
 }
 const Btn = styled(BaseButton)<{ state: quizState }>`
-  border: 0.2px;
+  border: 0.8px;
   border-color: ${(props) => getQuizChoiceBtnColor(props.state, "border")};
   background-color: ${(props) =>
     getQuizChoiceBtnColor(props.state, "background")};

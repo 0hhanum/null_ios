@@ -9,7 +9,7 @@ interface IAppearAnimationText extends Omit<IText, "children"> {
   text: string;
 }
 
-const ANIMATION_DURATION = 250;
+export const APPEAR_TEXT_ANIMATION_DURATION = 250;
 const TextContainer = styled(BaseView)`
   flex-wrap: wrap;
   flex-direction: row;
@@ -22,7 +22,7 @@ const Text = styled(BaseAnimatedText)`
 `;
 const animateText = (animatedVal: Animated.Value) =>
   Animated.timing(animatedVal, {
-    duration: ANIMATION_DURATION,
+    duration: APPEAR_TEXT_ANIMATION_DURATION,
     toValue: 1,
     useNativeDriver: true,
   });
