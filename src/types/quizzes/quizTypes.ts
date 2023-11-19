@@ -20,3 +20,10 @@ export interface IQuiz {
   isBookmarked: boolean;
   description: string[];
 }
+
+export enum answerEnum {
+  "A",
+  "B",
+  "C",
+  "D",
+}
