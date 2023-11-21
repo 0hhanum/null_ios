@@ -17,12 +17,12 @@ const AnimatedPath = styled(Animated.createAnimatedComponent(Path))``;
 
 const OXButton = ({ onPress, OX, animatedColorValue }: IOXButton) => {
   const theme = useTheme();
-  const heightRatio = theme.heightRatio;
+  const widthRatio = theme.widthRatio;
   return (
     <Pressable onPress={onPress}>
       <Svg
-        width={OX_SVG_ICON_SIZE * heightRatio}
-        height={OX_SVG_ICON_SIZE * heightRatio}
+        width={OX_SVG_ICON_SIZE * widthRatio}
+        height={OX_SVG_ICON_SIZE * widthRatio}
         viewBox="0 0 256 256"
       >
         <AnimatedPath
