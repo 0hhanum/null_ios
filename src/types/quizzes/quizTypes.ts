@@ -27,3 +27,8 @@ export enum answerEnum {
   "C",
   "D",
 }
+
+export enum OXEnum {
+  O = "O",
+  X = "X",
+}
