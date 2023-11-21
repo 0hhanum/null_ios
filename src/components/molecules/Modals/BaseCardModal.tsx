@@ -1,17 +1,19 @@
 import React from "react";
 import BaseModal, { IBaseModal } from "components/atoms/Modals/BaseModal";
 import BaseCard from "../Cards/BaseCard";
-import { DimensionValue } from "react-native";
+import { DimensionValue, ViewStyle } from "react-native";
 
 interface IBaseCardModal extends IBaseModal {
   height?: DimensionValue;
   width?: DimensionValue;
+  cardStyle?: ViewStyle;
 }
 
 const BaseCardModal = ({
   children,
   width,
   height,
+  cardStyle,
   ...props
 }: IBaseCardModal) => {
   return (
@@ -27,6 +29,7 @@ const BaseCardModal = ({
           elevation: 2,
           height,
           ...(width !== undefined && { width }), // Include width if it is defined
+          ...cardStyle,
         }}
       >
         {children}

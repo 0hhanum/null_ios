@@ -15,7 +15,7 @@ const BUTTON_HEIGHT = 55;
 const Container = styled(BaseView)`
   width: 90%;
   flex: 1;
-  background-color: ${(props) => props.theme.headerColor};
+  background-color: transparent;
   margin-top: 10px;
   justify-content: center;
   flex-direction: column;

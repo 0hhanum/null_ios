@@ -7,6 +7,7 @@ import { IQuiz, quizState } from "types/quizzes/quizTypes";
 import QuizAnswerDetailModal from "./QuizAnswerDetailModal";
 import QuizSolvedPopupDescription from "components/molecules/Texts/quizzes/QuizSolvedPopupDescription";
 import QuizSolvedPopupButtons from "components/molecules/Buttons/Quizzes/QuizSolvedPopupButtons";
+import { useTheme } from "styled-components";
 
 interface QuizSolvedPopup {
   solvedPopupConfirmCallback: () => void;
@@ -31,6 +32,7 @@ const QuizSolvedPopup = ({
   quizId,
   isBookmarked,
 }: QuizSolvedPopup) => {
+  const theme = useTheme();
   const [popupToggle, setPopupToggle] = useState(true);
   const showAnswerDetail = () => {
     setPopupToggle(false);
@@ -41,6 +43,13 @@ const QuizSolvedPopup = ({
         visible={popupToggle}
         setVisible={(visible) => setPopupToggle(visible)}
         height="70%"
+        cardStyle={{
+          shadowColor:
+            solvedState === quizState.solved ? theme.questionTextColor : "red",
+          shadowOpacity: 0.4,
+          shadowRadius: 35,
+          elevation: 5,
+        }}
       >
         <BookmarkContainer>
           <BookmarkBtn
