@@ -3,31 +3,25 @@ import BaseText from "components/atoms/Texts/BaseText";
 import BaseView from "components/atoms/View/BaseView";
 import QuizCard from "components/molecules/Cards/Quizzes/QuizCard";
 import React from "react";
-import { useRecoilValueLoadable } from "recoil";
+import { RecoilValueReadOnly, useRecoilValueLoadable } from "recoil";
 import { quizzesSelectorByCategory } from "recoil/firebases/quizzes/selector";
 import styled from "styled-components/native";
 import { IQuiz, category, quizState } from "types/quizzes/quizTypes";
 
 interface IQuizListComponent {
-  category: category;
+  onPlay: (quizzes: IQuiz[], selectedQuizIndex: number) => void;
+  selector: RecoilValueReadOnly<IQuiz[]>;
 }
 
 const QuizList = styled.FlatList`
   margin-vertical: 15px;
 `;
-const QuizListComponent = ({ category }: IQuizListComponent) => {
-  const navigation = useNavigation<any>();
-  const quizzes = useRecoilValueLoadable(quizzesSelectorByCategory(category));
+
+const QuizListComponent = ({ onPlay, selector }: IQuizListComponent) => {
+  const quizzes = useRecoilValueLoadable(selector);
   const startQuiz = (selectedQuizIndex: number) => {
     if (quizzes.state !== "hasValue") return;
-    const selectedQuiz = quizzes.contents[selectedQuizIndex];
-    const pendingQuizzes = quizzes.contents
-      .slice(selectedQuizIndex + 1)
-      .filter((quiz: IQuiz) => quiz.state !== quizState.solved);
-    const newQuizzes = [selectedQuiz, ...pendingQuizzes];
-    navigation.navigate("Quiz", {
-      quizzes: newQuizzes,
-    });
+    onPlay(quizzes.contents, selectedQuizIndex);
   };
   if (quizzes.state === "hasValue") {
     return (

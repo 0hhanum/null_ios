@@ -4,19 +4,49 @@ import Widget from "components/molecules/Widgets/Widget";
 import BaseView from "components/atoms/View/BaseView";
 import QuizListBottomBar from "components/organisms/Quizzes/QuizListBottomBar";
 import QuizListComponent from "components/organisms/Quizzes/QuizListComponent";
+import { IQuiz, quizState } from "types/quizzes/quizTypes";
+import { useNavigation } from "@react-navigation/native";
+import { quizzesSelectorByCategory } from "recoil/firebases/quizzes/selector";
 
 const QuizList = ({
   route: {
     params: { category },
   },
 }) => {
+  const navigation = useNavigation<any>();
+
+  const onAutoPlay = (quizzes: IQuiz[]) => {
+    const pendingQuizzes = quizzes.filter(
+      (quiz: IQuiz) => quiz.state !== quizState.solved
+    );
+    navigation.navigate("Quiz", {
+      quizzes: pendingQuizzes.length !== 0 ? pendingQuizzes : quizzes,
+    });
+  };
+  const onSelectedPlay = (quizzes: IQuiz[], selectedQuizIndex: number) => {
+    const selectedQuiz = quizzes[selectedQuizIndex];
+    const pendingQuizzes = quizzes
+      .slice(selectedQuizIndex + 1)
+      .filter((quiz: IQuiz) => quiz.state !== quizState.solved);
+    const newQuizzes = [selectedQuiz, ...pendingQuizzes];
+    navigation.navigate("Quiz", {
+      quizzes: newQuizzes,
+    });
+  };
+  const quizzesCategorySelector = quizzesSelectorByCategory(category);
   return (
     <PageLayout>
       <Widget category={category} cardType="banner" />
       <BaseView style={{ flex: 1 }}>
-        <QuizListComponent category={category} />
+        <QuizListComponent
+          selector={quizzesCategorySelector}
+          onPlay={onSelectedPlay}
+        />
       </BaseView>
-      <QuizListBottomBar category={category} />
+      <QuizListBottomBar
+        onPlay={onAutoPlay}
+        selector={quizzesCategorySelector}
+      />
     </PageLayout>
   );
 };
