@@ -15,7 +15,10 @@ export const setLocalBookmarkSelector = selector({
   set: ({ set }, { quizId, isBookmarked }: ISetLocalBookmarkData) => {
     set(localQuizDataAtom, (current) => {
       const newBookmark = { ...current.bookmarks };
-      newBookmark[quizId] = !isBookmarked;
+      newBookmark[quizId] = {
+        isBookmarked: !isBookmarked,
+        createdAt: Date.now(),
+      };
       return {
         ...current,
         bookmarks: newBookmark,
@@ -30,7 +33,10 @@ export const setLocalQuizStateSelector = selector({
   set: ({ set }, { quizId, state }: ISetLocalQuizData) => {
     set(localQuizDataAtom, (current) => {
       const newQuizzes = { ...current.quizzes };
-      newQuizzes[quizId] = state;
+      newQuizzes[quizId] = {
+        state,
+        createdAt: Date.now(),
+      };
       return {
         ...current,
         quizzes: newQuizzes,

@@ -27,7 +27,8 @@ export const firebaseQuizzesSelectorByCategory = selectorFamily<
             const quiz = await getQuiz(dbRef, quizId);
             quiz.isBookmarked =
               firebaseUserQuizData?.bookmarks?.[quiz.id] || false;
-            quiz.state = firebaseUserQuizData?.quizzes?.[quiz.id] || "pending";
+            quiz.state =
+              firebaseUserQuizData?.quizzes?.[quiz.id]?.state || "pending";
             return quiz;
           })
         );
@@ -67,10 +68,10 @@ export const quizzesSelectorByCategory = selectorFamily<IQuiz[], category>({
           return {
             ...quiz,
             state: localQuizData.quizzes.hasOwnProperty(quiz.id)
-              ? localQuizData.quizzes[quiz.id]
+              ? localQuizData.quizzes[quiz.id].state
               : quiz.state,
             isBookmarked: localQuizData.bookmarks.hasOwnProperty(quiz.id)
-              ? localQuizData.bookmarks[quiz.id]
+              ? localQuizData.bookmarks[quiz.id].isBookmarked
               : quiz.isBookmarked,
           };
         });

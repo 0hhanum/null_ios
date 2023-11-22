@@ -74,7 +74,9 @@ const bookmarkQuiz = (
       if (isBookmarked) {
         await removeFirebaseData(dbRef, path);
       } else {
-        await setFirebaseData(dbRef, path, true);
+        await setFirebaseData(dbRef, path, {
+          createdAt: Date.now(),
+        });
       }
       resolve();
     } catch (e) {
@@ -92,7 +94,10 @@ const changeQuizStateUserData = (
   return new Promise(async (resolve, reject) => {
     try {
       const path = `users/${uuid}/quizzes/${quizId}`;
-      await setFirebaseData(dbRef, path, state);
+      await setFirebaseData(dbRef, path, {
+        state,
+        createAt: Date.now(),
+      });
       resolve();
     } catch (e) {
       console.error("Something wrong with bookmark quiz", e);
