@@ -14,7 +14,6 @@ const QuizList = ({
   },
 }) => {
   const navigation = useNavigation<any>();
-
   const onAutoPlay = (quizzes: IQuiz[]) => {
     const pendingQuizzes = quizzes.filter(
       (quiz: IQuiz) => quiz.state !== quizState.solved
@@ -33,19 +32,19 @@ const QuizList = ({
       quizzes: newQuizzes,
     });
   };
-  const quizzesCategorySelector = quizzesSelectorByCategory(category);
+  const quizzesByCategorySelector = quizzesSelectorByCategory(category);
   return (
     <PageLayout>
       <Widget category={category} cardType="banner" />
       <BaseView style={{ flex: 1 }}>
         <QuizListComponent
-          selector={quizzesCategorySelector}
+          selector={quizzesByCategorySelector}
           onPlay={onSelectedPlay}
         />
       </BaseView>
       <QuizListBottomBar
         onPlay={onAutoPlay}
-        selector={quizzesCategorySelector}
+        selector={quizzesByCategorySelector}
       />
     </PageLayout>
   );

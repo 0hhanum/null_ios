@@ -6,7 +6,7 @@ import {
 } from "firebases/databases/quizzes";
 import { selector, selectorFamily } from "recoil";
 import { userUidAtom } from "recoil/auths/atom";
-import { IQuiz, category } from "types/quizzes/quizTypes";
+import { IQuiz, category, quizState } from "types/quizzes/quizTypes";
 import IFirebaseUserQuizData from "types/quizzes/firebaseUserQuizDataTypes";
 import { localQuizDataAtom } from "recoil/quizzes/atom";
 
@@ -26,9 +26,10 @@ export const firebaseQuizzesSelectorByCategory = selectorFamily<
           quizIdList.map(async (quizId) => {
             const quiz = await getQuiz(dbRef, quizId);
             quiz.isBookmarked =
-              firebaseUserQuizData?.bookmarks?.[quiz.id] || false;
+              firebaseUserQuizData?.bookmarks?.hasOwnProperty(quiz.id) || false;
             quiz.state =
-              firebaseUserQuizData?.quizzes?.[quiz.id]?.state || "pending";
+              firebaseUserQuizData?.quizzes?.[quiz.id]?.state ||
+              quizState.pending;
             return quiz;
           })
         );
@@ -54,6 +55,46 @@ export const firebaseUserQuizDataSelector = selector<IFirebaseUserQuizData>({
   },
 });
 
+export const quizzesSelectorByBookmarked = selector<IQuiz[]>({
+  key: "quizzes",
+  get: async ({ get }) => {
+    const fbUserData = await get(firebaseUserQuizDataSelector);
+    try {
+      const dbRef = ref(getDatabase());
+      const localUserData = get(localQuizDataAtom);
+      const bookmarkObjects = {
+        ...fbUserData.bookmarks,
+        ...localUserData.bookmarks,
+      };
+      const bookmarkList = Object.entries(bookmarkObjects).filter(
+        ([_, bookmarkData]) =>
+          !bookmarkData.hasOwnProperty("isBookmarked") ||
+          (bookmarkData as any).isBookmarked
+      ); // firebase bookmark data는 북마크 취소시 데이터셋을 삭제하기 때문에 isBookmarked 없음. bookmarked 상태인 데이터만 가져옴
+
+      bookmarkList.sort((a, b) => {
+        if (a[1].createdAt < b[1].createdAt) return 1;
+        else return -1;
+      }); // createdAt 순서대로 정렬
+
+      const quizData = Promise.all(
+        bookmarkList.map(async ([quizId]) => {
+          const quiz = await getQuiz(dbRef, quizId);
+          quiz.isBookmarked = true;
+          quiz.state =
+            localUserData?.quizzes[quiz.id]?.state ||
+            fbUserData?.quizzes?.[quiz.id]?.state ||
+            quizState.pending;
+          return quiz;
+        })
+      );
+      return quizData;
+    } catch (e) {
+      console.error("Something wrong with getting quizData", e);
+      return [];
+    }
+  },
+});
 export const quizzesSelectorByCategory = selectorFamily<IQuiz[], category>({
   key: "quizzes",
   get:

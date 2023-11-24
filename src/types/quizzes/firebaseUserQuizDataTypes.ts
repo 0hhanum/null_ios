@@ -1,15 +1,18 @@
-import { category, quizState } from "./quizTypes";
+import { quizState } from "./quizTypes";
 
 interface IBookmarks {
-  [key: string]: boolean;
+  [key: string]: {
+    createdAt: number;
+  };
 }
 interface IQuizzes {
-  [key: string]: quizState;
+  [key: string]: {
+    createdAt: number;
+    state: quizState;
+  };
 }
-type bookmarkType = Partial<Record<category, IBookmarks>>;
-type quizzesType = Partial<Record<category, IQuizzes>>;
 
 export default interface IFirebaseUserQuizData {
-  bookmarks?: bookmarkType;
-  quizzes?: quizzesType;
+  bookmarks?: IBookmarks;
+  quizzes?: IQuizzes;
 }
