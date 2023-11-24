@@ -1,12 +1,10 @@
-import { useNavigation } from "@react-navigation/native";
 import BaseText from "components/atoms/Texts/BaseText";
 import BaseView from "components/atoms/View/BaseView";
 import QuizCard from "components/molecules/Cards/Quizzes/QuizCard";
 import React from "react";
 import { RecoilValueReadOnly, useRecoilValueLoadable } from "recoil";
-import { quizzesSelectorByCategory } from "recoil/firebases/quizzes/selector";
 import styled from "styled-components/native";
-import { IQuiz, category, quizState } from "types/quizzes/quizTypes";
+import { IQuiz } from "types/quizzes/quizTypes";
 
 interface IQuizListComponent {
   onPlay: (quizzes: IQuiz[], selectedQuizIndex: number) => void;
