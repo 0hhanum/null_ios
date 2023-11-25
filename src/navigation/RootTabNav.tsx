@@ -4,11 +4,12 @@ import {
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
 import Home from "../components/pages/rootTabs/Home";
-import Analysis from "../components/pages/rootTabs/Analysis";
 import Bookmark from "../components/pages/rootTabs/Bookmark";
 import { useTheme } from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
 import { Pressable } from "react-native";
+import Wrong from "../components/pages/rootTabs/Wrong";
+import Recent from "components/pages/rootTabs/Recent";
 
 const Tab = createBottomTabNavigator();
 const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
@@ -62,13 +63,24 @@ const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
         }}
       />
       <Tab.Screen
-        name="Analysis"
-        component={Analysis}
+        name="Recent"
+        component={Recent}
         options={{
-          tabBarLabel: "분석",
-          headerTitle: "분석",
+          tabBarLabel: "최근 푼 문제",
+          headerTitle: "복습은 필수",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="barschart" size={18} color={color} />
+            <AntDesign name="clockcircleo" size={18} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Wrong"
+        component={Wrong}
+        options={{
+          tabBarLabel: "오답노트",
+          headerTitle: "재도전 !",
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="edit" size={18} color={color} />
           ),
         }}
       />

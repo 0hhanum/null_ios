@@ -2,12 +2,12 @@ import React from "react";
 import { Text } from "react-native";
 import PageLayout from "../../atoms/View/PageLayout";
 
-const Analysis = () => {
+const Wrong = () => {
   return (
     <PageLayout>
-      <Text>Analysis</Text>
+      <Text>Wrong</Text>
     </PageLayout>
   );
 };
 
-export default Analysis;
+export default Wrong;
