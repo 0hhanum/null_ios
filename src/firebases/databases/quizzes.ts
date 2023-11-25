@@ -96,7 +96,7 @@ const changeQuizStateUserData = (
       const path = `users/${uuid}/quizzes/${quizId}`;
       await setFirebaseData(dbRef, path, {
         state,
-        createAt: Date.now(),
+        createdAt: Date.now(),
       });
       resolve();
     } catch (e) {
