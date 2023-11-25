@@ -56,7 +56,7 @@ export const firebaseUserQuizDataSelector = selector<IFirebaseUserQuizData>({
 });
 
 export const quizzesSelectorByBookmarked = selector<IQuiz[]>({
-  key: "quizzes",
+  key: "bookmarkedQuizzes",
   get: async ({ get }) => {
     const fbUserData = await get(firebaseUserQuizDataSelector);
     try {
@@ -85,6 +85,44 @@ export const quizzesSelectorByBookmarked = selector<IQuiz[]>({
             localUserData?.quizzes[quiz.id]?.state ||
             fbUserData?.quizzes?.[quiz.id]?.state ||
             quizState.pending;
+          return quiz;
+        })
+      );
+      return quizData;
+    } catch (e) {
+      console.error("Something wrong with getting quizData", e);
+      return [];
+    }
+  },
+});
+export const wrongQuizzesSelector = selector<IQuiz[]>({
+  key: "wrongQuizzes",
+  get: async ({ get }) => {
+    const fbUserData = await get(firebaseUserQuizDataSelector);
+    try {
+      const dbRef = ref(getDatabase());
+      const localUserData = get(localQuizDataAtom);
+      const quizzesObjects = {
+        ...fbUserData.quizzes,
+        ...localUserData.quizzes,
+      };
+      const wrongQuizzes = Object.entries(quizzesObjects).filter(
+        ([_, quizData]) => quizData.state === quizState.wrong
+      );
+
+      wrongQuizzes.sort((a, b) => {
+        if (a[1].createdAt < b[1].createdAt) return 1;
+        else return -1;
+      }); // createdAt 순서대로 정렬
+
+      const quizData = Promise.all(
+        wrongQuizzes.map(async ([quizId]) => {
+          const quiz = await getQuiz(dbRef, quizId);
+          quiz.isBookmarked =
+            localUserData?.bookmarks[quiz.id]?.isBookmarked ||
+            fbUserData.bookmarks?.hasOwnProperty(quiz.id) ||
+            false;
+          quiz.state = quizState.wrong;
           return quiz;
         })
       );

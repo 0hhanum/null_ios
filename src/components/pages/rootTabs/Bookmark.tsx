@@ -8,7 +8,7 @@ import { IQuiz } from "types/quizzes/quizTypes";
 
 const Bookmark = () => {
   const navigation = useNavigation<any>();
-  const quizzesByBookmarkedSelector = quizzesSelectorByBookmarked;
+  const selector = quizzesSelectorByBookmarked;
   const onPlay = (quizzes: IQuiz[], selectedQuizIndex: number) => {
     const selectedQuiz = quizzes[selectedQuizIndex];
     const pendingQuizzes = quizzes.slice(selectedQuizIndex + 1);
@@ -23,10 +23,7 @@ const Bookmark = () => {
   return (
     <PageLayout>
       <BaseView style={{ flex: 1 }}>
-        <QuizListComponent
-          selector={quizzesByBookmarkedSelector}
-          onPlay={onPlay}
-        />
+        <QuizListComponent selector={selector} onPlay={onPlay} />
       </BaseView>
     </PageLayout>
   );
