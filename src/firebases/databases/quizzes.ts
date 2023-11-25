@@ -65,12 +65,12 @@ const getUserQuizData = (
 const bookmarkQuiz = (
   dbRef: DatabaseReference,
   quizId: string,
-  uuid: string,
+  userId: string,
   isBookmarked: boolean
 ): Promise<void> => {
   return new Promise(async (resolve, reject) => {
     try {
-      const path = `users/${uuid}/bookmarks/${quizId}`;
+      const path = `users/${userId}/bookmarks/${quizId}`;
       if (isBookmarked) {
         await removeFirebaseData(dbRef, path);
       } else {
@@ -88,12 +88,12 @@ const bookmarkQuiz = (
 const changeQuizStateUserData = (
   dbRef: DatabaseReference,
   quizId: string,
-  uuid: string,
+  userId: string,
   state: quizState
 ): Promise<void> => {
   return new Promise(async (resolve, reject) => {
     try {
-      const path = `users/${uuid}/quizzes/${quizId}`;
+      const path = `users/${userId}/quizzes/${quizId}`;
       await setFirebaseData(dbRef, path, {
         state,
         createdAt: Date.now(),
@@ -105,10 +105,28 @@ const changeQuizStateUserData = (
     }
   });
 };
+
+const initializeUserQuizData = (
+  dbRef: DatabaseReference,
+  userId: string
+): Promise<void> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const path = `users/${userId}`;
+      await removeFirebaseData(dbRef, path);
+      resolve();
+    } catch (e) {
+      console.error("Something wrong with bookmark quiz", e);
+      reject(e);
+    }
+  });
+};
+
 export {
   getQuiz,
   getUserQuizData,
   bookmarkQuiz,
   getQuizIdList,
   changeQuizStateUserData,
+  initializeUserQuizData,
 };
