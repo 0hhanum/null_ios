@@ -26,7 +26,8 @@ const BlankQuizChoices = ({
   const currentAnswerIndex = answerEnum[answers[questionCounter]];
   const currentAnswerText = choicesList[questionCounter][currentAnswerIndex];
   const onChoice = (index: number) => {
-    if (index !== currentAnswerIndex) {
+    const solved = index === currentAnswerIndex;
+    if (!solved) {
       // wrong answer
       setUserQuizResult(quizState.wrong);
     }
@@ -34,7 +35,11 @@ const BlankQuizChoices = ({
     if (questionCounter === choicesList.length - 1) {
       // solved all blank
       setTimeout(() => {
-        solvedCallback(userQuizResult);
+        solvedCallback(
+          userQuizResult === quizState.solved && solved
+            ? quizState.solved
+            : quizState.wrong
+        ); // 마지막 빈칸만 틀리면 상태 업데이트 전의 userQuizResult로 실행되어버림
       }, currentAnswerText.length * APPEAR_TEXT_ANIMATION_DURATION); // execute callback after text animation
     } else {
       setTimeout(() => {
