@@ -6,6 +6,7 @@ import { IQuiz } from "types/quizzes/quizTypes";
 import BaseView from "components/atoms/View/BaseView";
 import QuizListComponent from "components/organisms/Quizzes/QuizListComponent";
 
+const PLACEHOLDER = "틀린 문제가 없어요. 당신은 고수?";
 const Wrong = () => {
   const navigation = useNavigation<any>();
   const selector = wrongQuizzesSelector;
@@ -23,7 +24,11 @@ const Wrong = () => {
   return (
     <PageLayout>
       <BaseView style={{ flex: 1 }}>
-        <QuizListComponent selector={selector} onPlay={onPlay} />
+        <QuizListComponent
+          selector={selector}
+          onPlay={onPlay}
+          placeholder={PLACEHOLDER}
+        />
       </BaseView>
     </PageLayout>
   );

@@ -6,6 +6,7 @@ import QuizListComponent from "components/organisms/Quizzes/QuizListComponent";
 import { useNavigation } from "@react-navigation/native";
 import { IQuiz } from "types/quizzes/quizTypes";
 
+const PLACEHOLDER = "북마크 된 퀴즈가 없어요.";
 const Bookmark = () => {
   const navigation = useNavigation<any>();
   const selector = quizzesSelectorByBookmarked;
@@ -23,7 +24,11 @@ const Bookmark = () => {
   return (
     <PageLayout>
       <BaseView style={{ flex: 1 }}>
-        <QuizListComponent selector={selector} onPlay={onPlay} />
+        <QuizListComponent
+          selector={selector}
+          onPlay={onPlay}
+          placeholder={PLACEHOLDER}
+        />
       </BaseView>
     </PageLayout>
   );
