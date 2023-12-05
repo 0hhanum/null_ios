@@ -6,7 +6,7 @@ import MainLogo from "components/molecules/Logos/MainLogo";
 import React from "react";
 import { RecoilValueReadOnly, useRecoilValueLoadable } from "recoil";
 import styled from "styled-components/native";
-import { IQuiz } from "types/quizzes/quizTypes";
+import { IQuiz, quizState } from "types/quizzes/quizTypes";
 
 interface IQuizListComponent {
   onPlay: (quizzes: IQuiz[], selectedQuizIndex: number) => void;
@@ -45,6 +45,7 @@ const QuizListComponent = ({
               isBookmarked={isBookmarked}
               state={state}
               onPress={() => startQuiz(index)}
+              isSkeletonUI={false}
             />
           )}
         />
@@ -61,8 +62,24 @@ const QuizListComponent = ({
       );
     }
   } else if (quizzes.state === "loading") {
-    // loading
-    return null;
+    // loading (render skeleton UI)
+    return (
+      <QuizList
+        data={new Array(5).fill(undefined)}
+        renderItem={({ _, index }) => (
+          <QuizCard
+            title={""}
+            tags={[]}
+            key={index}
+            id={index}
+            isBookmarked={false}
+            state={quizState.pending}
+            onPress={() => {}}
+            isSkeletonUI={true}
+          />
+        )}
+      />
+    );
   } else {
     // error
     return (

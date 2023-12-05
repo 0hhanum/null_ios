@@ -5,10 +5,13 @@ import React from "react";
 import styled from "styled-components/native";
 import { IQuiz } from "types/quizzes/quizTypes";
 import BookmarkBtn from "./BookmarkBtn";
+import BaseView from "components/atoms/View/BaseView";
+import QuizCardSkeletonUIAnimation from "./QuizCardSkeletonUIAnimation";
 
 interface IQuizCard
   extends Pick<IQuiz, "id" | "title" | "tags" | "isBookmarked" | "state"> {
   onPress: () => void;
+  isSkeletonUI: boolean;
 }
 const Container = styled.TouchableHighlight`
   height: 80px;
@@ -16,7 +19,7 @@ const Container = styled.TouchableHighlight`
   border-radius: 5px;
   width: 100%;
 `;
-const Card = styled.View`
+const Card = styled(BaseView)`
   flex: 1;
   border-radius: 5px;
   border-style: solid;
@@ -24,15 +27,16 @@ const Card = styled.View`
   border-color: ${(props) => props.theme.borderColor};
   padding: 10px;
   flex-direction: row;
+  overflow: hidden;
 `;
-const CardLeftSection = styled.View`
+const CardLeftSection = styled(BaseView)`
   flex: 8;
   justify-content: center;
 `;
-const CardRightSection = styled.View`
+const CardRightSection = styled(BaseView)`
   flex: 1;
 `;
-const TagContainer = styled.View`
+const TagContainer = styled(BaseView)`
   flex-direction: row;
   margin-top: 7px;
   overflow: hidden;
@@ -48,6 +52,7 @@ const QuizCard = ({
   isBookmarked,
   state,
   onPress,
+  isSkeletonUI = false,
 }: IQuizCard) => {
   return (
     <Container onPress={onPress}>
@@ -73,6 +78,7 @@ const QuizCard = ({
             style={{ position: "absolute", bottom: 2, right: 0 }}
           />
         </CardRightSection>
+        {isSkeletonUI && <QuizCardSkeletonUIAnimation />}
       </Card>
     </Container>
   );
