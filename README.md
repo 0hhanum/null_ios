@@ -39,6 +39,8 @@ IOS Dev Quiz 어플리케이션입니다.
   - ✅ mdx 마크다운 파일을 이용해 편리한 컨텐츠 작성 기능 개발
   - ✅ CI/CD
     - 새로운 퀴즈 답안 등록 시 테스트, 자동 배포 및 mdx 내 메타정보를 firebase db에 저장하는 파이프라인 구축
+    - <img width="781" alt="image" src="https://github.com/0hhanum/null_ios/assets/79507291/82904afd-6f09-4285-88f9-10e396cde870">
+
   - ✅ 상세설명 페이지 웹뷰 삽입
 - ⬜️ FCM 활용 새로운 문제 푸시 알림
   - 상세 설명 허브에 새로운 문제 등록 시 푸시 알림 자동화
