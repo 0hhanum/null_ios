@@ -14,6 +14,7 @@ IOS Dev Quiz 어플리케이션입니다.
 - TypeScript
 - Expo
 - Jest
+- Recoil
 - styled components
 - Firebase
 - Gatsby
