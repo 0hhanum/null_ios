@@ -47,6 +47,7 @@ const RootTabNav: React.FC<BottomTabBarProps> = ({ navigation }) => {
         headerTitleAlign: "left",
         tabBarStyle: {
           backgroundColor: theme.bgColor,
+          borderBlockColor: "transparent",
         },
         unmountOnBlur: true,
       }}
