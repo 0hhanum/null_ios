@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Animated, Easing } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
 import styled from "styled-components/native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const SkeletonAnimation = styled(Animated.View)`
   width: 80px;

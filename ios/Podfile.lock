@@ -21,7 +21,7 @@ PODS:
     - SDWebImageWebPCoder (~> 0.11.0)
   - ExpoKeepAwake (12.3.0):
     - ExpoModulesCore
-  - ExpoLinearGradient (12.5.0):
+  - ExpoLinearGradient (12.3.0):
     - ExpoModulesCore
   - ExpoModulesCore (1.5.11):
     - RCT-Folly (= 2021.07.22.00)
@@ -710,7 +710,7 @@ SPEC CHECKSUMS:
   Expo: fcfd60c1ed6806dee5103b210335ae0c72f675ed
   ExpoImage: e3170a9043c6a80080efbf2268b3df2334021949
   ExpoKeepAwake: be4cbd52d9b177cde0fd66daa1913afa3161fc1d
-  ExpoLinearGradient: 5d18293f89c063036121281175c4653d6a7c34a2
+  ExpoLinearGradient: 5966dd5d49872cc9c104fedc8bbc298b6049b2e8
   ExpoModulesCore: 81037d28453615c4206a6a2ca7556a0f364a0a0a
   EXSplashScreen: 2c80621e4bc952f5bea328304c2436f5fe21c2a0
   FBLazyVector: 4cce221dd782d3ff7c4172167bba09d58af67ccb
