@@ -10,15 +10,33 @@ import Router from "./src/router/Router";
 import initializeFirebase from "firebases/initializeFirebase";
 import UserUidContainer from "containers/auths/UserUidContainer";
 import { UserCredential } from "firebase/auth";
+import {
+  registerForPushNotificationsAsync,
+  setNotificationHandler,
+} from "notifications/notification";
 
 preventAutoHideAsync();
+setNotificationHandler();
+
 export default function App() {
   const [fontsLoaded] = useFonts(AntDesign.font);
   const [user, setUser] = useState<UserCredential>(null);
   useEffect(() => {
     const initialize = async () => {
-      const user = await initializeFirebase(); // initialize firebase
-      setUser(user);
+      try {
+        const user = await initializeFirebase(); // initialize firebase
+        setUser(user);
+      } catch (e) {
+        alert("오류가 발생했습니다. 다시 시도해 주세요.");
+      }
+      try {
+        const token = await registerForPushNotificationsAsync();
+        if (token) {
+          // TODO:: make notification listener hooks
+        }
+      } catch (SimulatorNotificationError) {
+        // simulator doesn't has token
+      }
     };
     initialize();
   }, []);
