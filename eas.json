@@ -12,7 +12,7 @@
     },
     "production": {
       "ios": {
-        "image": "lastest"
+        "image": "latest"
       }
     }
   },
