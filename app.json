@@ -1,11 +1,14 @@
 {
   "expo": {
-    "name": "null",
+    "name": "null - 개발 퀴즈",
     "slug": "null",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "extra": {
+      "eas": {
+        "projectId": "f28a42d2-c9a3-4aa5-a1ff-0baadae8dada"
+      }
+    }
   },
   "name": "null"
 }

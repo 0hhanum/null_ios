@@ -35,6 +35,7 @@ export default function App() {
           // TODO:: make notification listener hooks
         }
       } catch (SimulatorNotificationError) {
+        console.log("run on simulator");
         // simulator doesn't has token
       }
     };
