@@ -8,6 +8,11 @@
       "eas": {
         "projectId": "f28a42d2-c9a3-4aa5-a1ff-0baadae8dada"
       }
+    },
+    "ios": {
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     }
   },
   "name": "null"
