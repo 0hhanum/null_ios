@@ -38,3 +38,5 @@ class SimulatorNotificationError extends Error {
     this.name = "SimulatorNotificationError";
   }
 }
+
+export { SimulatorNotificationError };
