@@ -2,7 +2,7 @@
   "expo": {
     "name": "null - 개발 퀴즈",
     "slug": "null",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "assetBundlePatterns": ["**/*"],
     "extra": {
       "eas": {
@@ -11,7 +11,8 @@
     },
     "ios": {
       "config": {
-        "usesNonExemptEncryption": false
+        "usesNonExemptEncryption": false,
+        "buildNumber": "2"
       }
     }
   },
