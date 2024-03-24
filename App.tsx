@@ -11,7 +11,7 @@ import initializeFirebase from "firebases/initializeFirebase";
 import UserUidContainer from "containers/auths/UserUidContainer";
 import { UserCredential } from "firebase/auth";
 import {
-  registerForPushNotificationsAsync,
+  initializePushNotification,
   setNotificationHandler,
 } from "notifications/notification";
 
@@ -30,13 +30,13 @@ export default function App() {
         alert("오류가 발생했습니다. 다시 시도해 주세요.");
       }
       try {
-        const token = await registerForPushNotificationsAsync();
-        if (token) {
+        const token = await initializePushNotification();
+        if (token && user) {
           // TODO:: make notification listener hooks
         }
       } catch (SimulatorNotificationError) {
+        // Simulator doesn't has token
         console.log("run on simulator");
-        // simulator doesn't has token
       }
     };
     initialize();

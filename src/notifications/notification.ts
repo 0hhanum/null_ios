@@ -12,34 +12,26 @@ export function setNotificationHandler() {
   });
 }
 
-export async function registerForPushNotificationsAsync() {
-  const GRANTED_STATUS = "granted";
-  let token;
-
+export async function initializePushNotification() {
   if (Device.isDevice) {
-    const { status: existingStatus } =
-      await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
-    if (existingStatus !== GRANTED_STATUS) {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
-    if (finalStatus !== GRANTED_STATUS) {
-      alert("Failed to get push token for push notification!");
-      // TODO:: send log
-      return;
-    }
-    token = await Notifications.getExpoPushTokenAsync({
+    requestPermissionForAsync();
+    const token = await Notifications.getExpoPushTokenAsync({
       projectId: Constants.expoConfig.extra.eas.projectId,
     });
-    alert(token);
-    // TODO:: save log into DB
+
+    return token;
   } else {
     throw new SimulatorNotificationError();
   }
-
-  return token.data;
 }
+async function requestPermissionForAsync() {
+  const GRANTED_STATUS = "granted";
+  const { status: existingStatus } = await Notifications.getPermissionsAsync();
+  if (existingStatus !== GRANTED_STATUS) {
+    await Notifications.requestPermissionsAsync();
+  }
+}
+
 class SimulatorNotificationError extends Error {
   constructor() {
     super();
