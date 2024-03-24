@@ -116,7 +116,7 @@ const initializeUserQuizData = (
       await removeFirebaseData(dbRef, path);
       resolve();
     } catch (e) {
-      console.error("Something wrong with bookmark quiz", e);
+      console.error("Something wrong with initialize user quiz data", e);
       reject(e);
     }
   });
