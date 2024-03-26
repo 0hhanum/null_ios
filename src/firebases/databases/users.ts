@@ -7,7 +7,6 @@ const saveUserExpoNotificationToken = (
   token: string
 ): Promise<void> => {
   return new Promise(async (resolve, reject) => {
-    console.log(userId, token);
     try {
       const path = `users/${userId}/expoNotificationToken`;
       resolve(setFirebaseData(dbRef, path, token));

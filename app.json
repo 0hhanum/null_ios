@@ -6,13 +6,12 @@
     "assetBundlePatterns": ["**/*"],
     "extra": {
       "eas": {
-        "projectId": "f28a42d2-c9a3-4aa5-a1ff-0baadae8dada"
+        "projectId": "235f6699-262d-4836-9465-bc5526550b3e"
       }
     },
     "ios": {
       "config": {
-        "usesNonExemptEncryption": false,
-        "buildNumber": "2"
+        "usesNonExemptEncryption": false
       }
     }
   },
