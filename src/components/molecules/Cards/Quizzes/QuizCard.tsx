@@ -62,7 +62,7 @@ const QuizCard = ({
       <Card>
         <CardLeftSection>
           <QuizTitle numberOfLines={1} size={18}>
-            {isNewQuiz && NewQuizIndicator}
+            {isNewQuiz && <NewQuizIndicator />}
             {title}
           </QuizTitle>
           <TagContainer>
