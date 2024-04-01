@@ -42,7 +42,7 @@ IOS Dev Quiz 어플리케이션입니다.
     <img width="781" alt="image" src="https://github.com/0hhanum/null_ios/assets/79507291/82904afd-6f09-4285-88f9-10e396cde870">
 
   - ✅ 상세설명 페이지 웹뷰 삽입
-- ⬜️ FCM 활용 새로운 문제 푸시 알림
+- ✅ 새로운 문제 푸시 알림
   - 상세 설명 허브에 새로운 문제 등록 시 푸시 알림 자동화
 
 ### React Native 기반 개발
