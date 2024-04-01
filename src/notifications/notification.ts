@@ -12,6 +12,26 @@ export function setNotificationHandler() {
   });
 }
 
+export function setNotificationListener(navigation: any) {
+  Notifications.addNotificationResponseReceivedListener((response) => {
+    const {
+      notification: {
+        request: {
+          content: { data },
+        },
+      },
+    } = response;
+    const { quizId, category } = data;
+    if (quizId === undefined || category === undefined) return;
+    navigation.navigate("RootStackNav", {
+      screen: "QuizList",
+      params: {
+        category,
+      },
+    });
+  });
+}
+
 export async function initializePushNotification() {
   if (Device.isDevice) {
     requestPermissionForAsync();

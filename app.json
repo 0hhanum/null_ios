@@ -13,7 +13,8 @@
       "config": {
         "usesNonExemptEncryption": false
       }
-    }
+    },
+    "scheme": "null_quiz"
   },
   "name": "null"
 }

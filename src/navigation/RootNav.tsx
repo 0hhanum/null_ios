@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RootTabNav from "./RootTabNav";
 import RootStackNav from "./RootStackNav";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
+import { setNotificationListener } from "notifications/notification";
 
 const NativeStack = createNativeStackNavigator();
 
 const RootNav = () => {
+  const navigation = useNavigation();
+  // for navigate updated quiz
+  useEffect(() => {
+    setNotificationListener(navigation);
+  }, []);
+
   return (
     <NativeStack.Navigator
       screenOptions={{
