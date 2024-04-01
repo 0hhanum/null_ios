@@ -7,11 +7,13 @@ import { IQuiz } from "types/quizzes/quizTypes";
 import BookmarkBtn from "./BookmarkBtn";
 import BaseView from "components/atoms/View/BaseView";
 import QuizCardSkeletonUIAnimation from "./QuizCardSkeletonUIAnimation";
+import NewQuizIndicator from "components/atoms/Texts/NewQuizIndicator";
 
 interface IQuizCard
   extends Pick<IQuiz, "id" | "title" | "tags" | "isBookmarked" | "state"> {
   onPress: () => void;
   isSkeletonUI: boolean;
+  isNewQuiz: boolean;
 }
 const Container = styled.TouchableHighlight`
   height: 80px;
@@ -53,12 +55,14 @@ const QuizCard = ({
   state,
   onPress,
   isSkeletonUI = false,
+  isNewQuiz,
 }: IQuizCard) => {
   return (
     <Container onPress={onPress}>
       <Card>
         <CardLeftSection>
           <QuizTitle numberOfLines={1} size={18}>
+            {isNewQuiz && NewQuizIndicator}
             {title}
           </QuizTitle>
           <TagContainer>

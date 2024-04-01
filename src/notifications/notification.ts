@@ -27,6 +27,7 @@ export function setNotificationListener(navigation: any) {
       screen: "QuizList",
       params: {
         category,
+        newQuizId: quizId,
       },
     });
   });

@@ -10,7 +10,7 @@ import { quizzesSelectorByCategory } from "recoil/firebases/quizzes/selector";
 
 const QuizList = ({
   route: {
-    params: { category },
+    params: { category, newQuizId },
   },
 }) => {
   const navigation = useNavigation<any>();
@@ -40,6 +40,7 @@ const QuizList = ({
         <QuizListComponent
           selector={quizzesByCategorySelector}
           onPlay={onSelectedPlay}
+          newQuizId={newQuizId}
         />
       </BaseView>
       <QuizListBottomBar

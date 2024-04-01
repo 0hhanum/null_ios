@@ -12,6 +12,7 @@ interface IQuizListComponent {
   onPlay: (quizzes: IQuiz[], selectedQuizIndex: number) => void;
   selector: RecoilValueReadOnly<IQuiz[]>;
   placeholder?: string;
+  newQuizId?: string;
 }
 
 const QuizList = styled.FlatList`
@@ -22,6 +23,7 @@ const QuizListComponent = ({
   onPlay,
   selector,
   placeholder,
+  newQuizId,
 }: IQuizListComponent) => {
   const quizzes = useRecoilValueLoadable(selector);
   const startQuiz = (selectedQuizIndex: number) => {
@@ -45,6 +47,7 @@ const QuizListComponent = ({
               isBookmarked={isBookmarked}
               state={state}
               onPress={() => startQuiz(index)}
+              isNewQuiz={newQuizId === id}
               isSkeletonUI={false}
             />
           )}
@@ -76,6 +79,7 @@ const QuizListComponent = ({
             state={quizState.pending}
             onPress={() => {}}
             isSkeletonUI={true}
+            isNewQuiz={false}
           />
         )}
       />
