@@ -3,7 +3,9 @@
     "name": "null - 개발 퀴즈",
     "slug": "null",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -18,7 +20,8 @@
         "usesNonExemptEncryption": false
       },
       "bundleIdentifier": "com.goodthing.null",
-      "supportsTablet": false
+      "supportsTablet": false,
+      "runtimeVersion": "1.0.0"
     },
     "scheme": "null_quiz",
     "plugins": [
@@ -90,7 +93,17 @@
       ]
     ],
     "android": {
-      "package": "com.goodthing.xnull"
+      "package": "com.goodthing.xnull",
+      "permissions": [
+        "com.google.android.gms.permission.AD_ID",
+        "com.google.android.gms.permission.AD_ID"
+      ],
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/235f6699-262d-4836-9465-bc5526550b3e"
     }
   }
 }

@@ -25,6 +25,7 @@
     "expo-splash-screen": "~0.29.21",
     "expo-status-bar": "~2.0.1",
     "expo-tracking-transparency": "~5.1.1",
+    "expo-updates": "~0.26.17",
     "firebase": "^10.5.0",
     "install": "^0.13.0",
     "npx": "^10.2.2",
