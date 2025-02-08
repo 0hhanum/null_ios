@@ -1,6 +1,6 @@
 import React from "react";
 import PageLayout from "../../atoms/View/PageLayout";
-import MainLogo from "../../molecules/Logos/MainLogo";
+// import MainLogo from "../../molecules/Logos/MainLogo";
 import BaseCard from "../../molecules/Cards/BaseCard";
 import HCenterView from "../../atoms/View/HCenterView";
 import { getWindowSize } from "../../utils";
@@ -15,7 +15,7 @@ const Landing = () => {
     <PageLayout>
       <HCenterView style={{ marginTop: height * 0.1 }}>
         <BaseCard cardType="largeSquare" trafficLight={true}>
-          <MainLogo />
+          {/* <MainLogo /> */}
         </BaseCard>
       </HCenterView>
       <BaseView style={{ marginTop: 30 }}>
