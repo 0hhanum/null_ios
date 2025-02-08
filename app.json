@@ -3,7 +3,9 @@
     "name": "null - 개발 퀴즈",
     "slug": "null",
     "version": "2.0.0",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "extra": {
       "eas": {
         "projectId": "235f6699-262d-4836-9465-bc5526550b3e"
@@ -12,9 +14,13 @@
     "ios": {
       "config": {
         "usesNonExemptEncryption": false
-      }
+      },
+      "bundleIdentifier": "com.goodthing.null"
     },
-    "scheme": "null_quiz"
+    "scheme": "null_quiz",
+    "plugins": [
+      "expo-asset"
+    ]
   },
   "name": "null"
 }
