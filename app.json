@@ -2,10 +2,13 @@
   "expo": {
     "name": "null - 개발 퀴즈",
     "slug": "null",
-    "version": "2.0.0",
+    "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "extra": {
       "eas": {
         "projectId": "235f6699-262d-4836-9465-bc5526550b3e"
@@ -15,12 +18,15 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.goodthing.null"
+      "bundleIdentifier": "com.goodthing.null",
+      "supportsTablet": false
     },
     "scheme": "null_quiz",
     "plugins": [
       "expo-asset"
-    ]
-  },
-  "name": "null"
+    ],
+    "android": {
+      "package": "com.goodthing.xnull"
+    }
+  }
 }
