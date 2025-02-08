@@ -2,7 +2,7 @@ import BaseText from "components/atoms/Texts/BaseText";
 import BaseView from "components/atoms/View/BaseView";
 import CenterView from "components/atoms/View/CenterView";
 import QuizCard from "components/molecules/Cards/Quizzes/QuizCard";
-import MainLogo from "components/molecules/Logos/MainLogo";
+import MainLogo from "components/molecules/logos/MainLogo";
 import React from "react";
 import { RecoilValueReadOnly, useRecoilValueLoadable } from "recoil";
 import styled from "styled-components/native";
