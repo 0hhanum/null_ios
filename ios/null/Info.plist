@@ -7,7 +7,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
-    <string>null - 개발 퀴즈</string>
+    <string>null</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -22,18 +22,8 @@
     <string>1.0.1</string>
     <key>CFBundleSignature</key>
     <string>????</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>null_quiz</string>
-          <string>com.goodthing.null</string>
-        </array>
-      </dict>
-    </array>
     <key>CFBundleVersion</key>
-    <string>1</string>
+    <string>9</string>
     <key>GADApplicationIdentifier</key>
     <string>ca-app-pub-5157598784914016~2081254922</string>
     <key>GADDelayAppMeasurementInit</key>

@@ -2,13 +2,14 @@
   "expo": {
     "name": "null - 개발 퀴즈",
     "slug": "null",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "assetBundlePatterns": [
       "**/*"
     ],
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "displayName": "null",
     "icon": "./assets/icon.png",
     "extra": {
       "eas": {
@@ -19,9 +20,9 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.goodthing.null",
+      "bundleIdentifier": "org.0hhanum.null",
       "supportsTablet": false,
-      "runtimeVersion": "1.0.0"
+      "runtimeVersion": "1.0.1"
     },
     "scheme": "null_quiz",
     "plugins": [
@@ -88,12 +89,17 @@
             "image": "./assets/splash.png",
             "backgroundColor": "#000000"
           },
-          "imageWidth": 750
+          "imageWidth": 300
         }
-      ]
+      ],
+      "expo-build-properties"
     ],
     "android": {
-      "package": "com.goodthing.xnull",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "package": "com.goodthing.null_quiz",
       "permissions": [
         "com.google.android.gms.permission.AD_ID",
         "com.google.android.gms.permission.AD_ID"
