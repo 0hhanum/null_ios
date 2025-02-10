@@ -3,9 +3,7 @@
     "name": "null - 개발 퀴즈",
     "slug": "null",
     "version": "1.0.1",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -92,7 +90,15 @@
           "imageWidth": 300
         }
       ],
-      "expo-build-properties"
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "kotlinVersion": "1.9.25"
+          }
+        }
+      ]
     ],
     "android": {
       "adaptiveIcon": {
@@ -104,9 +110,8 @@
         "com.google.android.gms.permission.AD_ID",
         "com.google.android.gms.permission.AD_ID"
       ],
-      "runtimeVersion": {
-        "policy": "appVersion"
-      }
+      "runtimeVersion": "1.0.0",
+      "googleServicesFile": "./android/app/google-services.json"
     },
     "updates": {
       "url": "https://u.expo.dev/235f6699-262d-4836-9465-bc5526550b3e"
