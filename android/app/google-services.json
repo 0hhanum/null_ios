@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "983785417324",
+    "project_id": "null-quiz-ae8ef",
+    "storage_bucket": "null-quiz-ae8ef.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983785417324:android:b3c8c44c634b6a5cfe4649",
+        "android_client_info": {
+          "package_name": "com.goodthing.null_quiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQlJWL9pcoRtOqW82mfR6mEoIZcCe21Vs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
